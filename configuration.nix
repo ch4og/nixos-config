@@ -3,26 +3,29 @@
 {
   imports =
     [
-      /etc/nixos/hardware-configuration.nix
+      ./hardware-configuration.nix
+      ./btrfs-compression.nix
     ];
-  
-  fileSystems = {
-    "/".options = [ "compress=zstd" ];
-    "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
-    "/swap".options = [ "noatime" ];
-    "/var/log".options = [ "compress=zstd" ];
+
+  boot = {
+    loader = {
+      #systemd-boot.enable = true;
+      grub = {
+        device = "nodev";
+        efiSupport = true;
+      };
+      efi.canTouchEfiVariables = true;
+      };
+    kernelPackages = pkgs.linuxPackages_zen;
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback acpi_call xpadneo ];
   };
 
-  #boot.loader.systemd-boot.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.efiSupport = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "nixpc";
-
-  # networking.wireless.enable = true;
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "nixpc";
+    networkmanager.enable = true;
+    #wireless.enable = true;
+    firewall.enable = false;
+  };
 
   time.timeZone = "Asia/Novosibirsk";
 
@@ -32,27 +35,37 @@
     useXkbConfig = true;
   };
 
-  # services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "vmware" ];
-  # programs.hyprland = {
-  #   enable = true;
-  # };
+  services = {
+    dbus.enable = true;
+    openssh.enable = true;
+    libinput.enable = true;
+    vscode-server.enable = true;
 
-  services.xserver.xkb.layout = "us,ru";
-  services.xserver.xkb.options = "grp:alt_shift_toggle";
+    xserver = {
+      enable = true;
+      videoDrivers = [ "vmware" ];
+      #windowManager.hyprland.enable = true;
+      xkb.layout = "us,ru";
+      xkb.options = "grp:alt_shift_toggle";
+    };
+  };
 
-  # Enable sound.
-  # hardware.pulseaudio.enable = true;
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
+  #hardware.graphics.enable = true;
+  #hardware.pulseaudio.enable = true;
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+  };
 
-  services.libinput.enable = true;
-  # services.dbus.enable = true;
+  programs.hyprland = {
+    enable = true;
+    #package = pkgs.stable.hyprland;
+  };
+
+
   users.users.ch = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" ];
     packages = with pkgs; [
       firefox
       zsh
@@ -60,10 +73,8 @@
       lsd
       starship
       kitty
-      alacritty
-      xterm
       konsole
-      wezterm
+      fastfetch
     ];
   };
 
@@ -76,12 +87,12 @@
     tree
   ];
 
-  services.openssh.enable = true;
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    #substituters = [ "https://aseipp-nix-cache.global.ssl.fastly.net" ];
+  };
 
-  networking.firewall.enable = false;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   system.stateVersion = "24.05";
-
 }
 
