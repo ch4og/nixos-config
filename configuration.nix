@@ -87,11 +87,21 @@
     tree
   ];
 
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    #substituters = [ "https://aseipp-nix-cache.global.ssl.fastly.net" ];
-  };
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+      #substituters = [ "https://aseipp-nix-cache.global.ssl.fastly.net" ];
+    };
+    
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
 
+    optimise.automatic = true;
+  };
 
   system.stateVersion = "24.05";
 }
