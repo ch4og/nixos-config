@@ -8,4 +8,9 @@
     "/swap".options = [ "noatime" ];
     "/var/log".options = [ "compress=zstd" ];
   };
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "monthly";
+    fileSystems = [ "/" ];
+  };
 }

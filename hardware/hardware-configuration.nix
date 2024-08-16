@@ -6,43 +6,43 @@
 {
   imports = [ ];
 
-  boot.initrd.availableKernelModules = [ "ata_piix" "mptspi" "uhci_hcd" "ehci_pci" "ahci" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/a1e47cdf-4f7c-42cd-9b06-5c2b1ad92d02";
+    { device = "/dev/disk/by-uuid/46dbde31-aa01-4639-9ad0-912175a8700f";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/a1e47cdf-4f7c-42cd-9b06-5c2b1ad92d02";
-      fsType = "btrfs";
-      options = [ "subvol=nix" ];
-    };
-
-  fileSystems."/var/log" =
-    { device = "/dev/disk/by-uuid/a1e47cdf-4f7c-42cd-9b06-5c2b1ad92d02";
-      fsType = "btrfs";
-      options = [ "subvol=log" ];
-    };
-
-  fileSystems."/swap" =
-    { device = "/dev/disk/by-uuid/a1e47cdf-4f7c-42cd-9b06-5c2b1ad92d02";
-      fsType = "btrfs";
-      options = [ "subvol=swap" ];
-    };
-
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/a1e47cdf-4f7c-42cd-9b06-5c2b1ad92d02";
+    { device = "/dev/disk/by-uuid/46dbde31-aa01-4639-9ad0-912175a8700f";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
+  fileSystems."/var/log" =
+    { device = "/dev/disk/by-uuid/46dbde31-aa01-4639-9ad0-912175a8700f";
+      fsType = "btrfs";
+      options = [ "subvol=log" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/46dbde31-aa01-4639-9ad0-912175a8700f";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
+    };
+
+  fileSystems."/swap" =
+    { device = "/dev/disk/by-uuid/46dbde31-aa01-4639-9ad0-912175a8700f";
+      fsType = "btrfs";
+      options = [ "subvol=swap" ];
+    };
+
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/81C9-F4BF";
+    { device = "/dev/disk/by-uuid/F66B-1F47";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
@@ -54,7 +54,8 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.ens33.useDHCP = lib.mkDefault true;
+  # networking.interfaces.eth0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  virtualisation.hypervGuest.enable = true;
 }

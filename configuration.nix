@@ -1,15 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./btrfs-compression.nix
-    ];
-
   boot = {
     loader = {
-      #systemd-boot.enable = true;
+      # systemd-boot.enable = true;
       grub = {
         device = "nodev";
         efiSupport = true;
@@ -23,7 +17,7 @@
   networking = {
     hostName = "nixpc";
     networkmanager.enable = true;
-    #wireless.enable = true;
+    # wireless.enable = true;
     firewall.enable = false;
   };
 
@@ -42,16 +36,16 @@
     vscode-server.enable = true;
 
     xserver = {
-      enable = true;
+      # enable = true;
       videoDrivers = [ "vmware" ];
-      #windowManager.hyprland.enable = true;
+      # windowManager.hyprland.enable = true;
       xkb.layout = "us,ru";
       xkb.options = "grp:alt_shift_toggle";
     };
   };
 
-  #hardware.graphics.enable = true;
-  #hardware.pulseaudio.enable = true;
+  # hardware.graphics.enable = true;
+  # hardware.pulseaudio.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -59,7 +53,7 @@
 
   programs.hyprland = {
     enable = true;
-    #package = pkgs.stable.hyprland;
+    package = pkgs.hyprland-git.hyprland.override { debug = true; };
   };
 
 
@@ -91,7 +85,7 @@
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
-      #substituters = [ "https://aseipp-nix-cache.global.ssl.fastly.net" ];
+      # substituters = [ "https://aseipp-nix-cache.global.ssl.fastly.net" ];
     };
     
     gc = {
