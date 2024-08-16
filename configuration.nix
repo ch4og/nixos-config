@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   boot = {
     loader = {
       # systemd-boot.enable = true;
@@ -9,9 +12,10 @@
         efiSupport = true;
       };
       efi.canTouchEfiVariables = true;
-      };
+    };
     kernelPackages = pkgs.linuxPackages_zen;
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback acpi_call xpadneo ];
+    extraModulePackages = with config.boot.kernelPackages; [v4l2loopback acpi_call xpadneo];
+    tmp.cleanOnBoot = true;
   };
 
   networking = {
@@ -28,7 +32,7 @@
     font = "Lat2-Terminus16";
     useXkbConfig = true;
   };
-
+  virtualisation.hypervGuest.videoMode = "1920x1080";
   services = {
     dbus.enable = true;
     openssh.enable = true;
@@ -36,15 +40,17 @@
     vscode-server.enable = true;
 
     xserver = {
-      # enable = true;
-      videoDrivers = [ "vmware" ];
+      enable = true;
+      # videoDrivers = [ "vmware" ];
       # windowManager.hyprland.enable = true;
       xkb.layout = "us,ru";
       xkb.options = "grp:alt_shift_toggle";
+      desktopManager.xfce.enable = true;
     };
+    # displayManager.cosmic-greeter.enable = true;
+    # desktopManager.cosmic.enable = true;
   };
 
-  # hardware.graphics.enable = true;
   # hardware.pulseaudio.enable = true;
   services.pipewire = {
     enable = true;
@@ -53,13 +59,12 @@
 
   programs.hyprland = {
     enable = true;
-    package = pkgs.hyprland-git.hyprland.override { debug = true; };
+    package = pkgs.hyprland-git.hyprland.override {debug = true;};
   };
-
 
   users.users.ch = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = ["wheel"];
     packages = with pkgs; [
       firefox
       zsh
@@ -73,21 +78,25 @@
   };
 
   environment.systemPackages = with pkgs; [
-    neovim 
+    neovim
     wget
     git
     killall
     htop
     tree
+    alejandra
   ];
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
       # substituters = [ "https://aseipp-nix-cache.global.ssl.fastly.net" ];
+      substituters = ["https://cosmic.cachix.org/"];
+      trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
+      warn-dirty = false;
     };
-    
+
     gc = {
       automatic = true;
       dates = "weekly";
@@ -99,4 +108,3 @@
 
   system.stateVersion = "24.05";
 }
-
