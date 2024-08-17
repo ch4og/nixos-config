@@ -4,6 +4,9 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
   fileSystems = {
     "/".options = ["compress=zstd"];
     "/home".options = ["compress=zstd"];

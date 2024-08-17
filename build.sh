@@ -13,12 +13,11 @@ run_build () {
 
     cd ~/nixconfig
 
-    alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
+    alejandra . &>/dev/null || ( alejandra . ; echo "Code formatting failed!" && exit 1)
     $SUDO cp /etc/nixos/hardware-configuration.nix system/hardware/hardware-configuration.nix
-    $SUDO chown $USER system/hardware/hardware-configuration.nix
     echo "NixOS Rebuilding..."
     $SUDO nixos-rebuild switch --flake . || (echo NixOS Rebuild failed! && exit 1)
-    echo NixOS Rebuild done!
+    echo "NixOS Rebuild done!"
 }
 
 case "$response" in
