@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo Warning! This will overwrite hardware/hardware-configuration.nix
+echo Warning! This will overwrite system/hardware/hardware-configuration.nix
 read -r -p "Are you sure? [y/N] " response
 
 PASSED_ARG=$1
@@ -21,13 +21,11 @@ run_build () {
     fi
             
 
-    $SUDO cp /etc/nixos/hardware-configuration.nix hardware/hardware-configuration.nix
-    $SUDO chown $USER hardware/hardware-configuration.nix
     alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
+    $SUDO cp /etc/nixos/hardware-configuration.nix system/hardware/hardware-configuration.nix
+    $SUDO chown $USER system/hardware/hardware-configuration.nix
     echo "NixOS Rebuilding..."
     $SUDO nixos-rebuild switch --flake . || (echo NixOS Rebuild failed! && exit 1)
-    current=$(nixos-rebuild list-generations | grep current)
-    git commit -am "$current"
     echo NixOS Rebuild done!
 }
 

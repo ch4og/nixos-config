@@ -2,26 +2,29 @@
   description = "ch4og config";
 
   inputs = {
-    #nixpkgs.url = "nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:MatthewCash/nixpkgs/fix/hyperv-deamons-fcopy"; #temp fix for hyperv
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     stable.url = "nixpkgs/nixos-24.05";
 
     hyprland-git = {
       url = "git+https://github.com/hyprwm/hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     # nixos-cosmic = {
     #   url = "github:lilyinstarlight/nixos-cosmic";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -42,16 +45,13 @@
       ...
     }: {nixpkgs.overlays = [stableOverlay gamingOverlay hyprOverlay];};
   in {
-    nixosConfigurations.nixpc = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixvm = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
       modules = [
-        hardware/hardware-configuration.nix
-        hardware/btrfs-settings.nix
-        ./configuration.nix
+        ./nixvm.nix
         inputs.vscode-server.nixosModules.default
         pkgsModules
-        # inputs.nixos-cosmic.nixosModules.default
       ];
     };
   };
