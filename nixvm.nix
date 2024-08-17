@@ -32,8 +32,6 @@
     };
   };
 
-  hardware.pulseaudio.enable = true;
-
   users.users.ch = {
     isNormalUser = true;
     extraGroups = ["wheel"];

@@ -2,7 +2,8 @@
   description = "ch4og config";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    # nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixos-unstable-small"; # temp fix for hyper-v
     stable.url = "nixpkgs/nixos-24.05";
 
     hyprland-git = {
@@ -25,10 +26,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nixos-cosmic = {
-    #   url = "github:lilyinstarlight/nixos-cosmic";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

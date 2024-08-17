@@ -12,14 +12,6 @@ run_build () {
     fi
 
     cd ~/nixconfig
-    if [[ $PASSED_ARG != "-f" ]]; then
-        if git diff --quiet '*.nix'; then
-            echo "No changes detected, exiting."
-            echo "Use -f to force rebuild"
-            exit 0
-        fi
-    fi
-            
 
     alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
     $SUDO cp /etc/nixos/hardware-configuration.nix system/hardware/hardware-configuration.nix
