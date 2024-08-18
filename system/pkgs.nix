@@ -1,10 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
-  environment.systemPackages = with pkgs; [
+{pkgs, ...}: let
+  packages = with pkgs; [
     neovim
     wget
     git
@@ -14,4 +9,5 @@
     tree
     alejandra
   ];
-}
+in
+  packages

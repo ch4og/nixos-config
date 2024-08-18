@@ -6,13 +6,13 @@
 }: {
   imports = [
     ./system/boot.nix
-    ./system/pkgs.nix
     ./system/defaults.nix
     ./system/hardware/vm-hardware-settings.nix
     ./system/services/vm-services.nix
 
-    ./user/ch.nix
+    ./user/ch/user.nix
   ];
+  environment.systemPackages = import ./system/pkgs.nix {inherit pkgs;};
 
   networking = {
     hostName = "nixvm";

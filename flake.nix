@@ -53,6 +53,7 @@
         ./nixvm.nix
         inputs.vscode-server.nixosModules.default
         pkgsModules
+        inputs.home-manager.nixosModules.home-manager
       ];
     };
   };
