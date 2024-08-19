@@ -1,6 +1,7 @@
 {
   pkgs,
   username,
+  inputs,
   ...
 }: {
   home-manager.useGlobalPkgs = true;
@@ -9,7 +10,7 @@
   home-manager.users.${username} = {pkgs, ...}: {
     home.packages = import ./pkgs.nix {inherit pkgs;};
     imports = [
-      ./config
+      (import ./config {inherit pkgs inputs;})
     ];
 
     home.stateVersion = "24.05";

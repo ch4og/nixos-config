@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   username = "ch";
@@ -11,6 +12,6 @@ in {
     extraGroups = ["wheel"];
   };
   imports = [
-    (import ./home {inherit pkgs username;})
+    (import ./home {inherit pkgs username inputs;})
   ];
 }
