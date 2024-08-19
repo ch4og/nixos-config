@@ -10,6 +10,7 @@
     starship
     kitty
     fastfetch
+    gh
   ];
 in
   packages

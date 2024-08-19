@@ -13,5 +13,6 @@
     enable = true;
     defaultEditor = true;
     vimdiffAlias = true;
+    colorscheme = "midnight";
   };
 }
