@@ -4,6 +4,9 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./env.nix
+  ];
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     font = "Lat2-Terminus16";
@@ -14,7 +17,7 @@
     xkb.layout = "us,ru";
     xkb.options = "grp:alt_shift_toggle";
   };
-
+  programs.zsh.enable = true;
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];

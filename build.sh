@@ -13,7 +13,6 @@ run_build () {
 
     cd ~/nixconfig
 
-    alejandra . &>/dev/null || ( alejandra . ; echo "Code formatting failed!" && exit 1)
     $SUDO cp /etc/nixos/hardware-configuration.nix system/hardware/hardware-configuration.nix
     git add .
     echo "NixOS Rebuilding..."

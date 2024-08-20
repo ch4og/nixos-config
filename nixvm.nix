@@ -10,7 +10,7 @@
     ./system/hardware/vm-hardware-settings.nix
     ./system/services/vm-services.nix
 
-    ./user/ch/user.nix
+    ./user/ch
   ];
   environment.systemPackages = import ./system/pkgs.nix {inherit pkgs;};
 

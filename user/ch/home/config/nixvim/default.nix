@@ -5,7 +5,7 @@
 }: {
   imports = [
     inputs.nixvim.homeManagerModules.default
-    ./plugins.nix
+    ./plugins
     ./options.nix
     ./keybinds.nix
   ];

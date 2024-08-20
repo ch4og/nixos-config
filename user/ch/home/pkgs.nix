@@ -11,6 +11,13 @@
     kitty
     fastfetch
     gh
+    nix-prefetch
+    go
+    prettierd
+    zoxide
+    fzf
+    lazygit
+    rmtrash
   ];
 in
   packages
