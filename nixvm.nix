@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{ config, lib, pkgs, ... }: {
   imports = [
     ./system/boot.nix
     ./system/defaults.nix
@@ -12,8 +7,8 @@
 
     ./user/ch
   ];
-  environment.systemPackages = import ./system/pkgs.nix {inherit pkgs;};
-  
+  environment.systemPackages = import ./system/pkgs.nix { inherit pkgs; };
+
   networking = {
     hostName = "nixvm";
     networkmanager.enable = true;

@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{ config, lib, pkgs, ... }: {
   boot = {
     loader.grub = {
       device = "nodev";
@@ -14,6 +9,10 @@
     tmp.cleanOnBoot = true;
 
     kernelPackages = pkgs.linuxPackages_zen;
-    extraModulePackages = with config.boot.kernelPackages; [v4l2loopback acpi_call xpadneo];
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback
+      acpi_call
+      xpadneo
+    ];
   };
 }

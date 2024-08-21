@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   packages = with pkgs; [
     python3
     rustup
@@ -13,11 +14,14 @@
     gh
     nix-prefetch
     go
-    prettierd
     zoxide
     fzf
     lazygit
     rmtrash
+
+    nixvim.default
+    prettierd
+    nixfmt-classic
+    black
   ];
-in
-  packages
+in packages

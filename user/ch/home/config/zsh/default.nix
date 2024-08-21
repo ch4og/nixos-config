@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -14,9 +14,9 @@
     zplug = {
       enable = true;
       plugins = [
-        {name = "mafredri/zsh-async";}
-        {name = "hlissner/zsh-autopair";}
-        {name = "jirutka/zsh-shift-select";}
+        { name = "mafredri/zsh-async"; }
+        { name = "hlissner/zsh-autopair"; }
+        { name = "jirutka/zsh-shift-select"; }
       ];
     };
     shellAliases = import ./aliases.nix;

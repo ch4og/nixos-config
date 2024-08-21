@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.git = {
     enable = true;
     userEmail = "mitanick@ya.ru";

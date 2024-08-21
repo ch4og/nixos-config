@@ -38,30 +38,34 @@
 
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    stableOverlay = final: prev: {stable = inputs.stable.legacyPackages.${prev.system};};
-    gamingOverlay = final: prev: {gaming = inputs.nix-gaming.packages.${prev.system};};
-    hyprOverlay = final: prev: {hyprland-git = inputs.hyprland-git.packages.${prev.system};};
-    nixvimOverlay = final: prev: {nixvim = inputs.nixvim.packages.${prev.system};};
-    pkgsModules = {
-      config,
-      pkgs,
-      ...
-    }: {nixpkgs.overlays = [stableOverlay gamingOverlay hyprOverlay nixvimOverlay];};
-  in {
-    nixosConfigurations.nixvm = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./nixvm.nix
-        inputs.vscode-server.nixosModules.default
-        pkgsModules
-        inputs.home-manager.nixosModules.home-manager
-      ];
+  outputs = { self, nixpkgs, ... }@inputs:
+    let
+      stableOverlay = final: prev: {
+        stable = inputs.stable.legacyPackages.${prev.system};
+      };
+      gamingOverlay = final: prev: {
+        gaming = inputs.nix-gaming.packages.${prev.system};
+      };
+      hyprOverlay = final: prev: {
+        hyprland-git = inputs.hyprland-git.packages.${prev.system};
+      };
+      nixvimOverlay = final: prev: {
+        nixvim = inputs.nixvim.packages.${prev.system};
+      };
+      pkgsModules = { config, pkgs, ... }: {
+        nixpkgs.overlays =
+          [ stableOverlay gamingOverlay hyprOverlay nixvimOverlay ];
+      };
+    in {
+      nixosConfigurations.nixvm = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./nixvm.nix
+          inputs.vscode-server.nixosModules.default
+          pkgsModules
+          inputs.home-manager.nixosModules.home-manager
+        ];
+      };
     };
-  };
 }
