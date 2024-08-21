@@ -32,9 +32,10 @@
     };
 
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "github:ch4og/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs = {
@@ -45,11 +46,12 @@
     stableOverlay = final: prev: {stable = inputs.stable.legacyPackages.${prev.system};};
     gamingOverlay = final: prev: {gaming = inputs.nix-gaming.packages.${prev.system};};
     hyprOverlay = final: prev: {hyprland-git = inputs.hyprland-git.packages.${prev.system};};
+    nixvimOverlay = final: prev: {nixvim = inputs.nixvim.packages.${prev.system};};
     pkgsModules = {
       config,
       pkgs,
       ...
-    }: {nixpkgs.overlays = [stableOverlay gamingOverlay hyprOverlay];};
+    }: {nixpkgs.overlays = [stableOverlay gamingOverlay hyprOverlay nixvimOverlay];};
   in {
     nixosConfigurations.nixvm = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";

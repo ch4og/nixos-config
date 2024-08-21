@@ -11,7 +11,7 @@ run_build () {
         SUDO='sudo'
     fi
 
-    cd ~/nixconfig
+    cd ~/nix/nixconfig
 
     $SUDO cp /etc/nixos/hardware-configuration.nix system/hardware/hardware-configuration.nix
     git add .

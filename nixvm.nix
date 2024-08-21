@@ -13,7 +13,7 @@
     ./user/ch
   ];
   environment.systemPackages = import ./system/pkgs.nix {inherit pkgs;};
-
+  
   networking = {
     hostName = "nixvm";
     networkmanager.enable = true;
