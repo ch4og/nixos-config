@@ -35,6 +35,11 @@
       url = "github:ch4og/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+		
+		zen-browser = {
+			url = "github:ch4og/zen-browser-flake";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 
   };
 
@@ -52,9 +57,12 @@
       nixvimOverlay = final: prev: {
         nixvim = inputs.nixvim.packages.${prev.system};
       };
+			zenOverlay = final: prev: {
+				zen-browser = inputs.zen-browser.packages.${prev.system};
+			};
       pkgsModules = { config, pkgs, ... }: {
         nixpkgs.overlays =
-          [ stableOverlay gamingOverlay hyprOverlay nixvimOverlay ];
+          [ stableOverlay gamingOverlay hyprOverlay nixvimOverlay zenOverlay ];
       };
     in {
       nixosConfigurations.nixvm = nixpkgs.lib.nixosSystem {

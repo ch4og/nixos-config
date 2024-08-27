@@ -23,5 +23,7 @@ let
     prettierd
     nixfmt-classic
     black
+
+		zen-browser.default
   ];
 in packages
