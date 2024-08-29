@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    # nixpkgs.url = "nixpkgs/nixos-unstable-small"; # temp fix for hyper-v
     stable.url = "nixpkgs/nixos-24.05";
 
     hyprland-git = {
@@ -37,7 +36,7 @@
     };
 		
 		zen-browser = {
-			url = "github:ch4og/zen-browser-flake";
+			url = "github:MarceColl/zen-browser-flake";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
@@ -72,6 +71,16 @@
           ./nixvm.nix
           inputs.vscode-server.nixosModules.default
           pkgsModules
+          inputs.home-manager.nixosModules.home-manager
+        ];
+      };
+      nixosConfigurations.nixpc = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./nixpc.nix
+          pkgsModules
+          inputs.nixos-cosmic.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
         ];
       };

@@ -23,7 +23,9 @@ let
     prettierd
     nixfmt-classic
     black
+		vesktop
+		spotify
 
-		zen-browser.default
+	zen-browser.default
   ];
 in packages

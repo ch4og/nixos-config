@@ -12,7 +12,7 @@ TODO:
 - [x] Understand flakes
 - [ ] Make zsh config more nix-like
 - [ ] Create env for cybersecurity
-- [ ] Switch main PC to NixOS
+- [x] Switch main PC to NixOS
 - [x] Home Manager
 - [ ] Try linux-tkg on NixOS
 - [x] Modularity

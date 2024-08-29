@@ -4,45 +4,41 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ ];
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
-  boot.initrd.availableKernelModules = [ "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/46dbde31-aa01-4639-9ad0-912175a8700f";
+    { device = "/dev/disk/by-uuid/a064c179-2689-4464-a344-bf2e29aaeb18";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/46dbde31-aa01-4639-9ad0-912175a8700f";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
-
-  fileSystems."/var/log" =
-    { device = "/dev/disk/by-uuid/46dbde31-aa01-4639-9ad0-912175a8700f";
-      fsType = "btrfs";
-      options = [ "subvol=log" ];
-    };
-
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/46dbde31-aa01-4639-9ad0-912175a8700f";
+    { device = "/dev/disk/by-uuid/a064c179-2689-4464-a344-bf2e29aaeb18";
       fsType = "btrfs";
       options = [ "subvol=nix" ];
     };
 
-  fileSystems."/swap" =
-    { device = "/dev/disk/by-uuid/46dbde31-aa01-4639-9ad0-912175a8700f";
+  fileSystems."/var/log" =
+    { device = "/dev/disk/by-uuid/a064c179-2689-4464-a344-bf2e29aaeb18";
       fsType = "btrfs";
-      options = [ "subvol=swap" ];
+      options = [ "subvol=log" ];
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/f68d8a76-066d-40fb-b7d6-787e4f414ad2";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/F66B-1F47";
+    { device = "/dev/disk/by-uuid/8E4D-1353";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
@@ -54,8 +50,9 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eth0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  virtualisation.hypervGuest.enable = true;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
