@@ -1,3 +1,3 @@
 { pkgs, inputs, ... }: {
-  imports = [ ./git.nix ./zsh ./fastfetch.nix ./starship.nix ];
+  imports = [ ./zsh ./fastfetch.nix ./starship.nix ];
 }
