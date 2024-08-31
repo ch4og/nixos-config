@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ inputs, config, lib, pkgs, ... }: {
   imports = [ ./env.nix ];
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -11,15 +11,17 @@
     xkb.options = "grp:alt_shift_toggle";
   };
   programs.zsh.enable = true;
-	nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
-      # substituters = [ "https://aseipp-nix-cache.global.ssl.fastly.net" ];
-      substituters = [ "https://cosmic.cachix.org/" ];
+      substituters = [
+        "https://ezkea.cachix.org"
+        "https://aseipp-nix-cache.global.ssl.fastly.net"
+      ];
       trusted-public-keys =
-        [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+        [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
       warn-dirty = false;
     };
 
@@ -30,6 +32,14 @@
     };
 
     optimise.automatic = true;
+  };
+  security.polkit.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = false;
+    settings.default-cache-ttl = 4 * 60 * 60;
   };
 
   system.stateVersion = "24.05";

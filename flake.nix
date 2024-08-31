@@ -9,6 +9,10 @@
       url = "git+https://github.com/hyprwm/hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    split-monitor-workspaces = {
+      url = "github:Duckonaut/split-monitor-workspaces";
+      inputs.hyprland.follows = "hyprland-git";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -19,26 +23,19 @@
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    vscode-server = {
-      url = "github:nix-community/nixos-vscode-server";
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixvim = {
       url = "github:ch4og/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-		
-		zen-browser = {
-			url = "github:MarceColl/zen-browser-flake";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+
+    zen-browser = {
+      url = "github:ch4og/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
@@ -53,15 +50,25 @@
       hyprOverlay = final: prev: {
         hyprland-git = inputs.hyprland-git.packages.${prev.system};
       };
+      workspacesOverlay = final: prev: {
+        split-monitor-workspaces =
+          inputs.split-monitor-workspaces.packages.${prev.system};
+      };
       nixvimOverlay = final: prev: {
         nixvim = inputs.nixvim.packages.${prev.system};
       };
-			zenOverlay = final: prev: {
-				zen-browser = inputs.zen-browser.packages.${prev.system};
-			};
+      zenOverlay = final: prev: {
+        zen-browser = inputs.zen-browser.packages.${prev.system};
+      };
       pkgsModules = { config, pkgs, ... }: {
-        nixpkgs.overlays =
-          [ stableOverlay gamingOverlay hyprOverlay nixvimOverlay zenOverlay ];
+        nixpkgs.overlays = [
+          stableOverlay
+          gamingOverlay
+          hyprOverlay
+          nixvimOverlay
+          zenOverlay
+          workspacesOverlay
+        ];
       };
     in {
       nixosConfigurations.nixvm = nixpkgs.lib.nixosSystem {
@@ -69,8 +76,8 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./nixvm.nix
-          inputs.vscode-server.nixosModules.default
           pkgsModules
+
           inputs.home-manager.nixosModules.home-manager
         ];
       };
@@ -80,7 +87,7 @@
         modules = [
           ./nixpc.nix
           pkgsModules
-          inputs.nixos-cosmic.nixosModules.default
+          inputs.aagl.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
         ];
       };

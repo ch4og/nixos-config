@@ -6,5 +6,6 @@ in {
     extraGroups = [ "wheel" ];
     shell = pkgs.zsh;
   };
-  imports = [ (import ./home { inherit pkgs username inputs; }) ];
+  imports =
+    [ (import ./home { inherit pkgs username inputs; }) ./programs.nix ];
 }

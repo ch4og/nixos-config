@@ -39,11 +39,6 @@
           key = "term";
         }
         {
-          type = "terminalfont";
-          key = "font";
-          format = "{2}";
-        }
-        {
           type = "colors";
           symbol = "circle";
         }

@@ -2,6 +2,8 @@
 
 ### Very basic one since I'm only starting to use NixOS (and don't know Nix yet)
 
+To use this config there is a justfile.
+
 [My Nixvim config](https://github.com/ch4og/nixvim)
 
 TODO:
@@ -11,6 +13,7 @@ TODO:
 - [x] Understand how to install older packages / software from other sources
 - [x] Understand flakes
 - [ ] Make zsh config more nix-like
+- [ ] Waybar, rofi, swaync
 - [ ] Create env for cybersecurity
 - [x] Switch main PC to NixOS
 - [x] Home Manager

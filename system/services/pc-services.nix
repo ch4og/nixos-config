@@ -2,11 +2,18 @@
   services = {
     openssh.enable = true;
 
+    blueman.enable = true;
     xserver = {
-    #  enable = true;
-			videoDrivers = [ "nvidia" ];
+      # enable = true;
+      videoDrivers = [ "nvidia" ];
     };
-   desktopManager.cosmic.enable = true;
-   displayManager.cosmic-greeter.enable = true;
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+    };
   };
 }

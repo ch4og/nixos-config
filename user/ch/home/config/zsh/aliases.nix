@@ -20,4 +20,5 @@
   df = "df -h";
   free = "free -m";
   cat = "bat -pp";
+  reload-waybar = "pkill -SIGUSR2 waybar";
 }
