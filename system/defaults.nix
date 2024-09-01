@@ -19,9 +19,12 @@
       substituters = [
         "https://ezkea.cachix.org"
         "https://aseipp-nix-cache.global.ssl.fastly.net"
+        "https://hyprland.cachix.org"
       ];
-      trusted-public-keys =
-        [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
+      trusted-public-keys = [
+        "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      ];
       warn-dirty = false;
     };
 

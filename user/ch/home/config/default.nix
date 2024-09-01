@@ -3,7 +3,7 @@
     ./zsh
     ./fastfetch.nix
     ./starship.nix
-    ./hyprland.nix
+    ./hyprland
     ./kitty.nix
     ./satty.nix
     ./obs.nix
@@ -12,6 +12,7 @@
     ./waybar
     ./hyprpaper.nix
     ./swaync.nix
+    ./theme.nix
   ];
 }
 

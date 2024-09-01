@@ -1,7 +1,8 @@
 { config, pkgs, ... }: {
+  imports = [ ./bind.nix ];
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config.common.default = "*";
   };
   wayland.windowManager.hyprland = {
@@ -15,11 +16,6 @@
         "eDP-1, 1920x1080@120, 2048x216, 1.5"
         "HDMI-A-1, 2560x1440@120, 0x0, 1.25"
       ];
-      "$terminal" = "kitty";
-      "$fileManager" = "thunar";
-      "$browser" = "zen";
-      "$menu" = "rofi -show drun";
-
       plugin = {
         "split-monitor-workspaces" = {
           count = 5;
@@ -70,6 +66,7 @@
         preserve_split = true;
       };
       misc = {
+        focus_on_activate = true;
         force_default_wallpaper = -1;
         disable_hyprland_logo = false;
       };
@@ -81,41 +78,11 @@
         sensitivity = 0;
       };
 
-      exec-once = [ "waybar" "wl-paste --watch cliphist store" ];
-      "$mod" = "SUPER";
-      bind = [
-        "$mod, Return, exec, $terminal"
-        "$mod, C, killactive"
-        "$mod, M, exit"
-        "$mod, E, exec, $fileManager"
-        "$mod, B, exec, $browser"
-        "$mod SHIFT, C, exec, hyprpicker"
-        "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
-        ''$mod, Period, exec, rofi -modi "emoji:rofimoji" -show emoji''
-        ",Print, exec, grimblast --freeze save area - | satty --filename -"
-        "$mod, F, togglefloating"
-        "$mod, SPACE, exec, $menu"
-        "$mod, J, togglesplit"
-        "$mod, left, movefocus, l"
-        "$mod, right, movefocus, r"
-        "$mod, up, movefocus, u"
-        "$mod, down, movefocus, d"
-        "$mod, 1, split-workspace, 1"
-        "$mod, 2, split-workspace, 2"
-        "$mod, 3, split-workspace, 3"
-        "$mod, 4, split-workspace, 4"
-        "$mod, 5, split-workspace, 5"
-        "$mod ALT, left, movewindow, l"
-        "$mod ALT, right, movewindow, r"
-        "$mod ALT, up, movewindow, u"
-        "$mod ALT, down, movewindow, d"
-        "$mod SHIFT, 1, split-movetoworkspace, 1"
-        "$mod SHIFT, 2, split-movetoworkspace, 2"
-        "$mod SHIFT, 3, split-movetoworkspace, 3"
-        "$mod SHIFT, 4, split-movetoworkspace, 4"
-        "$mod SHIFT, 5, split-movetoworkspace, 5"
+      exec-once = [
+        "waybar"
+        "wl-paste --watch cliphist store"
+        "hyprctl dispatch workspace 1"
       ];
-      bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
       windowrulev2 =
         [ "suppressevent maximize, class:.*" "maximize, title:(satty)" ];
       env = [

@@ -14,6 +14,7 @@ TODO:
 - [x] Understand flakes
 - [ ] Make zsh config more nix-like
 - [ ] Waybar, rofi, swaync
+- [x] Theming
 - [ ] Create env for cybersecurity
 - [x] Switch main PC to NixOS
 - [x] Home Manager

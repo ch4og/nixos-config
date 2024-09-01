@@ -21,6 +21,7 @@
     lazygit
     rmtrash
     openvpn
+    qbittorrent
 
     prettierd
     nixfmt-classic
