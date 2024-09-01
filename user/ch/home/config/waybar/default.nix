@@ -27,7 +27,11 @@
           # icon-size = 21;
           spacing = 10;
         };
-        clock = { format-alt = "{ = %Y-%m-%d}"; };
+        clock = {
+          tooltip-format = "{:%a %d %b %R}";
+          format = "{:%H:%M:%S}";
+          interval = 1;
+        };
         cpu = { format = "{usage}% "; };
         memory = { format = "{}% "; };
         battery = {
@@ -48,22 +52,14 @@
           format-ethernet = "{ifname} = {ipaddr}/{cidr} ";
           format-disconnected = "Disconnected ⚠";
           on-click = "networkmanager_dmenu";
-          tooltip = "{signalStrength}% {essid}";
+          tooltip-format-wifi = "{essid} {signalStrength}%";
         };
         pulseaudio = {
           #scroll-step = 1;
-          format = "{volume}% {icon}";
-          format-bluetooth = "{volume}% {icon}";
-          format-muted = "";
-          format-icons = {
-            headphones = "";
-            headfree = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = [ "" "" ];
-          };
+          format = "{icon}";
+          format-muted = " ";
+          tooltip-format = "{desc} {volume}%";
+          format-icons = { default = [ " " " " ]; };
           on-click = "pavucontrol";
         };
         # "custom/spotify" = {

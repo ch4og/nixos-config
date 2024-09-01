@@ -44,7 +44,7 @@
         "col.shadow" = "rgba(1a1a1aee)";
         blur = {
           enabled = true;
-          size = 8;
+          size = 6;
           passes = 3;
         };
       };
