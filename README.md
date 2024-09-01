@@ -2,6 +2,8 @@
 
 ### Very basic one since I'm only starting to use NixOS (and don't know Nix yet)
 
+![image](https://github.com/user-attachments/assets/77b8d1d4-e68a-4c24-bdea-4798a17dfc4b)
+
 To use this config there is a justfile.
 
 [My Nixvim config](https://github.com/ch4og/nixvim)
