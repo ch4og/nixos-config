@@ -16,6 +16,7 @@
       ''$mod, Period, exec, rofi -modi "emoji:rofimoji" -show emoji''
       ",Print, exec, grimblast --freeze save area - | satty --filename -"
       "$mod, F, togglefloating"
+      "$mod, BRACKETRIGHT, fullscreen"
       "$mod, SPACE, exec, $menu"
       "$mod, J, togglesplit"
       "$mod, left, movefocus, l"

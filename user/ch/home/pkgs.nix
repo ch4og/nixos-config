@@ -31,6 +31,8 @@
     rofi-wayland
     wl-clipboard
     ffmpegthumbnailer
+    mangohud
+    protonup-qt
 
     overskride
     rofimoji
