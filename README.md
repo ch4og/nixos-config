@@ -10,6 +10,10 @@ To use this config there is a justfile.
 
 TODO:
 
+- [ ] Remove temp hyprpaper and xdg-desktop-portal-hyprland master branch workaround
+- [ ] Create a flake for byedpi (a.k.a. ciadpi)
+- [ ] Return MOZ_ENABLE_WAYLAND when Firefox 130 is released
+- [x] Fix portals
 - [x] Try using NixOS
 - [x] Make at least usable OS
 - [x] Understand how to install older packages / software from other sources
@@ -26,3 +30,4 @@ TODO:
 - [x] Convert all existing dotfiles to home manager
 - [ ] Switch all servers from Debian to NixOS
 - [x] Switch to nixvim
+- [ ] Switch to nvf from nixvim

@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     stable.url = "nixpkgs/nixos-24.05";
+    master.url = "nixpkgs/master";
 
     hyprland-git = {
       url = "git+https://github.com/hyprwm/hyprland?submodules=1";
@@ -44,6 +45,9 @@
       stableOverlay = final: prev: {
         stable = inputs.stable.legacyPackages.${prev.system};
       };
+      masterOverlay = final: prev: {
+        master = inputs.master.legacyPackages.${prev.system};
+      };
       gamingOverlay = final: prev: {
         gaming = inputs.nix-gaming.packages.${prev.system};
       };
@@ -63,6 +67,7 @@
       pkgsModules = { config, pkgs, ... }: {
         nixpkgs.overlays = [
           stableOverlay
+          masterOverlay
           gamingOverlay
           hyprOverlay
           nixvimOverlay

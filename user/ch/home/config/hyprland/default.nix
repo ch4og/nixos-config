@@ -1,10 +1,5 @@
 { config, pkgs, ... }: {
   imports = [ ./bind.nix ];
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = "*";
-  };
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland-git.default;
@@ -81,6 +76,7 @@
       exec-once = [
         "waybar"
         "wl-paste --watch cliphist store"
+        "ciadpi --hosts ~/Documents/full_list.txt --tlsrec 1+s -d 1"
         "hyprctl dispatch workspace 1"
       ];
       windowrulev2 =
@@ -93,6 +89,7 @@
         "GBM_BACKEND,nvidia-drm"
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "NVD_BACKEND,direct"
+        "MOZ_ENABLE_WAYLAND,0"
       ];
       cursor = { no_hardware_cursors = true; };
       xwayland = { force_zero_scaling = true; };

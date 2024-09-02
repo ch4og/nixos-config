@@ -30,6 +30,7 @@
     spotify
     rofi-wayland
     wl-clipboard
+    ffmpegthumbnailer
 
     overskride
     rofimoji
