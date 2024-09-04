@@ -6,6 +6,7 @@
 
 TODO:
 
+- [ ] Shutdown menu
 - [ ] Upload screenshots to [c.ch4og.com](https://c.ch4og.com) automatically and copy link to the clipboard
 - [ ] Find a way to fix flickering in vesktop, and turn OZONE_PLATFORM=wayland back on
 - [ ] Remove temp hyprpaper and xdg-desktop-portal-hyprland master branch workaround
