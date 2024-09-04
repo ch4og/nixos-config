@@ -8,20 +8,31 @@
         height = 30;
         modules-left = [ "hyprland/workspaces" ]; # "custom/spotify"];
         # modules-center = [ "hyprland/window" ];
-        modules-right = [ "pulseaudio" "network" "battery" "tray" "clock" ];
+        modules-right = [
+          "tray"
+          "pulseaudio"
+          "network"
+          "battery"
+          "hyprland/language"
+          "clock"
+        ];
         "hyprland/workspaces" = {
           all-outputs = false;
           format = "{icon}";
           format-icons = {
             "1" = " ";
             "2" = " ";
-            "4" = " ";
             "6" = " ";
             "7" = " ";
             "urgent" = " ";
             "focused" = " ";
             "default" = " ";
           };
+        };
+        "hyprland/language" = {
+          format = "{}";
+          format-en = "🦅";
+          format-ru = "🇷🇺";
         };
         tray = {
           # icon-size = 21;
@@ -35,16 +46,17 @@
         cpu = { format = "{usage}% "; };
         memory = { format = "{}% "; };
         battery = {
-          bat = "BAT0";
+          bat = "BAT1";
           states = {
             # good = 95;
             warning = 30;
             critical = 15;
           };
-          format = "{capacity}% {icon}";
+          format = "{icon}";
           # format-good = "", // An empty format will hide the module;
-          # format-full = "";
-          format-icons = [ "" "" "" "" "" ];
+          format-full = "";
+          format-icons = [ " " " " " " " " " " ];
+          tooltip-format = "{capacity}% {timeTo}";
         };
         network = {
           # interface = "wlp2s0", // (Optional) To force the use of this interface;

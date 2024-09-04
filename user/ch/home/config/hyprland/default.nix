@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  imports = [ ./bind.nix ];
+  imports = [ ./bind.nix ./autostart.nix ];
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland-git.default;
@@ -68,18 +68,10 @@
       };
       input = {
         kb_layout = "us,ru";
-        kb_variant = "lang";
         kb_options = "grp:alt_shift_toggle";
         follow_mouse = true;
         sensitivity = 0;
       };
-
-      exec-once = [
-        "waybar"
-        "wl-paste --watch cliphist store"
-        "ciadpi --hosts ~/Documents/full_list.txt --tlsrec 1+s -d 1"
-        "hyprctl dispatch workspace 1"
-      ];
       windowrulev2 = [
         "suppressevent maximize, class:.*"
         "maximize, title:(satty)"

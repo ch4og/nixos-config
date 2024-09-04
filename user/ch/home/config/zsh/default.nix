@@ -9,8 +9,10 @@
       searchUpKey = "$terminfo[kcuu1]";
       searchDownKey = "$terminfo[kcud1]";
     };
-
-    history.size = 50000;
+    history = {
+      extended = true;
+      expireDuplicatesFirst = true;
+    };
     plugins = [{
       name = "zsh-nix-shell";
       src = pkgs.zsh-nix-shell;

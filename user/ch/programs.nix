@@ -1,5 +1,6 @@
 { config, lib, pkgs, inputs, ... }: {
   programs.anime-game-launcher.enable = true;
+  programs.sleepy-launcher.enable = true;
   programs.steam = {
     enable = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];

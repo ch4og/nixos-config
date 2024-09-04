@@ -1,10 +1,8 @@
 { inputs, pkgs, ... }: {
   home.packages = with pkgs; [
     inputs.nixvim.packages.x86_64-linux.default
-    telegram-desktop
     python3
     rustup
-    bat
     ripgrep
     firefox
     btop
@@ -14,6 +12,7 @@
     wezterm
     fastfetch
     gh
+    jq
     nix-prefetch
     go
     lazygit
@@ -24,6 +23,7 @@
 
     prettierd
     nixfmt-classic
+    shfmt
     black
     vesktop
     spotify

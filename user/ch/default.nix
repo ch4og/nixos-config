@@ -8,4 +8,12 @@ in {
   };
   imports =
     [ (import ./home { inherit pkgs username inputs; }) ./programs.nix ];
+  security.sudo.extraRules = [{
+    groups = [ "wheel" ];
+    commands = [{
+      command = "/home/ch/.local/bin/gmode.sh";
+      options = [ "NOPASSWD" ];
+    }];
+  }];
+
 }

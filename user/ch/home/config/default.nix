@@ -1,8 +1,10 @@
 { pkgs, inputs, ... }: {
   imports = [
     ./zsh
+    ./bin
     ./fastfetch.nix
     ./hyprland
+    ./bat.nix
     ./kitty.nix
     ./satty.nix
     ./obs.nix

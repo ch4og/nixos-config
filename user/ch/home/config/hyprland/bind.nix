@@ -28,6 +28,8 @@
       "$mod ALT, right, movewindow, r"
       "$mod ALT, up, movewindow, u"
       "$mod ALT, down, movewindow, d"
+      "ALT, F9, exec, sudo gmode.sh"
+      "ALT, F9, exec, hyprgamemode.sh"
     ] ++ (builtins.concatLists (builtins.genList (i:
       let ws = i + 1;
       in [
