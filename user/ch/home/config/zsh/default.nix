@@ -11,18 +11,24 @@
     };
 
     history.size = 50000;
-    zplug = {
-      enable = true;
-      plugins = [
-        { name = "mafredri/zsh-async"; }
-        { name = "hlissner/zsh-autopair"; }
-        { name = "jirutka/zsh-shift-select"; }
-      ];
-    };
+    plugins = [{
+      name = "zsh-nix-shell";
+      src = pkgs.zsh-nix-shell;
+      file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
+    }];
     shellAliases = import ./aliases.nix;
     initExtra = builtins.readFile ./init.zsh;
   };
-  programs.fzf.enableZshIntegration = true;
-  programs.zoxide.enableZshIntegration = true;
-  programs.starship.enableZshIntegration = true;
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      add_newline = true;
+      format = "  $all";
+    };
+  };
 }

@@ -13,14 +13,14 @@
           all-outputs = false;
           format = "{icon}";
           format-icons = {
-            "1" = "";
-            "2" = "";
-            "4" = "";
-            "6" = "";
-            "7" = "";
-            "urgent" = "";
-            "focused" = "";
-            "default" = "";
+            "1" = " ";
+            "2" = " ";
+            "4" = " ";
+            "6" = " ";
+            "7" = " ";
+            "urgent" = " ";
+            "focused" = " ";
+            "default" = " ";
           };
         };
         tray = {

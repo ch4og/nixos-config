@@ -14,7 +14,8 @@
       "$mod SHIFT, C, exec, hyprpicker"
       "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
       ''$mod, Period, exec, rofi -modi "emoji:rofimoji" -show emoji''
-      ",Print, exec, grimblast --freeze save area - | satty --filename -"
+      "$mod SHIFT ,S, exec, grimblast --freeze save area - | satty --filename -"
+      ",Print, exec, grimblast --freeze copy area"
       "$mod, F, togglefloating"
       "$mod, BRACKETRIGHT, fullscreen"
       "$mod, SPACE, exec, $menu"

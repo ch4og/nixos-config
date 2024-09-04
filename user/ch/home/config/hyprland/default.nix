@@ -43,6 +43,7 @@
           passes = 3;
         };
       };
+      layerrule = "blur, waybar";
       animations = {
         enabled = true;
         bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
@@ -79,8 +80,11 @@
         "ciadpi --hosts ~/Documents/full_list.txt --tlsrec 1+s -d 1"
         "hyprctl dispatch workspace 1"
       ];
-      windowrulev2 =
-        [ "suppressevent maximize, class:.*" "maximize, title:(satty)" ];
+      windowrulev2 = [
+        "suppressevent maximize, class:.*"
+        "maximize, title:(satty)"
+        "noblur, class:(windowkill)"
+      ];
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
@@ -89,9 +93,9 @@
         "GBM_BACKEND,nvidia-drm"
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "NVD_BACKEND,direct"
-        "MOZ_ENABLE_WAYLAND,0"
+        "MOZ_ENABLE_WAYLAND,1"
       ];
-      cursor = { no_hardware_cursors = true; };
+      cursor = { no_hardware_cursors = false; };
       xwayland = { force_zero_scaling = true; };
 
     };

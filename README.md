@@ -10,9 +10,11 @@ To use this config there is a justfile.
 
 TODO:
 
+- [ ] Upload screenshots to [c.ch4og.com](https://c.ch4og.com) automatically and copy link to the clipboard
+- [ ] Find a way to fix flickering in vesktop, and turn OZONE_PLATFORM=wayland back on
 - [ ] Remove temp hyprpaper and xdg-desktop-portal-hyprland master branch workaround
 - [ ] Create a flake for byedpi (a.k.a. ciadpi)
-- [ ] Return MOZ_ENABLE_WAYLAND when Firefox 130 is released
+- [x] Return MOZ_ENABLE_WAYLAND when Firefox 130 is released
 - [x] Fix portals
 - [x] Try using NixOS
 - [x] Make at least usable OS
@@ -21,7 +23,7 @@ TODO:
 - [ ] Make zsh config more nix-like
 - [ ] Waybar, rofi, swaync
 - [x] Theming
-- [ ] Create env for cybersecurity
+- [x] Create [env for cybersecurity](https://github.com/ch4og/nixcybersec)
 - [x] Switch main PC to NixOS
 - [x] Home Manager
 - [ ] Try linux-tkg on NixOS

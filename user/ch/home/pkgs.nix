@@ -16,12 +16,11 @@
     gh
     nix-prefetch
     go
-    zoxide
-    fzf
     lazygit
     rmtrash
     openvpn
     qbittorrent
+    obsidian
 
     prettierd
     nixfmt-classic
@@ -31,8 +30,10 @@
     rofi-wayland
     wl-clipboard
     ffmpegthumbnailer
-    mangohud
-    protonup-qt
+    gamemode
+    gamescope
+    cudaPackages.cudatoolkit
+    nvtopPackages.nvidia
 
     overskride
     rofimoji

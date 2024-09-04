@@ -10,10 +10,9 @@ select-word-style bash
 bindkey '^H' backward-kill-word
 
 unsetopt BEEP
-setopt AUTO_CD
+# setopt AUTO_CD
 setopt GLOB_DOTS
 setopt NOMATCH
-setopt MENU_COMPLETE
 setopt EXTENDED_GLOB
 setopt INTERACTIVE_COMMENTS
 setopt APPEND_HISTORY
@@ -27,4 +26,9 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 
-fastfetch
+zstyle ':completion:*' menu select 
+zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
+
+if [[ "$0" = "/run/current-system/sw/bin/zsh" ]]; then
+    fastfetch
+fi

@@ -2,7 +2,6 @@
   imports = [
     ./zsh
     ./fastfetch.nix
-    ./starship.nix
     ./hyprland
     ./kitty.nix
     ./satty.nix
@@ -13,6 +12,7 @@
     ./hyprpaper.nix
     ./swaync.nix
     ./theme.nix
+    ./mangohud.nix
   ];
 }
 

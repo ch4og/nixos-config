@@ -37,7 +37,10 @@
       url = "github:ch4og/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    nixcybersec = {
+      url = "github:ch4og/nixcybersec";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -76,6 +79,7 @@
         ];
       };
     in {
+      devShell.x86_64-linux = inputs.nixcybersec.devShell.x86_64-linux;
       nixosConfigurations.nixvm = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };

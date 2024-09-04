@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1725219478,
-        "narHash": "sha256-gZ66JIy17pTrAefPERFTK1Un2X57xkC6jduNt2Lgups=",
+        "lastModified": 1725307913,
+        "narHash": "sha256-Slc+vPJFiarviylZsq3FgaWRPeeKHTrT6J0NpHvDfgg=",
         "owner": "ezKEa",
         "repo": "aagl-gtk-on-nix",
-        "rev": "24f17f71eaf3399b93fe9cdf69c59fd7704b5a58",
+        "rev": "f8e7957aa7d4651d5df7b50299cb9b6f4b51adfc",
         "type": "github"
       },
       "original": {
@@ -324,11 +324,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1725219211,
-        "narHash": "sha256-17WA01XfBTuH1CJdGje3095K/7RUUL6lwQHEFq9t2Go=",
+        "lastModified": 1725367654,
+        "narHash": "sha256-1hiNRCEdSZLfyH2y06S+gqUbiSwbwdktStPSJuPesaM=",
         "ref": "refs/heads/main",
-        "rev": "6934e7aa2b300bc4565855a4092fb34de8a9a8d2",
-        "revCount": 5178,
+        "rev": "9b54342baa27d8de0460e1103ec4c3cc65592ed8",
+        "revCount": 5182,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/hyprland"
@@ -447,11 +447,11 @@
     },
     "master": {
       "locked": {
-        "lastModified": 1725270189,
-        "narHash": "sha256-czWe/ldomeJqX8SgdLPhpGu71ST+g4tJRjGNWMCIPGg=",
+        "lastModified": 1725402798,
+        "narHash": "sha256-X/xKXlI9TsDx3uoYSY0vZ6Qh0VuscsrVAS9Zkj5Ok6Q=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e4a2b7892d0614864f49a2ad5f832eda82f7c471",
+        "rev": "634043a18a8d1232f0616485e37148b4672e5f92",
         "type": "github"
       },
       "original": {
@@ -516,6 +516,26 @@
       "original": {
         "owner": "fufexan",
         "repo": "nix-gaming",
+        "type": "github"
+      }
+    },
+    "nixcybersec": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1725393066,
+        "narHash": "sha256-hl/bIt4PwvYJExug980pQZDZ6uFx4LkZaewZJwrYAtA=",
+        "owner": "ch4og",
+        "repo": "nixcybersec",
+        "rev": "09c881d0d6c264c0cf6eaeb72669a49008c9ff4d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ch4og",
+        "repo": "nixcybersec",
         "type": "github"
       }
     },
@@ -652,6 +672,7 @@
         "hyprland-git": "hyprland-git",
         "master": "master",
         "nix-gaming": "nix-gaming",
+        "nixcybersec": "nixcybersec",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "split-monitor-workspaces": "split-monitor-workspaces",
@@ -809,11 +830,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1725121527,
-        "narHash": "sha256-ylP5YehroiFnf1AIT5yq1mcc8HUVlj9ItsWCtY6J6ck=",
+        "lastModified": 1725404416,
+        "narHash": "sha256-huKh54tzjtsNRVOw08candbPLHpf09jnQ0PSSct40K0=",
         "owner": "ch4og",
         "repo": "zen-browser-flake",
-        "rev": "8a14f4229d95361b853c0e9f4d66ff821dff4456",
+        "rev": "21fbc900e16f18aa1c697c4b9723d583f7f17e4d",
         "type": "github"
       },
       "original": {
