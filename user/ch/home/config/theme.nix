@@ -23,10 +23,7 @@
 
   qt = {
     enable = true;
-    style = {
-      name = "kvantum";
-      package = pkgs.kdePackages.qtstyleplugin-kvantum;
-    };
+    style = { name = "kvantum"; };
   };
 
   xdg.configFile = {

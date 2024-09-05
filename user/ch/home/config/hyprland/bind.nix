@@ -1,21 +1,23 @@
 { ... }: {
   wayland.windowManager.hyprland.settings = {
     "$terminal" = "kitty";
-    "$fileManager" = "thunar";
+    "$fileManager" = "kitty lf";
+    "$guiFileManager" = "thunar";
     "$browser" = "zen";
     "$menu" = "rofi -show drun";
     "$mod" = "SUPER";
     bind = [
       "$mod, Return, exec, $terminal"
       "$mod, C, killactive"
-      "$mod, M, exit"
+      "$mod, M, exec, wlogout"
       "$mod, E, exec, $fileManager"
+      "$mod SHIFT, E, exec, $guiFileManager"
       "$mod, B, exec, $browser"
-      "$mod SHIFT, C, exec, hyprpicker"
+      "$mod SHIFT, C, exec, hyprpicker | wl-copy"
       "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
       ''$mod, Period, exec, rofi -modi "emoji:rofimoji" -show emoji''
-      "$mod SHIFT ,S, exec, grimblast --freeze save area - | satty --filename -"
-      ",Print, exec, grimblast --freeze copy area"
+      "$mod SHIFT ,S, exec, grimblast --freeze save area - | satty --filename - && wl-paste | chibi-upload.sh"
+      ",Print, exec, grimblast --freeze copy area && wl-paste | chibi-upload.sh"
       "$mod, F, togglefloating"
       "$mod, BRACKETRIGHT, fullscreen"
       "$mod, SPACE, exec, $menu"

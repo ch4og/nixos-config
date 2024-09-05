@@ -1,9 +1,9 @@
-{ pkgs, inputs, ... }: {
+{ username, pkgs, inputs, ... }: {
   imports = [
     ./zsh
     ./bin
     ./fastfetch.nix
-    ./hyprland
+    (import ./hyprland { inherit pkgs inputs; })
     ./bat.nix
     ./kitty.nix
     ./satty.nix
@@ -15,6 +15,10 @@
     ./swaync.nix
     ./theme.nix
     ./mangohud.nix
+    ./lf.nix
+    ./vimiv.nix
+    ./wlogout.nix
+    (import ./flatpak.nix { inherit username; })
   ];
 }
 

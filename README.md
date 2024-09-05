@@ -6,16 +6,16 @@
 
 TODO:
 
-- [ ] Upload screenshots to [c.ch4og.com](https://c.ch4og.com) automatically and copy link to the clipboard
 - [ ] Find a way to fix flickering in vesktop, and turn OZONE_PLATFORM=wayland back on
 - [ ] Remove temp hyprpaper and xdg-desktop-portal-hyprland master branch workaround
 - [ ] Create a flake for byedpi (a.k.a. ciadpi)
-- [ ] Waybar, rofi, swaync, shutdown menu
+- [ ] Waybar, rofi, swaync, shutdown menu, hyprlock and defaultapps
 - [ ] Try linux-tkg on NixOS
 - [ ] Multi-PC setup
 - [ ] Switch all servers from Debian to NixOS
 - [ ] Switch to nvf from nixvim
 
+- [x] Upload screenshots to [c.ch4og.com](https://c.ch4og.com) automatically and copy link to the clipboard
 - [x] Create [env for cybersecurity](https://github.com/ch4og/nixcybersec)
 - [x] Create [nixvim config](https://github.com/ch4og/nixvim)
 - [x] Home Manager

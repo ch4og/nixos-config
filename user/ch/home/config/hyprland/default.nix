@@ -1,11 +1,12 @@
-{ config, pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [ ./bind.nix ./autostart.nix ];
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.hyprland-git.default;
+    package = inputs.hyprland-git.packages.${pkgs.system}.default;
     systemd.enable = true;
     systemd.variables = [ "--all" ];
-    plugins = [ pkgs.split-monitor-workspaces.default ];
+    plugins =
+      [ inputs.split-monitor-workspaces.packages.${pkgs.system}.default ];
     settings = {
       monitor = [
         "eDP-1, 1920x1080@120, 2048x216, 1.5"
@@ -76,6 +77,10 @@
         "suppressevent maximize, class:.*"
         "maximize, title:(satty)"
         "noblur, class:(windowkill)"
+        "float, title:(Picture-in-Picture)"
+        "pin, title:(Picture-in-Picture)"
+        "workspace 6, class:^(vesktop)$"
+        "workspace 7, class:^(Spotify)$"
       ];
       env = [
         "XCURSOR_SIZE,24"
