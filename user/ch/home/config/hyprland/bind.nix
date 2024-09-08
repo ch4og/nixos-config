@@ -7,6 +7,9 @@
     "$menu" = "rofi -show drun";
     "$mod" = "SUPER";
     bind = [
+      ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+      ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+      ", Caps_Lock, exec, sleep 0.1 && swayosd-client --caps-lock"
       "$mod, Return, exec, $terminal"
       "$mod, C, killactive"
       "$mod, M, exec, wlogout"
@@ -32,12 +35,13 @@
       "$mod ALT, down, movewindow, d"
       "ALT, F9, exec, sudo gmode.sh"
       "ALT, F9, exec, hyprgamemode.sh"
-    ] ++ (builtins.concatLists (builtins.genList (i:
-      let ws = i + 1;
-      in [
-        "$mod, code:1${toString i}, split-workspace, ${toString ws}"
-        "$mod SHIFT, code:1${toString i}, split-movetoworkspace, ${toString ws}"
-      ]) 5));
+    ] ++ (builtins.concatLists (builtins.genList
+      (i:
+        let ws = i + 1;
+        in [
+          "$mod, code:1${toString i}, split-workspace, ${toString ws}"
+          "$mod SHIFT, code:1${toString i}, split-movetoworkspace, ${toString ws}"
+        ]) 5));
     bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
   };
 }

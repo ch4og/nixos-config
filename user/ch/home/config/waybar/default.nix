@@ -22,6 +22,7 @@
           format-icons = {
             "1" = " ";
             "2" = " ";
+            "4" = " ";
             "6" = " ";
             "7" = " ";
             "urgent" = " ";
@@ -32,7 +33,7 @@
         "hyprland/language" = {
           format = "{}";
           format-en = "🦅";
-          format-ru = "🇷🇺";
+          format-ru = "💤";
         };
         tray = {
           # icon-size = 21;
@@ -67,6 +68,8 @@
           tooltip-format-wifi = "{essid} {signalStrength}%";
         };
         pulseaudio = {
+          on-scroll-up = "swayosd-client --output-volume raise";
+          on-scroll-down = "swayosd-client --output-volume lower";
           #scroll-step = 1;
           format = "{icon}";
           format-muted = " ";

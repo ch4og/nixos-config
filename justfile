@@ -2,9 +2,8 @@
 default:
 	@just --list
 
-# format nix files and add them to git
+# add files to git
 prebuild:
-	nixfmt .
 	cp /etc/nixos/hardware-configuration.nix system/hardware/hardware-configuration.nix
 	git add .
 

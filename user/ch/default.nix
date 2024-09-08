@@ -10,10 +10,16 @@ in {
     [ (import ./home { inherit pkgs username inputs; }) ./programs.nix ];
   security.sudo.extraRules = [{
     groups = [ "wheel" ];
-    commands = [{
-      command = "/home/ch/.local/bin/gmode.sh";
-      options = [ "NOPASSWD" ];
-    }];
+    commands = [
+      {
+        command = "/home/${username}/.local/bin/gmode.sh";
+        options = [ "NOPASSWD" ];
+      }
+      {
+        command = "/run/current-system/sw/bin/modprobe nvidia-uvm";
+        options = [ "NOPASSWD" ];
+      }
+    ];
   }];
 
 }

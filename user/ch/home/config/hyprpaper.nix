@@ -1,7 +1,6 @@
 { config, pkgs, ... }: {
   services.hyprpaper = {
     enable = true;
-    package = pkgs.master.hyprpaper;
     settings = {
       ipc = "on";
       splash = false;

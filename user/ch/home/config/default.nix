@@ -19,6 +19,7 @@
     ./vimiv.nix
     ./wlogout.nix
     (import ./flatpak.nix { inherit username; })
+    ./swayosd.nix
   ];
 }
 

@@ -10,6 +10,12 @@
     xkb.layout = "us,ru";
     xkb.options = "grp:alt_shift_toggle";
   };
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    liberation_ttf
+  ];
   programs.zsh.enable = true;
   nixpkgs.config.allowUnfree = true;
   nix = {

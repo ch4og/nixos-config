@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
   imports = [
     ./system/boot.nix
-    ./system/defaults.nix
+    ./system
     ./system/hardware/pc-hardware-settings.nix
     ./system/services/pc-services.nix
 

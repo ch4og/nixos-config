@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
   imports = [
     ./system/boot.nix
-    ./system/defaults.nix
+    ./system
     ./system/hardware/vm-hardware-settings.nix
     ./system/services/vm-services.nix
 
