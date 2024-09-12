@@ -76,6 +76,8 @@
       windowrulev2 = [
         "suppressevent maximize, class:.*"
         "maximize, title:(satty)"
+        "maximize, title:(Media viewer)"
+        "noanim, title:(Media viewer)"
         "noblur, class:(windowkill)"
         "noblur, class:(64Gram)"
         "float, title:(Picture-in-Picture)"

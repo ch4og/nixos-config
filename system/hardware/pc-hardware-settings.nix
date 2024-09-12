@@ -18,12 +18,20 @@
   hardware.graphics.enable = true;
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-
     modesetting.enable = true;
     powerManagement.enable = true;
-    powerManagement.finegrained = false;
+    powerManagement.finegrained = true;
     open = true;
     nvidiaSettings = true;
+    prime = {
+      nvidiaBusId = "PCI:1:0:0";
+      amdgpuBusId = "PCI:6:0:0";
+      # sync.enable = true;
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+    };
   };
   virtualisation.libvirtd = {
     enable = true;

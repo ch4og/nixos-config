@@ -9,6 +9,6 @@
     "[title;workspace 9 silent] env QT_QPA_PLATFORM=xcb telegram-desktop"
     "[title;workspace 1 silent] vesktop"
     "[workspace 2 silent] spotify"
-    "[title;workspace 10 silent] steam -silent"
+    "[title;workspace 5 silent] steam -silent"
   ];
 }
