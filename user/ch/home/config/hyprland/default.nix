@@ -77,6 +77,7 @@
         "suppressevent maximize, class:.*"
         "maximize, title:(satty)"
         "noblur, class:(windowkill)"
+        "noblur, class:(64Gram)"
         "float, title:(Picture-in-Picture)"
         "pin, title:(Picture-in-Picture)"
         "workspace 6, class:^(vesktop)$"

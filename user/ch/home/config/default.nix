@@ -1,4 +1,4 @@
-{ username, pkgs, inputs, ... }: {
+{ nixvirt, username, pkgs, inputs, ... }: {
   imports = [
     ./zsh
     ./bin
@@ -20,6 +20,7 @@
     ./wlogout.nix
     (import ./flatpak.nix { inherit username; })
     ./swayosd.nix
+    (import ./vm.nix { inherit nixvirt; })
   ];
 }
 

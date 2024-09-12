@@ -42,6 +42,7 @@
       networkmanager_dmenu
 
       # Desktop apps
+      _64gram
       kitty
       qbittorrent
       obsidian

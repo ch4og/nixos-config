@@ -25,5 +25,8 @@
     open = true;
     nvidiaSettings = true;
   };
-
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.ovmf.packages = with pkgs; [ OVMFFull.fd ];
+  };
 }

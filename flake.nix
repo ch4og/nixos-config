@@ -35,6 +35,10 @@
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    NixVirt = {
+      url = "https://flakehub.com/f/AshleyYakeley/NixVirt/*.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -45,18 +49,9 @@
       pkgsModules = { config, pkgs, ... }: {
         nixpkgs.overlays = [ stableOverlay ];
       };
-    in {
+    in
+    {
       devShell.x86_64-linux = inputs.nixcybersec.devShell.x86_64-linux;
-      nixosConfigurations.nixvm = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./nixvm.nix
-          pkgsModules
-
-          inputs.home-manager.nixosModules.home-manager
-        ];
-      };
       nixosConfigurations.nixpc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
@@ -64,6 +59,7 @@
           ./nixpc.nix
           pkgsModules
           inputs.home-manager.nixosModules.home-manager
+          inputs.NixVirt.nixosModules.default
         ];
       };
     };
