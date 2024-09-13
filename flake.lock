@@ -74,6 +74,26 @@
         "type": "github"
       }
     },
+    "byedpi": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1726240040,
+        "narHash": "sha256-F5iaM/VDSV9vvKraZ27+KQBhxmt+FGeYclXWUoTEmGQ=",
+        "owner": "ch4og",
+        "repo": "byedpi-flake",
+        "rev": "6cb2866358ac3631c1ef708f50dfb5658daa6d35",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ch4og",
+        "repo": "byedpi-flake",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -2352,6 +2372,7 @@
       "inputs": {
         "NixVirt": "NixVirt",
         "aagl": "aagl",
+        "byedpi": "byedpi",
         "home-manager": "home-manager",
         "hyprland-git": "hyprland-git",
         "master": "master",

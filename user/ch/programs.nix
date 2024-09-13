@@ -9,4 +9,5 @@
   services.gvfs.enable = true;
   services.flatpak.enable = true;
   programs.virt-manager.enable = true;
+  programs.wireshark.enable = true;
 }

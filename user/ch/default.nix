@@ -3,7 +3,7 @@ let username = "ch";
 in {
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "wireshark" ];
     shell = pkgs.zsh;
   };
   imports =
