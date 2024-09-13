@@ -1,5 +1,5 @@
 { inputs, pkgs, ... }: {
-  imports = [ ./bind.nix ./autostart.nix ];
+  imports = [ ./bind.nix ./rules.nix ./autostart.nix ];
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland-git.packages.${pkgs.system}.default;
@@ -73,18 +73,6 @@
         follow_mouse = true;
         sensitivity = 0;
       };
-      windowrulev2 = [
-        "suppressevent maximize, class:.*"
-        "maximize, title:(satty)"
-        "maximize, title:(Media viewer)"
-        "noanim, title:(Media viewer)"
-        "noblur, class:(windowkill)"
-        "noblur, class:(64Gram)"
-        "float, title:(Picture-in-Picture)"
-        "pin, title:(Picture-in-Picture)"
-        "workspace 6, class:^(vesktop)$"
-        "workspace 7, class:^(Spotify)$"
-      ];
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
