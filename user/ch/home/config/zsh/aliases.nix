@@ -18,8 +18,7 @@
   rm = "rmtrash";
   cat = "bat -pp";
   man = "batman";
-  grep = "batgrep";
-  rg = "batgrep";
+  grep = "rg";
   diff = "batdiff";
   watch = "batwatch";
 }

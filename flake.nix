@@ -55,7 +55,7 @@
       };
     in
     {
-      devShell.x86_64-linux = inputs.nixcybersec.devShell.x86_64-linux;
+      devShells.x86_64-linux = inputs.nixcybersec.devShells.x86_64-linux;
       nixosConfigurations.nixpc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
