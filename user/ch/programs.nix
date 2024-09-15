@@ -9,4 +9,7 @@
   services.gvfs.enable = true;
   services.flatpak.enable = true;
   programs.virt-manager.enable = true;
+
+  imports = [ inputs.aagl.nixosModules.default ];
+  programs.anime-game-launcher.enable = true;
 }

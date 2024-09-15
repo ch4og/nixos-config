@@ -53,8 +53,6 @@
     ] ++ [
       inputs.zen-browser.packages.x86_64-linux.default
       inputs.nvf.packages.x86_64-linux.default
-      inputs.aagl.packages.x86_64-linux.anime-game-launcher
-      inputs.aagl.packages.x86_64-linux.sleepy-launcher
       inputs.byedpi.packages.x86_64-linux.byedpi
     ];
 }

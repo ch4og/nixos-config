@@ -35,10 +35,6 @@
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    NixVirt = {
-      url = "https://flakehub.com/f/AshleyYakeley/NixVirt/*.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     byedpi = {
       url = "github:ch4og/byedpi-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,7 +59,6 @@
           ./nixpc.nix
           pkgsModules
           inputs.home-manager.nixosModules.home-manager
-          inputs.NixVirt.nixosModules.default
         ];
       };
     };
