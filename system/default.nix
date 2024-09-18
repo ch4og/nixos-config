@@ -1,5 +1,33 @@
 { inputs, config, lib, pkgs, ... }: {
-  imports = [ ./env.nix ./boot.nix ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
+  boot = {
+    loader.grub = {
+      device = "nodev";
+      efiSupport = true;
+    };
+    loader.efi.canTouchEfiVariables = true;
+
+    tmp.cleanOnBoot = true;
+
+    kernelPackages = pkgs.linuxPackages_zen;
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback
+      acpi_call
+      xpadneo
+    ];
+  };
+  environment.sessionVariables = rec {
+    XDG_CACHE_HOME = "$HOME/.cache";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_STATE_HOME = "$HOME/.local/state";
+    XDG_BIN_HOME = "$HOME/.local/bin";
+    PATH = [ "${XDG_BIN_HOME}" ];
+    GOPATH = "${XDG_DATA_HOME}/go";
+    # NIXOS_OZONE_WL = "1";
+  };
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     font = "Lat2-Terminus16";

@@ -4,7 +4,7 @@ default:
 
 # add files to git
 prebuild:
-	cp /etc/nixos/hardware-configuration.nix system/hardware/hardware-configuration.nix
+	cp /etc/nixos/hardware-configuration.nix system/hardware-configuration.nix
 	git add .
 
 # nixos-rebuild switch
