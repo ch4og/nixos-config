@@ -3,7 +3,7 @@
     enable = true;
     extraCompatPackages = with pkgs; [ proton-ge-bin ];
   };
-  programs.hyprland = { enable = true; };
+  programs.hyprland.enable = true;
   programs.thunar.enable = true;
   services.tumbler.enable = true;
   services.gvfs.enable = true;
