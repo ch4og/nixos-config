@@ -78,6 +78,9 @@
   };
   virtualisation.libvirtd = {
     enable = true;
-    qemu.ovmf.packages = with pkgs; [ OVMFFull.fd ];
+    qemu = {
+      ovmf.packages = with pkgs; [ OVMFFull.fd ];
+      vhostUserPackages = [ pkgs.virtiofsd ];
+    };
   };
 }

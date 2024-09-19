@@ -50,6 +50,7 @@
       tetrio-desktop
       vesktop
       spotify
+      yandex-music
     ] ++ [
       inputs.zen-browser.packages.x86_64-linux.default
       inputs.nvf.packages.x86_64-linux.default

@@ -8,7 +8,7 @@
     # nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     hyprland-git = {
-      url = "git+https://github.com/hyprwm/hyprland?submodules=1&rev=b248d59713d99a8338d25f4765fd2f564069f98b";
+      url = "git+https://github.com/hyprwm/hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     split-monitor-workspaces = {
