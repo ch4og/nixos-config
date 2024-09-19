@@ -1,8 +1,7 @@
 { ... }: {
   wayland.windowManager.hyprland.settings = {
     "$terminal" = "kitty";
-    "$fileManager" = "kitty lf";
-    "$guiFileManager" = "thunar";
+    "$fileManager" = "thunar";
     "$browser" = "zen";
     "$menu" = "rofi -show drun";
     "$mod" = "SUPER";
@@ -14,7 +13,6 @@
       "$mod, C, killactive"
       "$mod, M, exec, wlogout"
       "$mod, E, exec, $fileManager"
-      "$mod SHIFT, E, exec, $guiFileManager"
       "$mod, B, exec, $browser"
       "$mod SHIFT, C, exec, hyprpicker | wl-copy"
       "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"

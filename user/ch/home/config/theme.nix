@@ -23,7 +23,7 @@
 
   qt = {
     enable = true;
-    style = { name = "kvantum"; };
+    style = { name = "kvantum-dark"; };
   };
 
   xdg.configFile = {

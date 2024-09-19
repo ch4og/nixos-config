@@ -28,6 +28,11 @@
     GOPATH = "${XDG_DATA_HOME}/go";
     # NIXOS_OZONE_WL = "1";
   };
+  xdg.portal = {
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "gtk";
+  };
+
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     font = "Lat2-Terminus16";

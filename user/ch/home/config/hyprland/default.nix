@@ -1,5 +1,5 @@
 { inputs, pkgs, ... }: {
-  imports = [ ./bind.nix ./rules.nix ./autostart.nix ];
+  imports = [ ./bind.nix ./rules.nix ./autostart.nix ./portal.nix ];
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland-git.packages.${pkgs.system}.default;
@@ -66,6 +66,7 @@
         focus_on_activate = true;
         force_default_wallpaper = -1;
         disable_hyprland_logo = false;
+        middle_click_paste = false;
       };
       input = {
         kb_layout = "us,ru";

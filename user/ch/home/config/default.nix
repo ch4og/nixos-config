@@ -20,6 +20,8 @@
     ./wlogout.nix
     # (import ./flatpak.nix { inherit username; })
     ./swayosd.nix
+    ./defaultapps.nix
+    ./desktop.nix
   ];
 }
 

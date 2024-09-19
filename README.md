@@ -5,7 +5,7 @@
 TODO:
 
 - [ ] Find a way to fix flickering in vesktop, and turn `NIXOS_OZONE_WL` back on
-- [ ] Waybar, rofi, swaync, shutdown menu, hyprlock and defaultapps
+- [ ] Waybar, rofi, swaync, shutdown menu and hyprlock
 - [ ] Multi-PC setup
 - [ ] Switch all servers from Debian to NixOS
 
