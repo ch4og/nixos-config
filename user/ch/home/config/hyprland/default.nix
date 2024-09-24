@@ -1,5 +1,13 @@
 { inputs, pkgs, ... }: {
-  imports = [ ./bind.nix ./rules.nix ./autostart.nix ./portal.nix ];
+  imports = [
+    ./bind.nix
+    ./rules.nix
+    ./autostart.nix
+    ./portal.nix
+    ./hyprlock.nix
+    ./hypridle.nix
+    ./hyprpaper.nix
+  ];
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland-git.packages.${pkgs.system}.default;
@@ -83,6 +91,7 @@
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "NVD_BACKEND,direct"
         "MOZ_ENABLE_WAYLAND,1"
+        "QT_QPA_PLATFORMTHEME,gtk3"
       ];
       cursor = { no_hardware_cursors = false; };
       xwayland = { force_zero_scaling = true; };

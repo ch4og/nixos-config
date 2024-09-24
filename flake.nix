@@ -31,10 +31,6 @@
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    byedpi = {
-      url = "github:ch4og/byedpi-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

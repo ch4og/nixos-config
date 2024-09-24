@@ -8,8 +8,8 @@
     "[workspace 7 silent] startzen.sh"
     "[title;workspace 9 silent] env QT_QPA_PLATFORM=xcb telegram-desktop"
     "[title;workspace 1 silent] vesktop"
-    # "[workspace 2 silent] spotify"
-    "[workspace 2 silent] yandex-music"
+    "[workspace 2 silent] spotify"
+    # "[workspace 2 silent] yandex-music"
     "[title;workspace 5 silent] steam -silent"
   ];
 }

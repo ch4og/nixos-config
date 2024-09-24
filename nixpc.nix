@@ -7,7 +7,9 @@
 
   services = {
     openssh.enable = true;
-
+    resolved = {
+      enable = true;
+    };
     blueman.enable = true;
     xserver = {
       # enable = true;

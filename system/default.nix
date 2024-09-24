@@ -26,11 +26,7 @@
     XDG_BIN_HOME = "$HOME/.local/bin";
     PATH = [ "${XDG_BIN_HOME}" ];
     GOPATH = "${XDG_DATA_HOME}/go";
-    # NIXOS_OZONE_WL = "1";
-  };
-  xdg.portal = {
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = "gtk";
+    NIXOS_OZONE_WL = "1";
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -43,12 +39,6 @@
     xkb.layout = "us,ru";
     xkb.options = "grp:alt_shift_toggle";
   };
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    liberation_ttf
-  ];
   programs.zsh.enable = true;
   nixpkgs.config.allowUnfree = true;
   nix = {

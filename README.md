@@ -4,9 +4,7 @@
 
 TODO:
 
-- [ ] Find a way to fix flickering in vesktop, and turn `NIXOS_OZONE_WL` back on
-- [ ] Waybar, rofi, swaync, shutdown menu and hyprlock
-- [ ] Multi-PC setup
+- [ ] Setup Pi-hole on NixOS on RPi
 - [ ] Switch all servers from Debian to NixOS
 
 - [x] Create a [flake for byedpi](https://github.com/ch4og/byedpi-flake)

@@ -1,19 +1,19 @@
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "ComicCode Nerd Font";
-    font-size: 13px;
-    min-height: 0;
+  border: none;
+  border-radius: 0;
+  font-family: "ComicCode Nerd Font";
+  font-size: 13px;
+  min-height: 0;
 }
 
 window#waybar {
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
 }
 
 #window {
-    font-weight: bold;
-    font-family: "Ubuntu";
+  font-weight: bold;
+  font-family: "Ubuntu";
 }
 /*
 #workspaces {
@@ -22,55 +22,63 @@ window#waybar {
 */
 
 #workspaces button {
-    padding: 0 5px;
-    background: transparent;
-    color: white;
-    border-top: 2px solid transparent;
+  padding: 0 5px;
+  background: transparent;
+  color: white;
+  border-top: 2px solid transparent;
 }
 
 #workspaces button.active {
-    color: #c9545d;
-    border-top: 2px solid #c9545d;
+  color: #c9545d;
+  border-top: 2px solid #c9545d;
 }
 
 #mode {
-    background: #64727D;
-    border-bottom: 3px solid white;
+  background: #64727d;
+  border-bottom: 3px solid white;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
-    padding: 0 3px;
-    margin: 0 2px;
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#custom-spotify,
+#tray,
+#mode {
+  padding: 0 3px;
+  margin: 0 2px;
 }
 
 #clock {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #battery {
 }
 
 #battery icon {
-    color: red;
+  color: red;
 }
 
 #battery.charging {
 }
 
 @keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: black;
-    }
+  to {
+    background-color: #ffffff;
+    color: black;
+  }
 }
 
 #battery.warning:not(.charging) {
-    color: white;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  color: white;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #cpu {
@@ -83,7 +91,7 @@ window#waybar {
 }
 
 #network.disconnected {
-    background: #f53c3c;
+  background: #f53c3c;
 }
 
 #pulseaudio {
@@ -93,10 +101,7 @@ window#waybar {
 }
 
 #custom-spotify {
-    color: rgb(102, 220, 105);
 }
 
 #tray {
 }
-
-

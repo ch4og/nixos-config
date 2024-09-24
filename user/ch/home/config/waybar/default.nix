@@ -1,4 +1,6 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+
+{
   programs.waybar = {
     enable = true;
     settings = {
@@ -7,11 +9,12 @@
         position = "top";
         height = 30;
         modules-left = [ "hyprland/workspaces" ]; # "custom/spotify"];
-        # modules-center = [ "hyprland/window" ];
+        modules-center = [ "custom/spotify" ];
         modules-right = [
+          "custom/swaync"
           "tray"
           "pulseaudio"
-          "network"
+          "custom/network"
           "battery"
           "hyprland/language"
           "clock"
@@ -60,14 +63,14 @@
           format-icons = [ " " " " " " " " " " ];
           tooltip-format = "{capacity}% {timeTo}";
         };
-        network = {
-          # interface = "wlp2s0", // (Optional) To force the use of this interface;
-          format-wifi = " ";
-          format-ethernet = "{ifname} = {ipaddr}/{cidr} ";
-          format-disconnected = "Disconnected ⚠";
-          on-click = "networkmanager_dmenu";
-          tooltip-format-wifi = "{essid} {signalStrength}%";
-        };
+        # network = {
+        #   interface = "wlp4s0";
+        #   format-wifi = " ";
+        #   format-disconnected = "⚠";
+        #   on-click = "networkmanager_dmenu";
+        #   on-click-right = "nmcli connection up ${vpn}";
+        #   tooltip-format-wifi = "{essid} {signalStrength}%";
+        # };
         pulseaudio = {
           on-scroll-up = "swayosd-client --output-volume raise";
           on-scroll-down = "swayosd-client --output-volume lower";
@@ -78,16 +81,59 @@
           format-icons = { default = [ " " " " ]; };
           on-click = "pavucontrol";
         };
-        # "custom/spotify" = {
-        # 		format = " {}";
-        # 		max-length = 40;
-        # 		interval = 30; # Remove this if your script is endless and write in loop;
-        # 		exec = "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null"; # Script in resources folder;
-        # 		exec-if = "pgrep spotify";
-        # };
+        "custom/network" =
+          let vpn = "mitanick-lv4.pvpn.pw-udp";
+          in {
+            format = "{icon}";
+            interval = 3;
+            return-type = "json";
+            format-icons = {
+              "vpn" = "    ";
+              "wifi" = "   ";
+              "off" = "   ";
+            };
+            exec = "$HOME/.config/waybar/network.sh --status ${vpn} 2> /dev/null";
+            on-click = "networkmanager_dmenu";
+            on-click-right = "$HOME/.config/waybar/network.sh --toggle ${vpn}";
+          };
+        "custom/swaync" = {
+          format = "{icon}";
+          interval = 1;
+          return-type = "json";
+          format-icons = {
+            "none" = " ";
+            "new" = " ";
+            "dnd" = "  ";
+          };
+          exec = "$HOME/.config/waybar/swaync.sh 2> /dev/null";
+          tooltip = false;
+          on-click = "swaync-client -t";
+          on-click-right = "swaync-client -d";
+        };
+
+        "custom/spotify" = {
+          format = "{icon}{}";
+          return-type = "json";
+          format-icons = {
+            paused = " ";
+            playing = "  ";
+            default = "";
+          };
+          interval = 1;
+          exec = "$HOME/.config/waybar/spotify.sh 2> /dev/null";
+          exec-if = "pgrep spotify";
+          on-click = "playerctl -p spotify play-pause";
+          on-click-middle = "playerctl -p spotify previous";
+          on-click-right = "playerctl -p spotify next";
+        };
       };
 
     };
     style = builtins.readFile ./style.css;
+  };
+  xdg.configFile = {
+    "waybar/network.sh".source = ./network.sh;
+    "waybar/spotify.sh".source = ./spotify.sh;
+    "waybar/swaync.sh".source = ./swaync.sh;
   };
 }

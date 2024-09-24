@@ -3,7 +3,7 @@
     "$terminal" = "kitty";
     "$fileManager" = "thunar";
     "$browser" = "zen";
-    "$menu" = "rofi -show drun";
+    "$menu" = "rofi -show drun -show-icons";
     "$mod" = "SUPER";
     bind = [
       ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
@@ -11,12 +11,13 @@
       ", Caps_Lock, exec, sleep 0.1 && swayosd-client --caps-lock"
       "$mod, Return, exec, $terminal"
       "$mod, C, killactive"
-      "$mod, M, exec, wlogout"
       "$mod, E, exec, $fileManager"
       "$mod, B, exec, $browser"
       "$mod SHIFT, C, exec, hyprpicker | wl-copy"
       "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
-      ''$mod, Period, exec, rofi -modi "emoji:rofimoji" -show emoji''
+      "$mod, Period, exec, rofi -show rofimoji"
+      ", XF86Calculator, exec, rofi -show calc"
+      "$mod, M, exec, rofi -show rofi-power-menu"
       "$mod SHIFT ,S, exec, grimblast --freeze save area - | satty --filename - && wl-paste | chibi-upload.sh"
       ",Print, exec, grimblast --freeze copy area && wl-paste | chibi-upload.sh"
       "$mod, F, togglefloating"

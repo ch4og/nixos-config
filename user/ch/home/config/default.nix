@@ -8,16 +8,14 @@
     ./kitty.nix
     ./satty.nix
     ./obs.nix
-    ./rofimoji.nix
+    ./rofi.nix
     ./nm_dmenu.nix
     ./waybar
-    ./hyprpaper.nix
     ./swaync.nix
     ./theme.nix
     ./mangohud.nix
     ./lf.nix
     ./vimiv.nix
-    ./wlogout.nix
     # (import ./flatpak.nix { inherit username; })
     ./swayosd.nix
     ./defaultapps.nix
