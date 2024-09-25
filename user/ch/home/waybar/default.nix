@@ -1,5 +1,3 @@
-{ config, pkgs, ... }:
-
 {
   programs.waybar = {
     enable = true;
@@ -8,7 +6,7 @@
         layer = "top";
         position = "top";
         height = 30;
-        modules-left = [ "hyprland/workspaces" ]; # "custom/spotify"];
+        modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "custom/spotify" ];
         modules-right = [
           "custom/swaync"
@@ -27,7 +25,7 @@
             "7" = " ";
             "9" = " ";
             "1" = " ";
-            "2" = " ";
+            "2" = " ";
             "5" = " ";
             "urgent" = " ";
             "focused" = " ";
@@ -112,7 +110,7 @@
         };
 
         "custom/spotify" = {
-          format = "{icon}{}";
+          format = "{icon} {}";
           return-type = "json";
           format-icons = {
             paused = " ";

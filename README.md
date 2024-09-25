@@ -1,6 +1,6 @@
 # My NixOS config
 
-![image](https://github.com/user-attachments/assets/9486ba50-0495-4f83-b120-6e613bc605c7)
+![image](https://github.com/user-attachments/assets/ced83769-d81e-45a9-9d60-0f6d871d21e4)
 
 TODO:
 

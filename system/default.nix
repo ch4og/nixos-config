@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
   ];
+  environment.systemPackages = import ./pkgs.nix { inherit pkgs; };
   boot = {
     loader.grub = {
       device = "nodev";
@@ -26,7 +27,7 @@
     XDG_BIN_HOME = "$HOME/.local/bin";
     PATH = [ "${XDG_BIN_HOME}" ];
     GOPATH = "${XDG_DATA_HOME}/go";
-    NIXOS_OZONE_WL = "1";
+    # NIXOS_OZONE_WL = "1";
   };
 
   i18n.defaultLocale = "en_US.UTF-8";

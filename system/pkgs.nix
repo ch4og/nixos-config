@@ -14,7 +14,6 @@ let
     ffmpeg
     just
     polkit_gnome
-    libimobiledevice
   ];
 in
 packages

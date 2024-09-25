@@ -1,7 +1,7 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: "ComicCode Nerd Font";
+  font-family: "Noto Sans";
   font-size: 13px;
   min-height: 0;
 }
@@ -52,7 +52,7 @@ window#waybar {
 }
 
 #clock {
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 #battery {

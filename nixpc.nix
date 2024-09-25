@@ -3,8 +3,6 @@
     ./system
     ./user/ch
   ];
-  environment.systemPackages = import ./system/pkgs.nix { inherit pkgs; };
-
   services = {
     openssh.enable = true;
     resolved = {

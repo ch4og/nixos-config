@@ -45,6 +45,7 @@
       pavucontrol
       networkmanager_dmenu
       playerctl
+      libimobiledevice
 
       # Desktop apps
       telegram-desktop
