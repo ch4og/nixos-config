@@ -6,6 +6,7 @@
         after_sleep_cmd = "hyprctl dispatch dpms on";
         lock_cmd = "pidof hyprlock || hyprlock";
         ignore_dbus_inhibit = true;
+        ignore_systemd_inhibit = true;
       };
       listener = [
         {

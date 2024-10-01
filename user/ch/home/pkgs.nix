@@ -3,6 +3,7 @@
     [
       # Coding
       python3
+      python312Packages.pygithub
       rustup
       gh
       nix-prefetch
@@ -52,12 +53,13 @@
       kitty
       qbittorrent
       obsidian
-      vimiv-qt
+      olive-editor
+      eog
       mpv
       tetrio-desktop
       vesktop
       spotify
-      yandex-music
+      # yandex-music
       byedpi
     ] ++ [
       inputs.zen-browser.packages.x86_64-linux.default

@@ -32,6 +32,12 @@
         addresses = true;
       };
     };
+    btrfs.autoScrub = {
+      enable = true;
+      interval = "monthly";
+      fileSystems = [ "/" ];
+    };
+    fstrim.enable = true;
   };
 
   networking = {
@@ -45,11 +51,6 @@
     "/nix".options = [ "compress=zstd" "noatime" ];
     "/var/log".options = [ "compress=zstd" ];
     "/home/ch/Games".options = [ "compress=zstd" ];
-  };
-  services.btrfs.autoScrub = {
-    enable = true;
-    interval = "monthly";
-    fileSystems = [ "/" ];
   };
   zramSwap.enable = true;
   hardware.bluetooth.enable = true;
