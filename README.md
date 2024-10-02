@@ -4,6 +4,7 @@
 
 TODO:
 
+- [ ] Move SMB to home-manager
 - [ ] Setup Pi-hole on NixOS on RPi
 - [ ] Switch all servers from Debian to NixOS
 

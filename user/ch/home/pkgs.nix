@@ -20,6 +20,8 @@
       rmtrash
       openvpn
       cudaPackages.cudatoolkit
+      wine-staging
+      wine64Packages.staging
 
       # Fonts
       noto-fonts
@@ -35,6 +37,8 @@
       ffmpegthumbnailer
       gamemode
       gamescope
+      heroic
+      bottles
       overskride
       cliphist
       hyprpicker
@@ -47,6 +51,10 @@
       networkmanager_dmenu
       playerctl
       libimobiledevice
+      gst_all_1.gst-plugins-bad
+      gst_all_1.gst-libav
+      gst_all_1.gst-plugins-good
+      gst_all_1.gst-plugins-base
 
       # Desktop apps
       telegram-desktop
