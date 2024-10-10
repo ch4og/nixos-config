@@ -31,6 +31,10 @@
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    guilded = {
+      url = "github:ch4og/guilded-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

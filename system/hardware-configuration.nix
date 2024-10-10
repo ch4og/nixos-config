@@ -31,16 +31,16 @@
       options = [ "subvol=log" ];
     };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/f68d8a76-066d-40fb-b7d6-787e4f414ad2";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
-
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/8E4D-1353";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/f68d8a76-066d-40fb-b7d6-787e4f414ad2";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
     };
 
   fileSystems."/home/ch/Games" =

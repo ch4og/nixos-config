@@ -10,8 +10,14 @@
       "float, title:(Picture-in-Picture)"
       "float, title:(MainPicker)"
       "pin, title:(Picture-in-Picture)"
-      "workspace 1, class:^(vesktop)$"
-      "workspace 2, class:^(Spotify)$"
+      "workspace 6, class:^(vesktop)$"
+      "workspace 6, class:^(Guilded)$"
+      "workspace 7, class:^(Spotify)$"
+      "opacity 0.0 override, class:^(xwaylandvideobridge)$"
+      "noanim, class:^(xwaylandvideobridge)$"
+      "noinitialfocus, class:^(xwaylandvideobridge)$"
+      "maxsize 1 1, class:^(xwaylandvideobridge)$"
+      "noblur, class:^(xwaylandvideobridge)$"
     ];
   };
 }

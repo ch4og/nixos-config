@@ -55,6 +55,7 @@
       gst_all_1.gst-libav
       gst_all_1.gst-plugins-good
       gst_all_1.gst-plugins-base
+      xwaylandvideobridge
 
       # Desktop apps
       telegram-desktop
@@ -70,8 +71,10 @@
       # yandex-music
       byedpi
       prismlauncher
+      parsec-bin
 
     ] ++ [
+      inputs.guilded.packages.x86_64-linux.default
       inputs.zen-browser.packages.x86_64-linux.default
       inputs.nvf.packages.x86_64-linux.default
     ];

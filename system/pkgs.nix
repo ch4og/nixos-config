@@ -14,6 +14,7 @@ let
     ffmpeg
     just
     polkit_gnome
+    nvidia-vaapi-driver
   ];
 in
 packages
