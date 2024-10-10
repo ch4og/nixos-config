@@ -93,7 +93,7 @@
         "MOZ_ENABLE_WAYLAND,1"
         "QT_QPA_PLATFORMTHEME,gtk3"
       ];
-      cursor = { no_hardware_cursors = false; };
+      cursor = { no_hardware_cursors = true; };
       xwayland = { force_zero_scaling = true; };
 
     };
