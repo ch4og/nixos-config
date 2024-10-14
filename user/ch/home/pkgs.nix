@@ -39,7 +39,6 @@
       gamescope
       heroic
       bottles
-      overskride
       cliphist
       hyprpicker
       satty

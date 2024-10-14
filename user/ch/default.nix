@@ -3,7 +3,7 @@ let username = "ch";
 in {
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "libvirtd" ];
     shell = pkgs.zsh;
   };
   imports =
@@ -13,10 +13,6 @@ in {
     commands = [
       {
         command = "/home/${username}/.local/bin/gmode.sh";
-        options = [ "NOPASSWD" ];
-      }
-      {
-        command = "/run/current-system/sw/bin/modprobe nvidia-uvm";
         options = [ "NOPASSWD" ];
       }
     ];
