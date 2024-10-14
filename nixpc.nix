@@ -2,6 +2,7 @@
   imports = [
     ./system
     ./user/ch
+    ./vm/windows-gpu
   ];
   services = {
     openssh.enable = true;
@@ -16,10 +17,7 @@
       '';
     };
     blueman.enable = true;
-    xserver = {
-      # enable = true;
-      videoDrivers = [ "nvidia" ];
-    };
+    xserver.videoDrivers = [ "nvidia" ];
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
@@ -70,18 +68,14 @@
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = true;
-    # powerManagement.enable = true;
+    powerManagement.enable = true;
     # powerManagement.finegrained = true;
-    open = true;
+    open = false;
     nvidiaSettings = true;
     # prime = {
     #   nvidiaBusId = "PCI:1:0:0";
     #   amdgpuBusId = "PCI:6:0:0";
-    #   # sync.enable = true;
-    #   offload = {
-    #     enable = true;
-    #     enableOffloadCmd = true;
-    #   };
+    #   sync.enable = true;
     # };
   };
   virtualisation = {
@@ -92,10 +86,29 @@
     };
     libvirtd = {
       enable = true;
+      onBoot = "ignore";
+      onShutdown = "shutdown";
       qemu = {
-        ovmf.packages = with pkgs; [ OVMFFull.fd ];
-        vhostUserPackages = [ pkgs.virtiofsd ];
+        ovmf = {
+          enable = true;
+          packages = with pkgs; [ OVMFFull.fd ];
+        };
+        runAsRoot = true;
       };
     };
+  };
+  boot = {
+    kernelModules = [
+      "vfio-pci"
+      "nvidia"
+      "nvidia_modeset"
+      "nvidia_uvm"
+      "nvidia_drm"
+    ];
+    kernelParams = [
+      "amd_iommu=on"
+      "iommu=pt"
+      "nvidia.NVreg_UsePageAttributeTable=1"
+    ];
   };
 }

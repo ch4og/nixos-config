@@ -1,6 +1,5 @@
 { ... }: {
   wayland.windowManager.hyprland.settings.exec-once = [
-    "sudo modprobe nvidia-uvm"
     "waybar"
     "wl-paste --watch cliphist store"
     "ciadpi --hosts ~/Documents/full_list.txt -r1+s -s1"
