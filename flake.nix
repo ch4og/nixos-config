@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    # stable.url = "nixpkgs/nixos-24.05";
+    stable.url = "nixpkgs/nixos-24.05";
     # master.url = "nixpkgs/master";
     # nix-flatpak.url = "github:gmodena/nix-flatpak";
 
@@ -29,10 +29,6 @@
     };
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    guilded = {
-      url = "github:ch4og/guilded-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
