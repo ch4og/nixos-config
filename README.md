@@ -8,6 +8,8 @@ TODO:
 - [ ] Switch all servers from Debian to NixOS
 - [ ] Remove useless lines from
       [windows-gpu.xml](https://github.com/ch4og/nixos-config/blob/main/vm/windows-gpu/windows-gpu.xml)
+- [ ] Add Adwaita theme for GTK and QT (or any other uniform theme)
+- [ ] Set up VLESS proxy systemwide
 
 - [x] Create a [flake for byedpi](https://github.com/ch4og/byedpi-flake)
 - [x] Create [env for cybersecurity](https://github.com/ch4og/nixcybersec)

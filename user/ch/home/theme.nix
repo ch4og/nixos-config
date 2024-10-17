@@ -21,10 +21,10 @@
     };
   };
 
-  qt = {
-    enable = true;
-    style = { name = "kvantum-dark"; };
-  };
+  # qt = {
+  #   enable = true;
+  #   style = { name = "kvantum-dark"; };
+  # };
 
   xdg.configFile = {
     "Kvantum/Layan/Layan.kvconfig".source =
