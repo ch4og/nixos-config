@@ -47,6 +47,8 @@
   nixpkgs.config.allowUnfree = true;
   nix = {
     settings = {
+      plugin-files = "${pkgs.nix-plugins}/lib/nix/plugins";
+      extra-builtins-file = "${inputs.self}/system/lib/extra-builtins.nix";
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
       substituters = [
@@ -60,7 +62,6 @@
       ];
       warn-dirty = false;
     };
-
     gc = {
       automatic = true;
       dates = "weekly";
@@ -77,52 +78,6 @@
     enableSSHSupport = false;
     settings.default-cache-ttl = 4 * 60 * 60;
   };
-
-  # tried to get "zapret" working, WIP
-  # users.users.tpws = {
-  #   isSystemUser = true;
-  #   group = "tpws";
-  # };
-  #
-  # users.groups.tpws = { };
-  #
-  # systemd.services.zapret = {
-  #   after = [ "network-online.target" ];
-  #   wants = [ "network-online.target" ];
-  #   wantedBy = [ "multi-user.target" ];
-  #
-  #   path = with pkgs; [
-  #     iptables
-  #     nftables
-  #     gawk
-  #   ];
-  #
-  #   serviceConfig = {
-  #     Type = "forking";
-  #     Restart = "no";
-  #     TimeoutSec = "30sec";
-  #     IgnoreSIGPIPE = "no";
-  #     KillMode = "none";
-  #     GuessMainPID = "no";
-  #     ExecStart = "${pkgs.zapret}/bin/zapret start";
-  #     ExecStop = "${pkgs.zapret}/bin/zapret stop";
-  #
-  #     EnvironmentFile = pkgs.writeText "zapret-environment" ''
-  #       MODE="nfqws"
-  #       FWTYPE="iptables"
-  #       MODE_HTTP=1
-  #       MODE_HTTP_KEEPALIVE=0
-  #       MODE_HTTPS=1
-  #       MODE_QUIC=1
-  #       QUIC_PORTS=9993,50000-65535
-  #       MODE_FILTER=none
-  #       DISABLE_IPV6=1
-  #       INIT_APPLY_FW=1
-  #       NFQWS_OPT_DESYNC="--dpi-desync=split2"
-  #       NFQWS_OPT_DESYNC_QUIC="--dpi-desync=fake --dpi-desync-repeats=8 --dpi-desync-any-protocol --dpi-desync-autottl=1:1-8"
-  #     '';
-  #   };
-  # };
 
   system.stateVersion = "24.05";
 }

@@ -4,8 +4,11 @@ default:
 
 # add files to git
 prebuild:
-	cp /etc/nixos/hardware-configuration.nix system/hardware-configuration.nix
-	git add .
+  cp /etc/nixos/hardware-configuration.nix system/hardware-configuration.nix
+  nix shell nixpkgs#sops -c true
+  sudo mkdir -p /root/.config
+  sudo cp ~/.config/sops /root/.config -r
+  git add .
 
 # nixos-rebuild switch
 switch: prebuild

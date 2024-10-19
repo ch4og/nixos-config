@@ -1,13 +1,27 @@
-{ config, lib, pkgs, ... }: {
+{ self, inputs, config, lib, pkgs, ... }:
+let
+  nextdns = builtins.extraBuiltins.readSops ./nextdns.nix.enc;
+in
+{
   imports = [
     ./system
     ./user/ch
     ./vm/windows-gpu
+    ./proxy
+
+    inputs.sops-nix.nixosModules.sops
   ];
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    defaultSopsFormat = "yaml";
+    age.keyFile = "/home/ch/.config/sops/age/keys.txt";
+  };
+
   services = {
     openssh.enable = true;
     resolved = {
       enable = true;
+      extraConfig = nextdns;
     };
     blueman.enable = true;
     xserver.videoDrivers = [ "nvidia" ];
