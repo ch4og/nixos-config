@@ -8,7 +8,7 @@
     ./hypridle.nix
     ./hyprpaper.nix
   ];
-  wayland.windowManager.hyprland = {
+  wayland.windowManager.hyprland = let monitors = [ "HDMI-A-1" "eDP-1" ]; in {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     systemd.enable = true;
@@ -16,9 +16,18 @@
     plugins = [ inputs.hyprsplit.packages.${pkgs.system}.hyprsplit ];
     settings = {
       monitor = [
-        "eDP-1, 1920x1080@120, 2048x216, 1.5"
-        "HDMI-A-1, 2560x1440@120, 0x0, 1.25"
+        "${builtins.elemAt monitors 0}, 2560x1440@120, 0x0, 1.25"
+        "${builtins.elemAt monitors 1}, 1920x1080@120, 2048x216, 1.25"
       ];
+
+      workspace =
+        builtins.genList
+          (i:
+            "${toString (i + 1)},monitor:${
+        if (i < 5) then (builtins.elemAt monitors 0) 
+        else (builtins.elemAt monitors 1)},persistent:true"
+          ) 10;
+
       plugin = {
         hyprsplit = {
           num_workspaces = 5;
@@ -96,3 +105,4 @@
     };
   };
 }
+

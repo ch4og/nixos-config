@@ -66,7 +66,6 @@
       mpv
       tetrio-desktop
       vesktop
-      spotify
       byedpi
       prismlauncher
       parsec-bin
@@ -74,6 +73,5 @@
     ] ++ [
       inputs.zen-browser.packages.x86_64-linux.default
       inputs.nvf.packages.x86_64-linux.default
-      # inputs.stable.legacyPackages.x86_64-linux.cliphist
     ];
 }

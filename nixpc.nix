@@ -7,7 +7,7 @@ in
     ./system
     ./user/ch
     ./vm/windows-gpu
-    ./proxy
+    (import ./proxy { inherit config nextdns; })
 
     inputs.sops-nix.nixosModules.sops
   ];
@@ -21,7 +21,13 @@ in
     openssh.enable = true;
     resolved = {
       enable = true;
-      extraConfig = nextdns;
+      extraConfig = ''
+        DNS=45.90.28.0#${nextdns}.dns.nextdns.io
+        DNS=2a07:a8c0::#${nextdns}.dns.nextdns.io
+        DNS=45.90.30.0#${nextdns}.dns.nextdns.io
+        DNS=2a07:a8c1::#${nextdns}.dns.nextdns.io
+        DNSOverTLS=yes
+      '';
     };
     blueman.enable = true;
     xserver.videoDrivers = [ "nvidia" ];
