@@ -4,17 +4,16 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     stable.url = "nixpkgs/nixos-24.05";
-    # master.url = "nixpkgs/master";
-    # nix-flatpak.url = "github:gmodena/nix-flatpak";
 
-    hyprland-git = {
+    hyprland = {
       url = "git+https://github.com/hyprwm/hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland-git";
+    hyprsplit = {
+      url = "github:shezdy/hyprsplit/main";
+      inputs.hyprland.follows = "hyprland";
     };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";

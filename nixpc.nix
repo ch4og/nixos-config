@@ -59,7 +59,10 @@ in
   };
   fileSystems = {
     "/".options = [ "compress=zstd" ];
-    "/home".options = [ "compress=zstd" ];
+    "/home" = {
+      neededForBoot = true; # fix https://github.com/Mic92/sops-nix/issues/149
+      options = [ "compress=zstd" ];
+    };
     "/nix".options = [ "compress=zstd" "noatime" ];
     "/var/log".options = [ "compress=zstd" ];
     "/home/ch/Games".options = [ "compress=zstd" ];

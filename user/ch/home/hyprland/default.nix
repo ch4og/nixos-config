@@ -10,22 +10,19 @@
   ];
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland-git.packages.${pkgs.system}.default;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     systemd.enable = true;
     systemd.variables = [ "--all" ];
-    plugins =
-      [ inputs.split-monitor-workspaces.packages.${pkgs.system}.default ];
+    plugins = [ inputs.hyprsplit.packages.${pkgs.system}.hyprsplit ];
     settings = {
       monitor = [
         "eDP-1, 1920x1080@120, 2048x216, 1.5"
         "HDMI-A-1, 2560x1440@120, 0x0, 1.25"
       ];
       plugin = {
-        "split-monitor-workspaces" = {
-          count = 5;
-          keep_focused = 0;
-          enable_notifications = 0;
-          enable_persistent_workspaces = 1;
+        hyprsplit = {
+          num_workspaces = 5;
+          persistent_workspaces = true;
         };
       };
       general = {

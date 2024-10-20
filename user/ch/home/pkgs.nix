@@ -39,7 +39,7 @@
       gamescope
       heroic
       bottles
-      # cliphist
+      cliphist
       hyprpicker
       satty
       slurp
@@ -67,7 +67,6 @@
       tetrio-desktop
       vesktop
       spotify
-      # yandex-music
       byedpi
       prismlauncher
       parsec-bin
@@ -75,6 +74,6 @@
     ] ++ [
       inputs.zen-browser.packages.x86_64-linux.default
       inputs.nvf.packages.x86_64-linux.default
-      inputs.stable.legacyPackages.x86_64-linux.cliphist
+      # inputs.stable.legacyPackages.x86_64-linux.cliphist
     ];
 }

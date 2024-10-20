@@ -12,7 +12,7 @@ VMs:
 Desktop:
 
 - [ ] Add Adwaita theme for GTK and QT (or any other uniform theme)
-- [ ] Switch to hyprsome cause it works better in my use case
+- [x] Switch to hyprsplit cause it works better in my use case
 
 Proxy:
 

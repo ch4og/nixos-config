@@ -38,8 +38,8 @@
       (i:
         let ws = i + 1;
         in [
-          "$mod, code:1${toString i}, split-workspace, ${toString ws}"
-          "$mod SHIFT, code:1${toString i}, split-movetoworkspace, ${toString ws}"
+          "$mod, code:1${toString i}, split:workspace, ${toString ws}"
+          "$mod SHIFT, code:1${toString i}, split:movetoworkspace, ${toString ws}"
         ]) 5));
     bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
   };
