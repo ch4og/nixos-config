@@ -2,11 +2,12 @@
   description = "ch4og config";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
-    stable.url = "nixpkgs/nixos-24.05";
+    # nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs?rev=e1a23eea2ada0132be3eb9f5c8e2e6405b33625b"; # https://nixpk.gs/pr-tracker.html?pr=349783
+    stable.url = "github:NixOS/nixpkgs/nixos-24.05";
 
     hyprland = {
-      url = "git+https://github.com/hyprwm/hyprland?submodules=1";
+      url = "github:hyprwm/hyprland?submodules=1&rev=01702c5081d542d2ed6e18da95cedd794575b24d"; # https://github.com/hyprwm/Hyprland/pull/8202
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprsplit = {
@@ -38,6 +39,7 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -48,6 +50,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./nixpc.nix
+          inputs.chaotic.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
         ];
       };

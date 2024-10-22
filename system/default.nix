@@ -11,7 +11,6 @@
     loader.efi.canTouchEfiVariables = true;
 
     tmp.cleanOnBoot = true;
-    kernelPackages = pkgs.linuxPackages_zen;
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
       acpi_call
@@ -21,6 +20,12 @@
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
     '';
     blacklistedKernelModules = [ "nouveau" ];
+
+    kernelPackages = pkgs.linuxPackages_cachyos;
+  };
+  chaotic.scx = {
+    enable = true;
+    scheduler = "scx_lavd";
   };
   environment.sessionVariables = rec {
     XDG_CACHE_HOME = "$HOME/.cache";
@@ -52,13 +57,12 @@
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
       substituters = [
-        "https://ezkea.cachix.org"
-        "https://aseipp-nix-cache.global.ssl.fastly.net"
-        "https://hyprland.cachix.org"
+        "https://ezkea.cachix.org" #aagl
+        "https://hyprland.cachix.org" #hyprland
       ];
       trusted-public-keys = [
-        "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" #aagl
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" #hyprland
       ];
       warn-dirty = false;
     };

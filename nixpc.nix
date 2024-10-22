@@ -20,7 +20,7 @@ in
   services = {
     openssh.enable = true;
     resolved = {
-      enable = true;
+      enable = false;
       extraConfig = ''
         DNS=45.90.28.0#${nextdns}.dns.nextdns.io
         DNS=2a07:a8c0::#${nextdns}.dns.nextdns.io

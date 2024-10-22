@@ -17,10 +17,7 @@ Desktop:
 Proxy:
 
 - [ ] Add rules to bypass discord block
-- [ ] Create inbound that will proxy all traffic
-- [ ] Configure rules to proxy only blocked sites
-- [ ] Fix geosites
-- [ ] Add NextDNS DoH
+- [x] Configure rules to proxy only blocked sites
 - [x] Create a [flake for byedpi](https://github.com/ch4og/byedpi-flake)
 
 Tools:
