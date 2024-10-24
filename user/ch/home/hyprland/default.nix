@@ -14,8 +14,8 @@
   ];
   wayland.windowManager.hyprland = let
     monitors = [
-      "HDMI-A-1"
       "eDP-1"
+      "HDMI-A-1"
     ];
   in {
     enable = true;
@@ -25,8 +25,8 @@
     plugins = [inputs.hyprsplit.packages.${pkgs.system}.hyprsplit];
     settings = {
       monitor = [
-        "${builtins.elemAt monitors 0}, 2560x1440@120, 0x0, 1.25"
-        "${builtins.elemAt monitors 1}, 1920x1080@120, 2048x216, 1.25"
+        "${builtins.elemAt monitors 0}, 1920x1080@120, 2048x216, 1.25"
+        "${builtins.elemAt monitors 1}, 2560x1440@120, 0x0, 1.25"
       ];
 
       workspace =

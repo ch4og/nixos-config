@@ -8,6 +8,8 @@ VMs:
 
 - [ ] Remove useless lines from
       [windows-gpu.xml](https://github.com/ch4og/nixos-config/blob/main/vm/windows-gpu/windows-gpu.xml)
+- [ ] Make prime friends with GPU passthrough
+- [ ] Bliss OS VM
 
 Desktop:
 

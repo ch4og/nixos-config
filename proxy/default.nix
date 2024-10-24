@@ -31,7 +31,7 @@
             tag = "nextdns";
             address = "https://dns.nextdns.io/${nextdns}";
             address_resolver = "nextdns-direct";
-            address_strategy = "prefer_ipv4";
+            address_strategy = "ipv4_only";
             detour = "vless-out";
           }
           {
@@ -40,7 +40,7 @@
           }
         ];
         final = "nextdns";
-        strategy = "prefer_ipv4";
+        strategy = "ipv4_only";
         disable_cache = false;
         disable_expire = false;
       };
@@ -50,7 +50,7 @@
           tag = "http-in";
           listen = "::";
           listen_port = 5353;
-          domain_strategy = "prefer_ipv4";
+          domain_strategy = "ipv4_only";
         }
         {
           type = "tun";
@@ -86,7 +86,7 @@
               short_id._secret = "${config.sops.secrets."sing_box/sid".path}";
             };
           };
-          domain_strategy = "prefer_ipv4";
+          domain_strategy = "ipv4_only";
         }
         {
           type = "dns";
@@ -157,7 +157,6 @@
       };
     };
   };
-  # networking.proxy.default = "http://127.0.0.1:5353";
   programs.proxychains = {
     enable = true;
     proxies = {

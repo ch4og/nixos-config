@@ -91,16 +91,22 @@ in {
   };
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+    forceFullCompositionPipeline = true;
     modesetting.enable = true;
-    powerManagement.enable = true;
-    # powerManagement.finegrained = true;
-    open = false;
+    powerManagement = {
+      enable = true;
+      finegrained = true;
+    };
+    open = false; # GPU passthrough works worse with open drivers
     nvidiaSettings = true;
-    # prime = {
-    #   nvidiaBusId = "PCI:1:0:0";
-    #   amdgpuBusId = "PCI:6:0:0";
-    #   sync.enable = true;
-    # };
+    prime = {
+      nvidiaBusId = "PCI:1:0:0";
+      amdgpuBusId = "PCI:6:0:0";
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+    };
   };
   virtualisation = {
     podman = {
