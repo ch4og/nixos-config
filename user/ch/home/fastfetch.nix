@@ -1,10 +1,16 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.fastfetch = {
     enable = true;
     settings = {
       logo = {
         type = "small";
-        padding = { top = 1; };
+        padding = {
+          top = 1;
+        };
       };
       modules = [
         {

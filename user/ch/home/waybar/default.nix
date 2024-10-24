@@ -6,8 +6,8 @@
         layer = "top";
         position = "top";
         height = 30;
-        modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "custom/spotify" ];
+        modules-left = ["hyprland/workspaces"];
+        modules-center = ["custom/spotify"];
         modules-right = [
           "custom/swaync"
           "tray"
@@ -46,8 +46,12 @@
           format = "{:%H:%M:%S}";
           interval = 1;
         };
-        cpu = { format = "{usage}% "; };
-        memory = { format = "{}% "; };
+        cpu = {
+          format = "{usage}% ";
+        };
+        memory = {
+          format = "{}% ";
+        };
         battery = {
           bat = "BAT1";
           states = {
@@ -58,7 +62,13 @@
           format = "{icon}";
           # format-good = "", // An empty format will hide the module;
           format-full = "";
-          format-icons = [ " " " " " " " " " " ];
+          format-icons = [
+            " "
+            " "
+            " "
+            " "
+            " "
+          ];
           tooltip-format = "{capacity}% {timeTo}";
         };
         # network = {
@@ -76,24 +86,29 @@
           format = "{icon}";
           format-muted = " ";
           tooltip-format = "{desc} {volume}%";
-          format-icons = { default = [ " " " " ]; };
+          format-icons = {
+            default = [
+              " "
+              " "
+            ];
+          };
           on-click = "pavucontrol";
         };
-        "custom/network" =
-          let vpn = "mitanick-lv4.pvpn.pw-udp";
-          in {
-            format = "{icon}";
-            interval = 3;
-            return-type = "json";
-            format-icons = {
-              "vpn" = "    ";
-              "wifi" = "   ";
-              "off" = "   ";
-            };
-            exec = "$HOME/.config/waybar/network.sh --status ${vpn} 2> /dev/null";
-            on-click = "networkmanager_dmenu";
-            on-click-right = "$HOME/.config/waybar/network.sh --toggle ${vpn}";
+        "custom/network" = let
+          vpn = "mitanick-lv4.pvpn.pw-udp";
+        in {
+          format = "{icon}";
+          interval = 3;
+          return-type = "json";
+          format-icons = {
+            "vpn" = "    ";
+            "wifi" = "   ";
+            "off" = "   ";
           };
+          exec = "$HOME/.config/waybar/network.sh --status ${vpn} 2> /dev/null";
+          on-click = "networkmanager_dmenu";
+          on-click-right = "$HOME/.config/waybar/network.sh --toggle ${vpn}";
+        };
         "custom/swaync" = {
           format = "{icon}";
           interval = 1;
@@ -125,7 +140,6 @@
           on-click-right = "playerctl -p spotify next";
         };
       };
-
     };
     style = builtins.readFile ./style.css;
   };

@@ -1,17 +1,20 @@
-{ config, nextdns, ... }:
 {
+  config,
+  nextdns,
+  ...
+}: {
   sops.secrets = {
     "sing_box/server" = {
-      restartUnits = [ "sing-box.service" ];
+      restartUnits = ["sing-box.service"];
     };
     "sing_box/uuid" = {
-      restartUnits = [ "sing-box.service" ];
+      restartUnits = ["sing-box.service"];
     };
     "sing_box/pbkey" = {
-      restartUnits = [ "sing-box.service" ];
+      restartUnits = ["sing-box.service"];
     };
     "sing_box/sid" = {
-      restartUnits = [ "sing-box.service" ];
+      restartUnits = ["sing-box.service"];
     };
   };
   services.sing-box = {
@@ -48,7 +51,6 @@
           listen = "::";
           listen_port = 5353;
           domain_strategy = "prefer_ipv4";
-
         }
         {
           type = "tun";
@@ -125,7 +127,7 @@
         ];
         rules = [
           {
-            domain_suffix = builtins.filter (x: x != "" && x != [ ]) (
+            domain_suffix = builtins.filter (x: x != "" && x != []) (
               builtins.split "\n" (builtins.readFile ./blocked-extra.txt)
             );
             outbound = "vless-out";

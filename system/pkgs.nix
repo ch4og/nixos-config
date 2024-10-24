@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   packages = with pkgs; [
     wget
     git
@@ -18,4 +17,4 @@ let
     sops
   ];
 in
-packages
+  packages

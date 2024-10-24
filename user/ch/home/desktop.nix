@@ -7,8 +7,13 @@
       icon = "telegram";
       terminal = false;
       type = "Application";
-      categories = [ "Chat" "Network" "InstantMessaging" "Qt" ];
-      mimeType = [ "x-scheme-handler/tg" ];
+      categories = [
+        "Chat"
+        "Network"
+        "InstantMessaging"
+        "Qt"
+      ];
+      mimeType = ["x-scheme-handler/tg"];
     };
   };
 }

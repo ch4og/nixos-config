@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   wayland.windowManager.hyprland.settings.exec-once = [
     "waybar"
     "wl-paste --watch cliphist store"

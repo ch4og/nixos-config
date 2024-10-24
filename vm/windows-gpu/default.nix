@@ -1,24 +1,24 @@
-{ config, pkgs, ... }:
 {
-  systemd.services.libvirtd.path =
-    let
-      env = pkgs.buildEnv
-        {
-          name = "qemu-hook-env";
-          paths = with pkgs; [
-            bash
-            libvirt
-            kmod
-            systemd
-            ripgrep
-            sd
-            libhugetlbfs
-            findutils
-            procps
-          ];
-        };
-    in
-    [ env ];
+  config,
+  pkgs,
+  ...
+}: {
+  systemd.services.libvirtd.path = let
+    env = pkgs.buildEnv {
+      name = "qemu-hook-env";
+      paths = with pkgs; [
+        bash
+        libvirt
+        kmod
+        systemd
+        ripgrep
+        sd
+        libhugetlbfs
+        findutils
+        procps
+      ];
+    };
+  in [env];
 
   system.activationScripts.generate-ssdt.text = "echo 'U1NEVKEAAAAB9EJPQ0hTAEJYUENTU0RUAQAAAElOVEwYEBkgoA8AFVwuX1NCX1BDSTAGABBMBi5f
 U0JfUENJMFuCTwVCQVQwCF9ISUQMQdAMCghfVUlEABQJX1NUQQCkCh8UK19CSUYApBIjDQELcBcL

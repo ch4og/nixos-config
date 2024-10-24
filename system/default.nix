@@ -1,8 +1,14 @@
-{ inputs, config, lib, pkgs, ... }: {
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
   ];
-  environment.systemPackages = import ./pkgs.nix { inherit pkgs; };
+  environment.systemPackages = import ./pkgs.nix {inherit pkgs;};
   boot = {
     loader.grub = {
       device = "nodev";
@@ -19,7 +25,7 @@
     extraModprobeConfig = ''
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
     '';
-    blacklistedKernelModules = [ "nouveau" ];
+    blacklistedKernelModules = ["nouveau"];
 
     kernelPackages = pkgs.linuxPackages_cachyos;
   };
@@ -33,7 +39,7 @@
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
     XDG_BIN_HOME = "$HOME/.local/bin";
-    PATH = [ "${XDG_BIN_HOME}" ];
+    PATH = ["${XDG_BIN_HOME}"];
     GOPATH = "${XDG_DATA_HOME}/go";
     # NIXOS_OZONE_WL = "1";
   };
@@ -54,15 +60,18 @@
     settings = {
       plugin-files = "${pkgs.nix-plugins}/lib/nix/plugins";
       extra-builtins-file = "${inputs.self}/system/lib/extra-builtins.nix";
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true;
       substituters = [
-        "https://ezkea.cachix.org" #aagl
-        "https://hyprland.cachix.org" #hyprland
+        "https://ezkea.cachix.org" # aagl
+        "https://hyprland.cachix.org" # hyprland
       ];
       trusted-public-keys = [
-        "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" #aagl
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" #hyprland
+        "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" # aagl
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" # hyprland
       ];
       warn-dirty = false;
     };

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -13,11 +13,13 @@
       extended = true;
       expireDuplicatesFirst = true;
     };
-    plugins = [{
-      name = "zsh-nix-shell";
-      src = pkgs.zsh-nix-shell;
-      file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
-    }];
+    plugins = [
+      {
+        name = "zsh-nix-shell";
+        src = pkgs.zsh-nix-shell;
+        file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
+      }
+    ];
     shellAliases = import ./aliases.nix;
     initExtra = builtins.readFile ./init.zsh;
   };

@@ -1,4 +1,8 @@
-{ inputs, pkgs, ... }: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs;
     [
       # Coding
@@ -69,8 +73,8 @@
       byedpi
       prismlauncher
       parsec-bin
-
-    ] ++ [
+    ]
+    ++ [
       inputs.zen-browser.packages.x86_64-linux.default
       inputs.nvf.packages.x86_64-linux.default
     ];

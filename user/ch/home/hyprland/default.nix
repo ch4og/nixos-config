@@ -1,4 +1,8 @@
-{ inputs, pkgs, ... }: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./bind.nix
     ./rules.nix
@@ -8,12 +12,17 @@
     ./hypridle.nix
     ./hyprpaper.nix
   ];
-  wayland.windowManager.hyprland = let monitors = [ "HDMI-A-1" "eDP-1" ]; in {
+  wayland.windowManager.hyprland = let
+    monitors = [
+      "HDMI-A-1"
+      "eDP-1"
+    ];
+  in {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     systemd.enable = true;
-    systemd.variables = [ "--all" ];
-    plugins = [ inputs.hyprsplit.packages.${pkgs.system}.hyprsplit ];
+    systemd.variables = ["--all"];
+    plugins = [inputs.hyprsplit.packages.${pkgs.system}.hyprsplit];
     settings = {
       monitor = [
         "${builtins.elemAt monitors 0}, 2560x1440@120, 0x0, 1.25"
@@ -21,12 +30,14 @@
       ];
 
       workspace =
-        builtins.genList
-          (i:
-            "${toString (i + 1)},monitor:${
-        if (i < 5) then (builtins.elemAt monitors 0) 
-        else (builtins.elemAt monitors 1)},persistent:true"
-          ) 10;
+        builtins.genList (
+          i: "${toString (i + 1)},monitor:${
+            if (i < 5)
+            then (builtins.elemAt monitors 0)
+            else (builtins.elemAt monitors 1)
+          },persistent:true"
+        )
+        10;
 
       plugin = {
         hyprsplit = {
@@ -99,10 +110,12 @@
         "MOZ_ENABLE_WAYLAND,1"
         "QT_QPA_PLATFORMTHEME,gtk3"
       ];
-      cursor = { no_hardware_cursors = true; };
-      xwayland = { force_zero_scaling = true; };
-
+      cursor = {
+        no_hardware_cursors = true;
+      };
+      xwayland = {
+        force_zero_scaling = true;
+      };
     };
   };
 }
-

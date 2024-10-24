@@ -1,5 +1,4 @@
-{ ... }:
-let
+{...}: let
   # Specify the current directory
   scriptDir = ./.;
 
@@ -7,19 +6,19 @@ let
   allFiles = builtins.attrNames (builtins.readDir scriptDir);
 
   # Filter for .sh files
-  scripts =
-    builtins.filter (name: builtins.match ".*\\.sh$" name != null) allFiles;
+  scripts = builtins.filter (name: builtins.match ".*\\.sh$" name != null) allFiles;
 
   # Create a function to generate the file attributes
   mkFileAttr = name: {
     source = "${scriptDir}/${name}";
     executable = true;
   };
-
 in {
-  home.file = builtins.listToAttrs (map (name: {
-    name = ".local/bin/${name}";
-    value = mkFileAttr name;
-  }) scripts);
+  home.file = builtins.listToAttrs (
+    map (name: {
+      name = ".local/bin/${name}";
+      value = mkFileAttr name;
+    })
+    scripts
+  );
 }
-

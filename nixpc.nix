@@ -1,13 +1,18 @@
-{ self, inputs, config, lib, pkgs, ... }:
-let
-  nextdns = builtins.extraBuiltins.readSops ./nextdns.nix.enc;
-in
 {
+  self,
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  nextdns = builtins.extraBuiltins.readSops ./nextdns.nix.enc;
+in {
   imports = [
     ./system
     ./user/ch
     ./vm/windows-gpu
-    (import ./proxy { inherit config nextdns; })
+    (import ./proxy {inherit config nextdns;})
 
     inputs.sops-nix.nixosModules.sops
   ];
@@ -30,7 +35,7 @@ in
       '';
     };
     blueman.enable = true;
-    xserver.videoDrivers = [ "nvidia" ];
+    xserver.videoDrivers = ["nvidia"];
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
@@ -53,7 +58,7 @@ in
     btrfs.autoScrub = {
       enable = true;
       interval = "monthly";
-      fileSystems = [ "/" ];
+      fileSystems = ["/"];
     };
     fstrim.enable = true;
   };
@@ -64,14 +69,17 @@ in
     firewall.enable = false;
   };
   fileSystems = {
-    "/".options = [ "compress=zstd" ];
+    "/".options = ["compress=zstd"];
     "/home" = {
       neededForBoot = true; # fix https://github.com/Mic92/sops-nix/issues/149
-      options = [ "compress=zstd" ];
+      options = ["compress=zstd"];
     };
-    "/nix".options = [ "compress=zstd" "noatime" ];
-    "/var/log".options = [ "compress=zstd" ];
-    "/home/ch/Games".options = [ "compress=zstd" ];
+    "/nix".options = [
+      "compress=zstd"
+      "noatime"
+    ];
+    "/var/log".options = ["compress=zstd"];
+    "/home/ch/Games".options = ["compress=zstd"];
   };
   zramSwap.enable = true;
   hardware.bluetooth.enable = true;
@@ -79,7 +87,7 @@ in
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = [ pkgs.nvidia-vaapi-driver ];
+    extraPackages = [pkgs.nvidia-vaapi-driver];
   };
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
@@ -107,7 +115,7 @@ in
       qemu = {
         ovmf = {
           enable = true;
-          packages = with pkgs; [ OVMFFull.fd ];
+          packages = with pkgs; [OVMFFull.fd];
         };
         runAsRoot = true;
       };

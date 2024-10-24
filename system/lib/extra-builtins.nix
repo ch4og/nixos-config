@@ -1,3 +1,8 @@
-{ exec, ... }: {
-  readSops = name: exec [ "sops" "-d" name ];
+{exec, ...}: {
+  readSops = name:
+    exec [
+      "sops"
+      "-d"
+      name
+    ];
 }

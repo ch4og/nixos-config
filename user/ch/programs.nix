@@ -1,9 +1,13 @@
-{ pkgs, inputs, ... }: {
-  imports = [ inputs.aagl.nixosModules.default ];
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [inputs.aagl.nixosModules.default];
   programs = {
     steam = {
       enable = true;
-      extraCompatPackages = with pkgs; [ proton-ge-bin ];
+      extraCompatPackages = with pkgs; [proton-ge-bin];
     };
     hyprland.enable = true;
     thunar.enable = true;
