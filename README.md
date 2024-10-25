@@ -8,6 +8,7 @@ VMs:
 
 - [ ] Remove useless lines from
       [windows-gpu.xml](https://github.com/ch4og/nixos-config/blob/main/vm/windows-gpu/windows-gpu.xml)
+- [ ] Bliss OS VM
 
 Desktop:
 

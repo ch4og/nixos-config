@@ -1,4 +1,5 @@
 2ip.io
+sourceforge.net
 cdn.discordapp.com
 discord.app
 discordapp.io

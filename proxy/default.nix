@@ -4,16 +4,16 @@
   ...
 }: {
   sops.secrets = {
-    "sing_box/server" = {
+    "vless/server" = {
       restartUnits = ["sing-box.service"];
     };
-    "sing_box/uuid" = {
+    "vless/uuid" = {
       restartUnits = ["sing-box.service"];
     };
-    "sing_box/pbkey" = {
+    "vless/pbkey" = {
       restartUnits = ["sing-box.service"];
     };
-    "sing_box/sid" = {
+    "vless/sid" = {
       restartUnits = ["sing-box.service"];
     };
   };
@@ -31,7 +31,7 @@
             tag = "nextdns";
             address = "https://dns.nextdns.io/${nextdns}";
             address_resolver = "nextdns-direct";
-            address_strategy = "prefer_ipv4";
+            address_strategy = "ipv4_only";
             detour = "vless-out";
           }
           {
@@ -40,18 +40,11 @@
           }
         ];
         final = "nextdns";
-        strategy = "prefer_ipv4";
+        strategy = "ipv4_only";
         disable_cache = false;
         disable_expire = false;
       };
       inbounds = [
-        {
-          type = "http";
-          tag = "http-in";
-          listen = "::";
-          listen_port = 5353;
-          domain_strategy = "prefer_ipv4";
-        }
         {
           type = "tun";
           tag = "tun-in";
@@ -67,9 +60,9 @@
         {
           type = "vless";
           tag = "vless-out";
-          server._secret = "${config.sops.secrets."sing_box/server".path}";
+          server._secret = "${config.sops.secrets."vless/server".path}";
           server_port = 443;
-          uuid._secret = "${config.sops.secrets."sing_box/uuid".path}";
+          uuid._secret = "${config.sops.secrets."vless/uuid".path}";
           flow = "xtls-rprx-vision";
           network = "tcp";
           tls = {
@@ -82,11 +75,11 @@
             };
             reality = {
               enabled = true;
-              public_key._secret = "${config.sops.secrets."sing_box/pbkey".path}";
-              short_id._secret = "${config.sops.secrets."sing_box/sid".path}";
+              public_key._secret = "${config.sops.secrets."vless/pbkey".path}";
+              short_id._secret = "${config.sops.secrets."vless/sid".path}";
             };
           };
-          domain_strategy = "prefer_ipv4";
+          domain_strategy = "ipv4_only";
         }
         {
           type = "dns";
@@ -154,18 +147,6 @@
         ];
         final = "direct";
         auto_detect_interface = true;
-      };
-    };
-  };
-  # networking.proxy.default = "http://127.0.0.1:5353";
-  programs.proxychains = {
-    enable = true;
-    proxies = {
-      sing-box = {
-        enable = true;
-        type = "http";
-        host = "127.0.0.1";
-        port = 5353;
       };
     };
   };
