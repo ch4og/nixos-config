@@ -16,6 +16,12 @@
     "vless/sid" = {
       restartUnits = ["sing-box.service"];
     };
+    "shadowsocks/password" = {
+      restartUnits = ["sing-box.service"];
+    };
+    "shadowsocks/server" = {
+      restartUnits = ["sing-box.service"];
+    };
   };
   services.sing-box = {
     enable = true;
@@ -82,6 +88,15 @@
           domain_strategy = "ipv4_only";
         }
         {
+          type = "shadowsocks";
+          tag = "shadowsocks-out";
+          server._secret = "${config.sops.secrets."shadowsocks/server".path}";
+          server_port = 19473;
+          method = "2022-blake3-aes-256-gcm";
+          password._secret = "${config.sops.secrets."shadowsocks/password".path}";
+          udp_over_tcp = true;
+        }
+        {
           type = "dns";
           tag = "dns-out";
         }
@@ -120,6 +135,14 @@
         ];
         rules = [
           {
+            process_name = [
+              "electron"
+              ".Discord-wrapped"
+            ];
+            outbound = "shadowsocks-out";
+          }
+
+          {
             domain_suffix = builtins.filter (x: x != "" && x != []) (
               builtins.split "\n" (builtins.readFile ./blocked-extra.txt)
             );
@@ -135,13 +158,6 @@
           }
           {
             rule_set = "refilter_ipsum";
-            outbound = "vless-out";
-          }
-          {
-            process_name = [
-              "electron"
-              ".Discord-wrapped"
-            ];
             outbound = "vless-out";
           }
         ];
