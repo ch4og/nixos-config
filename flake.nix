@@ -9,11 +9,10 @@
       url = "github:hyprwm/hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprsplit = {
-      url = "github:shezdy/hyprsplit/main";
+    split-monitor-workspaces = {
+      url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
-
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";

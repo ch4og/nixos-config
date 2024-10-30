@@ -22,7 +22,7 @@
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     systemd.enable = true;
     systemd.variables = ["--all"];
-    plugins = [inputs.hyprsplit.packages.${pkgs.system}.hyprsplit];
+    plugins = [inputs.split-monitor-workspaces.packages.${pkgs.system}.default];
     settings = {
       monitor = [
         "${builtins.elemAt monitors 0}, 2560x1440@120, 0x0, 1.25"
@@ -40,9 +40,10 @@
         10;
 
       plugin = {
-        hyprsplit = {
-          num_workspaces = 5;
-          persistent_workspaces = true;
+        split-monitor-workspaces = {
+          count = 5;
+          enable_notifications = 0;
+          enable_persistent_workspaces = 1;
         };
       };
       general = {

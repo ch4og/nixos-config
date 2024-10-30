@@ -8,11 +8,14 @@
       # Coding
       python3
       python312Packages.pygithub
+      python312Packages.opencv4
       rustup
       gh
       nix-prefetch
       go
       lazygit
+      prettierd
+      nodejs
 
       # Essentials
       ripgrep
