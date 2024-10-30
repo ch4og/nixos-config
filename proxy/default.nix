@@ -26,6 +26,9 @@
   services.sing-box = {
     enable = true;
     settings = {
+      log = {
+        level = "error";
+      };
       dns = {
         servers = [
           {
@@ -91,10 +94,10 @@
           type = "shadowsocks";
           tag = "shadowsocks-out";
           server._secret = "${config.sops.secrets."shadowsocks/server".path}";
-          server_port = 19473;
+          server_port = 80;
           method = "2022-blake3-aes-256-gcm";
           password._secret = "${config.sops.secrets."shadowsocks/password".path}";
-          udp_over_tcp = true;
+          udp_over_tcp = false;
         }
         {
           type = "dns";
@@ -135,13 +138,9 @@
         ];
         rules = [
           {
-            process_name = [
-              "electron"
-              ".Discord-wrapped"
-            ];
+            process_name = ["electron"];
             outbound = "shadowsocks-out";
           }
-
           {
             domain_suffix = builtins.filter (x: x != "" && x != []) (
               builtins.split "\n" (builtins.readFile ./blocked-extra.txt)
