@@ -10,15 +10,14 @@ echo 0 >/sys/class/vtconsole/vtcon0/bind
 echo 0 >/sys/class/vtconsole/vtcon1/bind
 
 # Unbind EFI Framebuffer
-echo efi-framebuffer.0 >/sys/bus/platform/drivers/efi-framebuffer/unbind
+# echo efi-framebuffer.0 >/sys/bus/platform/drivers/efi-framebuffer/unbind
 sleep 2
 
 # Unload NVIDIA kernel modules
 modprobe -r nvidia_uvm
-modprobe -r nvidia_drm
+sleep 2 && modprobe -r nvidia_drm
 modprobe -r nvidia_modeset
 modprobe -r nvidia
-modprobe -r nvidia_drm
 
 # Unload AMD kernel module
 # modprobe -r amdgpu

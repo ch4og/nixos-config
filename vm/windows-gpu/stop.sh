@@ -18,7 +18,7 @@ modprobe -r vfio-pci
 #modprobe amdgpu
 
 # Rebind framebuffer to host
-echo "efi-framebuffer.0" >/sys/bus/platform/drivers/efi-framebuffer/bind
+# echo "efi-framebuffer.0" >/sys/bus/platform/drivers/efi-framebuffer/bind
 
 # Load NVIDIA kernel modules
 modprobe nvidia_drm
