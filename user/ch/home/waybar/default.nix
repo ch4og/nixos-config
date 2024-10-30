@@ -95,7 +95,7 @@
           on-click = "pavucontrol";
         };
         "custom/network" = let
-          vpn = "mitanick-lv4.pvpn.pw-udp";
+          vpn = "mitanick-se11.pvpn.pw-udp";
         in {
           format = "{icon}";
           interval = 3;
