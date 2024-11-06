@@ -31,8 +31,10 @@
   };
   chaotic.scx = {
     enable = true;
-    scheduler = "scx_lavd";
+    package = pkgs.scx.full;
+    scheduler = "scx_rusty";
   };
+
   environment.sessionVariables = rec {
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
@@ -66,6 +68,7 @@
       ];
       auto-optimise-store = true;
       substituters = [
+        "https://aseipp-nix-cache.global.ssl.fastly.net" # cache v2
         "https://ezkea.cachix.org" # aagl
         "https://hyprland.cachix.org" # hyprland
       ];

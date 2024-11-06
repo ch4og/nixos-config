@@ -16,6 +16,7 @@
       lazygit
       prettierd
       nodejs
+      alejandra
 
       # Essentials
       ripgrep
@@ -61,7 +62,6 @@
       gst_all_1.gst-libav
       gst_all_1.gst-plugins-good
       gst_all_1.gst-plugins-base
-      xwaylandvideobridge
 
       # Desktop apps
       telegram-desktop
@@ -76,6 +76,7 @@
       byedpi
       prismlauncher
       parsec-bin
+      file-roller
     ]
     ++ [
       inputs.zen-browser.packages.x86_64-linux.default

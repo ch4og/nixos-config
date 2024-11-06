@@ -137,10 +137,10 @@
           }
         ];
         rules = [
-          {
-            process_name = ["electron"];
-            outbound = "shadowsocks-out";
-          }
+          # {
+          #   process_name = ["electron"];
+          #   outbound = "shadowsocks-out";
+          # }
           {
             domain_suffix = builtins.filter (x: x != "" && x != []) (
               builtins.split "\n" (builtins.readFile ./blocked-extra.txt)
