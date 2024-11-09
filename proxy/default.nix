@@ -142,9 +142,21 @@
           #   outbound = "shadowsocks-out";
           # }
           {
-            domain_suffix = builtins.filter (x: x != "" && x != []) (
-              builtins.split "\n" (builtins.readFile ./blocked-extra.txt)
-            );
+            domain_suffix = [
+              "2ip.io" # for testing that it works
+              "dis.gd"
+              "gstatic.com"
+              "ggpht.com"
+            ];
+            outbound = "vless-out";
+          }
+          {
+            domain_keyword = [
+              "discord"
+              "google"
+              "duckduckgo"
+              "youtu"
+            ];
             outbound = "vless-out";
           }
           {

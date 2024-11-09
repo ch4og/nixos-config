@@ -13,7 +13,6 @@
     ffmpeg
     just
     polkit_gnome
-    nvidia-vaapi-driver
     sops
   ];
 in
