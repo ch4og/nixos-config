@@ -35,6 +35,9 @@ systemctl set-property --runtime -- user.slice AllowedCPUs=0-1
 systemctl set-property --runtime -- system.slice AllowedCPUs=0-1
 systemctl set-property --runtime -- init.scope AllowedCPUs=0-1
 
+# Turn off proxy
+systemctl stop sing-box.service
+
 # Huge Pages (WIP)
 # HUGEPAGES="$((12288 / $(($(grep Hugepagesize /proc/meminfo | awk '{print $2}') / 1024))))"
 # echo "Allocating hugepages..."

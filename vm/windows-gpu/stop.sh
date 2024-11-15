@@ -33,5 +33,8 @@ echo 1 >/sys/class/vtconsole/vtcon1/bind
 # Restart Display Manager
 systemctl start display-manager
 
+# Turn proxy back on
+systemctl start sing-box.service
+
 # Deallocate huge pages (WIP)
 # echo 0 >/proc/sys/vm/nr_hugepages
