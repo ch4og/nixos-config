@@ -137,10 +137,10 @@
           }
         ];
         rules = [
-          # {
-          #   process_name = ["electron"];
-          #   outbound = "shadowsocks-out";
-          # }
+          {
+            process_name = ["electron"];
+            outbound = "shadowsocks-out";
+          }
           {
             domain_suffix = [
               "2ip.io" # for testing that it works
@@ -156,6 +156,7 @@
               "google"
               "duckduckgo"
               "youtu"
+              "spotify"
             ];
             outbound = "vless-out";
           }
