@@ -19,7 +19,7 @@
         "$mod, Period, exec, rofi -show rofimoji"
         ", XF86Calculator, exec, rofi -show calc"
         "$mod, M, exec, rofi -show rofi-power-menu"
-        "$mod SHIFT ,S, exec, grimblast --freeze save area - | satty --filename - && wl-paste | chibi-upload.sh"
+        "$mod SHIFT ,S, exec, grimblast --freeze save area - | swappy -f - && wl-paste | chibi-upload.sh"
         ",Print, exec, grimblast --freeze copy area && wl-paste | chibi-upload.sh"
         "$mod, F, togglefloating"
         "$mod, BRACKETRIGHT, fullscreen"
