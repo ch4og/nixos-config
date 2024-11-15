@@ -30,6 +30,10 @@
       cudaPackages.cudatoolkit
       wine-staging
       wine64Packages.staging
+      bind
+      usbutils
+      lsof
+      nmap
 
       # Fonts
       noto-fonts
@@ -49,7 +53,7 @@
       bottles
       cliphist
       hyprpicker
-      satty
+      swappy
       slurp
       grim
       grimblast
@@ -77,6 +81,9 @@
       prismlauncher
       parsec-bin
       file-roller
+      krita
+      filezilla
+      onlyoffice-bin
     ]
     ++ [
       inputs.zen-browser.packages.x86_64-linux.default
