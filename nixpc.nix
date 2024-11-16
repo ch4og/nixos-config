@@ -39,6 +39,14 @@ in {
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
+      extraPackages = [pkgs.sddm-chili-theme];
+      theme = "chili";
+      settings = {
+        Autologin = {
+          Session = "hyprland.desktop";
+          User = "ch";
+        };
+      };
     };
     pipewire = {
       enable = true;
