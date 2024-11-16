@@ -17,7 +17,7 @@ Desktop:
 
 Proxy:
 
-- [ ] Add rules to bypass discord block
+- [x] Add rules to bypass discord block
 - [x] Configure rules to proxy only blocked sites
 - [x] Create a [flake for byedpi](https://github.com/ch4og/byedpi-flake)
 
