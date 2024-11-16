@@ -89,6 +89,10 @@
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
+  services.locate = {
+    enable = true;
+    package = pkgs.plocate;
+  };
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = false;
