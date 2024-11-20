@@ -113,8 +113,12 @@ in {
   virtualisation = {
     podman = {
       enable = true;
-      dockerCompat = true;
+      dockerCompat = false;
       defaultNetwork.settings.dns_enabled = true;
+    };
+    docker = {
+      enable = true;
+      autoPrune.enable = true;
     };
     libvirtd = {
       enable = true;

@@ -12,6 +12,8 @@ in {
     extraGroups = [
       "wheel"
       "libvirtd"
+      "docker"
+      "podman"
     ];
     shell = pkgs.zsh;
   };
