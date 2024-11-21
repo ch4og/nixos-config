@@ -92,6 +92,7 @@
   services.locate = {
     enable = true;
     package = pkgs.plocate;
+    localuser = null;
   };
   programs.gnupg.agent = {
     enable = true;
