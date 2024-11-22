@@ -161,6 +161,10 @@
             outbound = "vless-out";
           }
           {
+            protocol = "bittorrent";
+            outbound = "direct";
+          }
+          {
             rule_set = "antizapret";
             outbound = "vless-out";
           }
