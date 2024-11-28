@@ -15,7 +15,9 @@
 
   # Replacements for commands
   ls = "lsd --date '+%d.%m.%Y %H:%M'";
-  rm = "rmtrash";
+  rm = "rm -i";
+  rt = "gtrash put --rm-mode";
+  _ = "env";
   cat = "bat -pp";
   man = "batman";
   grep = "rg";

@@ -25,7 +25,7 @@
       starship
       jq
       fastfetch
-      rmtrash
+      gtrash
       openvpn
       cudaPackages.cudatoolkit
       wine-staging
