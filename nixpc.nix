@@ -65,7 +65,7 @@ in {
     };
     btrfs.autoScrub = {
       enable = true;
-      interval = "monthly";
+      interval = "weekly";
       fileSystems = ["/"];
     };
     fstrim.enable = true;
