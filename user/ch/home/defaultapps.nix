@@ -2,14 +2,14 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "application/json" = "zen.desktop";
-      "application/pdf" = "zen.desktop";
-      "application/x-xpinstall" = "zen.desktop";
-      "application/xhtml+xml" = "zen.desktop";
-      "text/html" = "zen.desktop";
-      "text/xml" = "zen.desktop";
-      "x-scheme-handler/http" = "zen.desktop";
-      "x-scheme-handler/https" = "zen.desktop";
+      "application/json" = "firefox.desktop";
+      "application/pdf" = "firefox.desktop";
+      "application/x-xpinstall" = "firefox.desktop";
+      "application/xhtml+xml" = "firefox.desktop";
+      "text/html" = "firefox.desktop";
+      "text/xml" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
       "inode/directory" = "thunar.desktop";
     };
   };

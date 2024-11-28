@@ -2,7 +2,7 @@
   wayland.windowManager.hyprland.settings = {
     "$terminal" = "kitty";
     "$fileManager" = "thunar";
-    "$browser" = "zen";
+    "$browser" = "firefox";
     "$menu" = "rofi -show drun -show-icons";
     "$mod" = "SUPER";
     bind =

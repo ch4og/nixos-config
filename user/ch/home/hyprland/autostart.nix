@@ -5,7 +5,7 @@
     "ciadpi --hosts ~/Documents/full_list.txt -r1+s -s1"
     "xwaylandvideobridge"
 
-    "[workspace 2 silent] startzen.sh"
+    "[workspace 2 silent] startfirefox.sh"
     "[title;workspace 4 silent] env QT_QPA_PLATFORM=xcb telegram-desktop"
     "[title;workspace 6 silent] sleep 10 && vesktop"
     # "[title;workspace 6 silent] guilded"
