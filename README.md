@@ -1,8 +1,14 @@
 # My NixOS config
 
-![image](https://github.com/user-attachments/assets/ced83769-d81e-45a9-9d60-0f6d871d21e4)
+![image](https://github.com/user-attachments/assets/d6580f04-0787-4c98-af09-87baa21eac7d)
 
 TODO:
+
+System:
+
+- [ ] Setup btrfs snapshots with snapper
+- [ ] Switch to [agenix](https://github.com/ryantm/agenix) for better secrets
+      management
 
 VMs:
 
@@ -13,10 +19,12 @@ VMs:
 Desktop:
 
 - [ ] Add Adwaita theme for GTK and QT (or any other uniform theme)
+- [ ] Use [Stylix](https://github.com/danth/stylix) for theming?
 - [x] Switch to hyprsplit cause it works better in my use case
 
 Proxy:
 
+- [ ] Find why sometimes network dies and drops packets
 - [x] Add rules to bypass discord block
 - [x] Configure rules to proxy only blocked sites
 - [x] Create a [flake for byedpi](https://github.com/ch4og/byedpi-flake)
