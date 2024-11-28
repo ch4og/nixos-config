@@ -34,6 +34,7 @@
       usbutils
       lsof
       nmap
+      unrar
 
       # Fonts
       noto-fonts
@@ -84,6 +85,7 @@
       krita
       filezilla
       onlyoffice-bin
+      chromium
       firefox
     ]
     ++ [
