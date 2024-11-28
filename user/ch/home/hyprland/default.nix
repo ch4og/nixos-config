@@ -114,7 +114,8 @@
         "QT_QPA_PLATFORMTHEME,gtk3"
       ];
       cursor = {
-        no_hardware_cursors = true;
+        no_hardware_cursors = true; # change to false after thing below is fixed
+        # use_cpu_buffer = true; # https://github.com/hyprwm/Hyprland/issues/8580
       };
       xwayland = {
         force_zero_scaling = true;

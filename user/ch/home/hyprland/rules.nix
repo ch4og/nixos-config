@@ -1,6 +1,7 @@
 {
   wayland.windowManager.hyprland.settings = {
     windowrulev2 = [
+      "noblur,class:^()$,title:^()$" # Fix blur of some gtk menus
       "suppressevent maximize, class:.*"
       "fullscreen, title:(Media viewer)"
       "noanim, title:(Media viewer)"
