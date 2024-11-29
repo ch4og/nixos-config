@@ -101,14 +101,9 @@ in {
     package = config.boot.kernelPackages.nvidiaPackages.beta;
     modesetting.enable = true;
     powerManagement.enable = true;
-    # powerManagement.finegrained = true;
-    open = false;
+    powerManagement.finegrained = false;
+    open = true;
     nvidiaSettings = true;
-    # prime = {
-    #   nvidiaBusId = "PCI:1:0:0";
-    #   amdgpuBusId = "PCI:6:0:0";
-    #   sync.enable = true;
-    # };
   };
   virtualisation = {
     podman = {
