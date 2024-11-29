@@ -15,6 +15,15 @@
     anime-game-launcher.enable = true;
     honkers-railway-launcher.enable = true;
     dconf.enable = true;
+    firefox = {
+      enable = true;
+      preferences = {
+        "gfx.webrender.all" = true;
+        "media.ffmpeg.vaapi.enabled" = true;
+        "widget.dmabuf.force-enabled" = true;
+        "privacy.webrtc.legacyGlobalIndicator" = false;
+      };
+    };
   };
   services = {
     tumbler.enable = true;

@@ -112,6 +112,7 @@
         "NVD_BACKEND,direct"
         "MOZ_ENABLE_WAYLAND,1"
         "QT_QPA_PLATFORMTHEME,gtk3"
+        "MOZ_DISABLE_RDD_SANDBOX,1"
       ];
       cursor = {
         no_hardware_cursors = true; # change to false after thing below is fixed

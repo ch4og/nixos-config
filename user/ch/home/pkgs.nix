@@ -86,7 +86,6 @@
       filezilla
       onlyoffice-bin
       chromium
-      firefox
     ]
     ++ [
       inputs.nvf.packages.x86_64-linux.default
