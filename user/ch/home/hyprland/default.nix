@@ -26,7 +26,7 @@
     settings = {
       monitor = [
         "${builtins.elemAt monitors 0}, 2560x1440@120, 0x0, 1.25"
-        "${builtins.elemAt monitors 1}, 1920x1080@120, 2048x216, 1.25"
+        "${builtins.elemAt monitors 1}, 1920x1080@120, 2048x144, 1.25"
       ];
 
       workspace =
