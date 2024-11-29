@@ -15,7 +15,7 @@ in {
       "docker"
       "podman"
     ];
-    shell = pkgs.zsh;
+    shell = pkgs.nushell;
   };
   imports = [
     (import ./home {inherit pkgs username inputs;})

@@ -25,7 +25,8 @@
           (import ./spotify.nix {inherit pkgs inputs;})
           ./bin
           ./waybar
-          ./zsh
+          # ./zsh
+          ./nushell
         ];
       home.stateVersion = "24.05";
     };
