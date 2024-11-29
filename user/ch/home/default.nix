@@ -15,6 +15,7 @@
           && file != "default.nix"
           && file != "pkgs.nix"
           && file != "spotify.nix"
+          && file != "firefox.nix"
       ) (builtins.attrNames (builtins.readDir ./.));
     in {
       imports =
@@ -23,6 +24,7 @@
           (import ./hyprland {inherit pkgs inputs;})
           (import ./pkgs.nix {inherit pkgs inputs;})
           (import ./spotify.nix {inherit pkgs inputs;})
+          (import ./firefox.nix {inherit pkgs inputs;})
           ./bin
           ./waybar
           # ./zsh

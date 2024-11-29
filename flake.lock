@@ -54,6 +54,26 @@
         "type": "github"
       }
     },
+    "betterfox-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1731153579,
+        "narHash": "sha256-9mNttz8Az2gOUHD2mOKiY1Fv2FHNxcQpu+FwfA1l1aM=",
+        "owner": "HeitorAugustoLN",
+        "repo": "betterfox-nix",
+        "rev": "4746610b0ab006aefa732e727048e330d19e4f81",
+        "type": "github"
+      },
+      "original": {
+        "owner": "HeitorAugustoLN",
+        "repo": "betterfox-nix",
+        "type": "github"
+      }
+    },
     "chaotic": {
       "inputs": {
         "flake-schemas": "flake-schemas",
@@ -2677,6 +2697,7 @@
     "root": {
       "inputs": {
         "aagl": "aagl",
+        "betterfox-nix": "betterfox-nix",
         "chaotic": "chaotic",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
