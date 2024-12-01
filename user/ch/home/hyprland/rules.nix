@@ -11,7 +11,7 @@
       "float, title:(MainPicker)"
       "pin, title:(Picture-in-Picture)"
       "workspace 6, class:^(vesktop)$"
-      "workspace 6, class:^(Guilded)$"
+      "workspace 6, class:^(discord)$"
       "workspace 7, class:^(Spotify)$"
       "opacity 0.0 override, class:^(xwaylandvideobridge)$"
       "noanim, class:^(xwaylandvideobridge)$"
