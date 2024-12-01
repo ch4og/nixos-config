@@ -8,9 +8,7 @@
     "[workspace 2 silent] startfirefox.sh"
     "[title;workspace 4 silent] env QT_QPA_PLATFORM=xcb telegram-desktop"
     "[title;workspace 6 silent] sleep 10 && discordcanary"
-    # "[title;workspace 6 silent] guilded"
     "[workspace 7 silent] spotify"
-    # "[workspace 7 silent] yandex-music"
     "[title;workspace 10 silent] steam -silent"
   ];
 }

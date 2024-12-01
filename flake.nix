@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
     hyprland = {
       url = "github:hyprwm/hyprland?submodules=1";
@@ -51,7 +52,20 @@
     self,
     nixpkgs,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    small-overlay = final: prev: {
+      small = inputs.unstable-small.legacyPackages.${prev.system};
+    };
+    overlaysModule = {
+      config,
+      pkgs,
+      ...
+    }: {
+      nixpkgs.overlays = [
+        small-overlay
+      ];
+    };
+  in {
     nixosConfigurations.nixpc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
@@ -61,6 +75,7 @@
         ./nixpc.nix
         inputs.chaotic.nixosModules.default
         inputs.home-manager.nixosModules.home-manager
+        overlaysModule
       ];
     };
   };

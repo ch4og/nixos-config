@@ -37,8 +37,6 @@
     theme = let
       inherit (config.lib.formats.rasi) mkLiteral;
     in {
-      # This is https://github.com/newmanls/rofi-themes-collection/blob/master/themes/spotlight-dark.rasi
-      # Rewritten in Nix (with a bit of changes)
       "*" = {
         font = "Montserrat 12";
         bg0 = mkLiteral "#242424E6";

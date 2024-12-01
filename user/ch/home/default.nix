@@ -29,7 +29,6 @@
           (import ./nixcord.nix {inherit pkgs inputs;})
           ./bin
           ./waybar
-          # ./zsh
           ./nushell
         ];
       home.stateVersion = "24.05";

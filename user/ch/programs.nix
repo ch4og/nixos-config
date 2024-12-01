@@ -19,7 +19,6 @@
   services = {
     tumbler.enable = true;
     gvfs.enable = true;
-    # flatpak.enable = true;
   };
   hardware.opentabletdriver.enable = true;
 }

@@ -5,8 +5,7 @@
 }: {
   home.pointerCursor = {
     gtk.enable = true;
-    # x11.enable = true;
-    package = pkgs.bibata-cursors;
+    package = pkgs.small.bibata-cursors; # https://nixpk.gs/pr-tracker.html?pr=359604
     name = "Bibata-Modern-Classic";
     size = 24;
   };
@@ -24,11 +23,6 @@
       name = "Tela";
     };
   };
-
-  # qt = {
-  #   enable = true;
-  #   style = { name = "kvantum-dark"; };
-  # };
 
   xdg.configFile = {
     "Kvantum/Layan/Layan.kvconfig".source = "${pkgs.layan-kde}/share/Kvantum/Layan/Layan.kvconfig";

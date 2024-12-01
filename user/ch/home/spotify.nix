@@ -21,6 +21,5 @@
     enabledCustomApps = with spicePkgs.apps; [
       newReleases
     ];
-    # colorScheme = "mocha";
   };
 }
