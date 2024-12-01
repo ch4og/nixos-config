@@ -1,18 +1,28 @@
 {
   xdg.desktopEntries = {
-    "discord-canary.desktop" = {
+    "discord-canary" = {
       categories = [
         "Network"
         "InstantMessaging"
       ];
-      exec = "discord-canary";
-
+      exec = "DiscordCanary --disable-gpu-compositing";
       name = "Discord Canary";
-      comment = "All-in-one cross-platform voice and text chat for gamers";
+      genericName = "All-in-one cross-platform voice and text chat for gamers";
       icon = "discord-canary";
-      terminal = false;
       type = "Application";
       mimeType = ["x-scheme-handler/discord"];
+    };
+    "vesktop" = {
+      categories = [
+        "Network"
+        "InstantMessaging"
+        "Chat"
+      ];
+      exec = "vesktop %U --disable-gpu-compositing";
+      genericName = "Internet Messenger";
+      icon = "vesktop";
+      name = "Vesktop";
+      type = "Application";
     };
   };
 }
