@@ -57,7 +57,14 @@
     xkb.options = "grp:alt_shift_toggle";
   };
   programs.zsh.enable = true;
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "dotnet-runtime-6.0.36"
+      "dotnet-sdk-wrapped-6.0.428"
+      "dotnet-sdk-6.0.428"
+    ];
+  };
   nix = {
     settings = {
       plugin-files = "${pkgs.nix-plugins}/lib/nix/plugins";
