@@ -77,7 +77,6 @@
       eog
       mpv
       tetrio-desktop
-      vesktop
       byedpi
       prismlauncher
       parsec-bin

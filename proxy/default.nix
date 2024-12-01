@@ -138,7 +138,11 @@
         ];
         rules = [
           {
-            process_name = ["electron"];
+            process_name = [
+              "electron"
+              ".Discord-wrapped"
+              ".DiscordCanary-wrapped"
+            ];
             outbound = "shadowsocks-out";
           }
           {
