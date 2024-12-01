@@ -1,19 +1,18 @@
 {
   xdg.desktopEntries = {
-    "org.telegram.desktop" = {
-      name = "Telegram Desktop";
-      comment = "Official desktop version of Telegram messaging app";
-      exec = "env QT_QPA_PLATFORM=xcb telegram-desktop -- %u";
-      icon = "telegram";
-      terminal = false;
-      type = "Application";
+    "discord-canary.desktop" = {
       categories = [
-        "Chat"
         "Network"
         "InstantMessaging"
-        "Qt"
       ];
-      mimeType = ["x-scheme-handler/tg"];
+      exec = "discord-canary";
+
+      name = "Discord Canary";
+      comment = "All-in-one cross-platform voice and text chat for gamers";
+      icon = "discord-canary";
+      terminal = false;
+      type = "Application";
+      mimeType = ["x-scheme-handler/discord"];
     };
   };
 }
