@@ -7,7 +7,7 @@
   programs = {
     steam = {
       enable = true;
-      extraCompatPackages = with pkgs; [proton-ge-bin];
+      extraCompatPackages = with pkgs; [proton-ge-custom];
     };
     hyprland.enable = true;
     thunar.enable = true;
