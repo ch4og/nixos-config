@@ -85,6 +85,7 @@
       filezilla
       onlyoffice-bin
       chromium
+      kdenlive
     ]
     ++ [
       inputs.nvf.packages.x86_64-linux.default
