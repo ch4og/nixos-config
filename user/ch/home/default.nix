@@ -16,7 +16,6 @@
           && file != "pkgs.nix"
           && file != "spotify.nix"
           && file != "firefox.nix"
-          && file != "nixcord.nix"
       ) (builtins.attrNames (builtins.readDir ./.));
     in {
       imports =
@@ -26,7 +25,7 @@
           (import ./pkgs.nix {inherit pkgs inputs;})
           (import ./spotify.nix {inherit pkgs inputs;})
           (import ./firefox.nix {inherit pkgs inputs;})
-          (import ./nixcord.nix {inherit pkgs inputs;})
+          (import ./nixcord {inherit pkgs inputs;})
           ./bin
           ./waybar
           ./nushell

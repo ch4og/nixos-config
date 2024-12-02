@@ -9,7 +9,7 @@
   programs.nixcord = {
     enable = true;
     discord = {
-      package = pkgs.discord-canary; # after wayland screen sharing is in stable switch to pkgs.discord-krisp
+      package = import ./discord-canary-krisp.nix {inherit pkgs;};
       vencord.enable = true;
       openASAR.enable = false;
     };
