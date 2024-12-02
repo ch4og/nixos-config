@@ -16,4 +16,8 @@
       format = "[](white)  $all";
     };
   };
+  programs.carapace = {
+    enable = true;
+    enableNushellIntegration = true;
+  };
 }
