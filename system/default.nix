@@ -57,6 +57,7 @@
     xkb.options = "grp:alt_shift_toggle";
   };
   programs.zsh.enable = true;
+  programs.fish.enable = true;
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [

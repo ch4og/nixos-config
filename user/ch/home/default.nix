@@ -26,9 +26,9 @@
           (import ./spotify.nix {inherit pkgs inputs;})
           (import ./firefox.nix {inherit pkgs inputs;})
           (import ./nixcord {inherit pkgs inputs;})
+          ./fish
           ./bin
           ./waybar
-          ./nushell
         ];
       home.stateVersion = "24.05";
     };

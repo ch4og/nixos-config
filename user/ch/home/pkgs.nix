@@ -21,7 +21,7 @@
       # Essentials
       ripgrep
       btop
-      lsd
+      eza
       starship
       jq
       fastfetch
@@ -35,6 +35,8 @@
       lsof
       nmap
       unrar
+      any-nix-shell
+      grc
 
       # Fonts
       noto-fonts
