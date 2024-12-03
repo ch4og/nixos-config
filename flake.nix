@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
     hyprland = {
       url = "github:hyprwm/hyprland?submodules=1";

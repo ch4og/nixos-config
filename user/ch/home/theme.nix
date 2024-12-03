@@ -5,7 +5,7 @@
 }: {
   home.pointerCursor = {
     gtk.enable = true;
-    package = pkgs.small.bibata-cursors; # https://nixpk.gs/pr-tracker.html?pr=359604
+    package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
     size = 24;
   };
