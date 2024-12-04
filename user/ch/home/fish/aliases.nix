@@ -10,7 +10,7 @@
   ip = "ip -c";
   df = "df -h";
   free = "free -m";
-  fzf = "fzf --preview 'bat --color=always {}'";
+  # fzf = "fzf --preview 'bat --color=always {}'";
   dust = "dust -d 1 ";
   lsd = "eza";
 

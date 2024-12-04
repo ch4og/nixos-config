@@ -2,7 +2,7 @@
   programs.fish = {
     enable = true;
     plugins = let
-      pluginsList = with pkgs.fishPlugins; [tide sponge grc done bass];
+      pluginsList = with pkgs.fishPlugins; [tide sponge grc done bass fzf-fish];
     in (map (plugin: {
         name = plugin.name;
         src = plugin.src;
@@ -28,6 +28,6 @@
 
   programs.fzf = {
     enable = true;
-    enableFishIntegration = true;
+    enableFishIntegration = false;
   };
 }

@@ -37,6 +37,8 @@
       unrar
       any-nix-shell
       grc
+      fd
+      dust
 
       # Fonts
       noto-fonts
