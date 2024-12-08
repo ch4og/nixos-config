@@ -157,8 +157,7 @@
           {
             domain_keyword = [
               "discord"
-              "google"
-              "duckduckgo"
+              "googlevideo"
               "youtu"
               "spotify"
             ];
