@@ -90,6 +90,7 @@
       onlyoffice-bin
       chromium
       kdenlive
+      remmina
     ]
     ++ [
       inputs.nvf.packages.x86_64-linux.default
