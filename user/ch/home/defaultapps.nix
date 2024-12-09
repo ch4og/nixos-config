@@ -11,6 +11,7 @@
       "x-scheme-handler/http" = "firefox.desktop";
       "x-scheme-handler/https" = "firefox.desktop";
       "inode/directory" = "thunar.desktop";
+      "image/jpeg" = "org.gnome.eog.desktop";
     };
   };
 }
