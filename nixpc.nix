@@ -73,6 +73,9 @@ in {
 
   networking = {
     hostName = "nixpc";
+    extraHosts = ''
+      10.42.0.253 winpc.local
+    '';
     networkmanager.enable = true;
     firewall.enable = false;
   };
