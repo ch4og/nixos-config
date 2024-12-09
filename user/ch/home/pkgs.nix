@@ -71,6 +71,7 @@
       gst_all_1.gst-libav
       gst_all_1.gst-plugins-good
       gst_all_1.gst-plugins-base
+      lan-mouse
 
       # Desktop apps
       telegram-desktop
