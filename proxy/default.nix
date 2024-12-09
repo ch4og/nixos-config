@@ -151,6 +151,7 @@
               "dis.gd"
               "gstatic.com"
               "ggpht.com"
+              "ndi.tv"
             ];
             outbound = "vless-out";
           }
