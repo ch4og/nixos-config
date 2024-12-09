@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     hyprland = {
       url = "github:hyprwm/hyprland?submodules=1";
@@ -13,10 +17,6 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nvf = {
       url = "github:ch4og/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,26 +45,17 @@
       url = "github:KaylorBen/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vban = {
+      url = "github:ch4og/vban-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     ...
-  } @ inputs: let
-    small-overlay = final: prev: {
-      small = inputs.unstable-small.legacyPackages.${prev.system};
-    };
-    overlaysModule = {
-      config,
-      pkgs,
-      ...
-    }: {
-      nixpkgs.overlays = [
-        small-overlay
-      ];
-    };
-  in {
+  } @ inputs: {
     nixosConfigurations.nixpc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
@@ -74,7 +65,6 @@
         ./nixpc.nix
         inputs.chaotic.nixosModules.default
         inputs.home-manager.nixosModules.home-manager
-        overlaysModule
       ];
     };
   };
