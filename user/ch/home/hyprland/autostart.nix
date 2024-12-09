@@ -2,6 +2,7 @@
   wayland.windowManager.hyprland.settings.exec-once = [
     "waybar"
     "wl-paste --watch cliphist store"
+    "vban.sh"
     "lan-mouse"
 
     "[title;workspace 4 silent] env QT_QPA_PLATFORM=xcb telegram-desktop"

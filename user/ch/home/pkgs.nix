@@ -95,5 +95,6 @@
     ]
     ++ [
       inputs.nvf.packages.x86_64-linux.default
+      inputs.vban.packages.x86_64-linux.default
     ];
 }
