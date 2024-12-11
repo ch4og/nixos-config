@@ -49,6 +49,10 @@
       url = "github:ch4og/vban-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    uniclip = {
+      url = "github:ch4og/uniclip";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
