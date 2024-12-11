@@ -61,6 +61,16 @@
           inet4_address = "172.19.0.1/28";
           auto_route = true;
           sniff = true;
+          sniff_timeout = "1s";
+          domain_strategy = "ipv4_only";
+        }
+        {
+          type = "socks";
+          tag = "socks-in";
+          listen = "0.0.0.0";
+          listen_port = 3905;
+          sniff = true;
+          sniff_timeout = "1s";
           domain_strategy = "ipv4_only";
         }
       ];
