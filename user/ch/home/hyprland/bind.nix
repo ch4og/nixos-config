@@ -15,7 +15,7 @@
         "$mod, E, exec, $fileManager"
         "$mod, B, exec, $browser"
         "$mod SHIFT, C, exec, hyprpicker | wl-copy"
-        "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
+        "$mod, V, exec, cliphist-rofi-img | rofi -dmenu -display-columns 2 -show-icons | cliphist decode | wl-copy"
         "$mod, Period, exec, rofi -show rofimoji"
         ", XF86Calculator, exec, rofi -show calc"
         "$mod, M, exec, rofi -show rofi-power-menu"
