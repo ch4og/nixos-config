@@ -103,8 +103,8 @@
         sensitivity = 0;
       };
       env = [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
+        "XCURSOR_SIZE,16"
+        "HYPRCURSOR_SIZE,16"
         "LIBVA_DRIVER_NAME,nvidia"
         "XDG_SESSION_TYPE,wayland"
         "GBM_BACKEND,nvidia-drm"
@@ -115,8 +115,8 @@
         "MOZ_DISABLE_RDD_SANDBOX,1"
       ];
       cursor = {
-        no_hardware_cursors = true; # change to false after thing below is fixed
-        # use_cpu_buffer = true; # https://github.com/hyprwm/Hyprland/issues/8580
+        no_hardware_cursors = false;
+        use_cpu_buffer = true;
       };
       xwayland = {
         force_zero_scaling = true;
