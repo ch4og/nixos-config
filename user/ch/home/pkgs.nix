@@ -17,6 +17,8 @@
       prettierd
       nodejs
       alejandra
+      yarn
+      vscode
 
       # Essentials
       ripgrep
@@ -39,6 +41,8 @@
       grc
       fd
       dust
+      binwalk
+      alsa-utils
 
       # Fonts
       noto-fonts
