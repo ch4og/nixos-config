@@ -23,7 +23,7 @@
       ];
       plugins = {
         alwaysTrust.enable = true;
-        callTimer.enable = true;
+        callTimer.enable = false;
         clearURLs.enable = true;
         copyEmojiMarkdown.enable = true;
         disableCallIdle.enable = true;
