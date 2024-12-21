@@ -112,6 +112,7 @@
         "NVD_BACKEND,direct"
         "MOZ_ENABLE_WAYLAND,1"
         "QT_QPA_PLATFORMTHEME,gtk3"
+        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         "MOZ_DISABLE_RDD_SANDBOX,1"
       ];
       cursor = {
