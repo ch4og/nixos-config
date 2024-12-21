@@ -58,7 +58,7 @@
           type = "tun";
           tag = "tun-in";
           interface_name = "sing0";
-          inet4_address = "172.19.0.1/28";
+          address = ["172.19.0.1/28"];
           auto_route = true;
           sniff = true;
           sniff_timeout = "1s";
