@@ -12,6 +12,8 @@
       "x-scheme-handler/https" = "firefox.desktop";
       "inode/directory" = "thunar.desktop";
       "image/jpeg" = "org.gnome.eog.desktop";
+      "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
+      "x-scheme-handler/tonsite" = "org.telegram.desktop.desktop";
     };
   };
 }
