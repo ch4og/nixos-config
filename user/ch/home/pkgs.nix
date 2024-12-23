@@ -43,6 +43,8 @@
       dust
       binwalk
       alsa-utils
+      yt-dlp
+      exiftool
 
       # Fonts
       noto-fonts
