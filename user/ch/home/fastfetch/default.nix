@@ -1,15 +1,21 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: let
+  allFiles = builtins.attrNames (builtins.readDir ./.);
+  images = builtins.filter (name: builtins.match ".*\\.png$" name != null) allFiles;
+  mkFileAttr = name: {
+    source = "${./.}/${name}";
+  };
+in {
   programs.fastfetch = {
     enable = true;
     settings = {
       logo = {
-        type = "small";
+        type = "kitty";
+        source = "${config.xdg.configHome}/fastfetch/nixos_girl.png";
+        width = 20;
+        height = 8;
         padding = {
           top = 1;
+          left = 3;
         };
       };
       modules = [
@@ -41,7 +47,7 @@
         }
         {
           type = "terminal";
-          format = "{5}";
+          format = "{3}";
           key = "term";
         }
         {
@@ -51,4 +57,11 @@
       ];
     };
   };
+  xdg.configFile = builtins.listToAttrs (
+    map (name: {
+      name = "fastfetch/${name}";
+      value = mkFileAttr name;
+    })
+    images
+  );
 }

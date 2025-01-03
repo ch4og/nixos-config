@@ -12,6 +12,7 @@
       font-family = "ComicCode Nerd Font";
       font-size = "12";
       background-opacity = "0.6";
+      adjust-cursor-thickness = "1";
     };
     themes = {
       KittyDefault = {

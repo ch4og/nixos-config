@@ -26,6 +26,7 @@
           (import ./spotify.nix {inherit pkgs inputs;})
           (import ./firefox.nix {inherit pkgs inputs;})
           (import ./nixcord {inherit pkgs inputs;})
+          (import ./fastfetch)
           ./fish
           ./bin
           ./waybar
