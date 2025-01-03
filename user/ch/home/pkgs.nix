@@ -77,11 +77,9 @@
       gst_all_1.gst-libav
       gst_all_1.gst-plugins-good
       gst_all_1.gst-plugins-base
-      lan-mouse
 
       # Desktop apps
       telegram-desktop
-      kitty
       qbittorrent
       obsidian
       olive-editor
@@ -102,6 +100,5 @@
     ++ [
       inputs.nvf.packages.x86_64-linux.default
       inputs.vban.packages.x86_64-linux.default
-      inputs.uniclip.packages.x86_64-linux.uniclip
     ];
 }

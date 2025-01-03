@@ -3,8 +3,6 @@
     "waybar"
     "wl-paste --watch cliphist store"
     "vban.sh"
-    "lan-mouse"
-    "uniclip -p 53701"
 
     "[title;workspace 4 silent] telegram-desktop"
     "[workspace 2 silent] firefox"

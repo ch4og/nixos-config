@@ -12,7 +12,7 @@
           "custom/swaync"
           "tray"
           "pulseaudio"
-          "custom/network"
+          "network"
           "battery"
           "hyprland/language"
           "clock"
@@ -71,14 +71,13 @@
           ];
           tooltip-format = "{capacity}% {timeTo}";
         };
-        # network = {
-        #   interface = "wlp4s0";
-        #   format-wifi = " ";
-        #   format-disconnected = "⚠";
-        #   on-click = "networkmanager_dmenu";
-        #   on-click-right = "nmcli connection up ${vpn}";
-        #   tooltip-format-wifi = "{essid} {signalStrength}%";
-        # };
+        network = {
+          format-wifi = " ";
+          format-ethernet = "󰈀 ";
+          format-disconnected = "⚠";
+          on-click = "networkmanager_dmenu";
+          tooltip-format-wifi = "{essid} {signalStrength}%";
+        };
         pulseaudio = {
           on-scroll-up = "swayosd-client --output-volume raise";
           on-scroll-down = "swayosd-client --output-volume lower";
@@ -93,21 +92,6 @@
             ];
           };
           on-click = "pavucontrol";
-        };
-        "custom/network" = let
-          vpn = "mitanick-nl3.pvpn.pw-udp";
-        in {
-          format = "{icon}";
-          interval = 3;
-          return-type = "json";
-          format-icons = {
-            "vpn" = "    ";
-            "wifi" = "   ";
-            "off" = "   ";
-          };
-          exec = "$HOME/.config/waybar/network.sh --status ${vpn} 2> /dev/null";
-          on-click = "networkmanager_dmenu";
-          on-click-right = "$HOME/.config/waybar/network.sh --toggle ${vpn}";
         };
         "custom/swaync" = {
           format = "{icon}";
@@ -144,7 +128,6 @@
     style = builtins.readFile ./style.css;
   };
   xdg.configFile = {
-    "waybar/network.sh".source = ./network.sh;
     "waybar/spotify.sh".source = ./spotify.sh;
     "waybar/swaync.sh".source = ./swaync.sh;
   };
