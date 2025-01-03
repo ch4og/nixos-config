@@ -46,6 +46,18 @@
           ]
         )
         5
+      ))
+      ++ (builtins.concatLists (
+        builtins.genList (
+          a: let
+            i = a + 5;
+            ws = i + 1;
+          in [
+            "$mod, code:1${toString i}, workspace, ${toString ws}"
+            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+          ]
+        )
+        5
       ));
     bindm = [
       "$mod, mouse:272, movewindow"
