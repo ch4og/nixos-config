@@ -1,6 +1,6 @@
 {...}: {
   wayland.windowManager.hyprland.settings = {
-    "$terminal" = "kitty";
+    "$terminal" = "ghostty";
     "$fileManager" = "thunar";
     "$browser" = "firefox";
     "$menu" = "rofi -show drun -show-icons";
