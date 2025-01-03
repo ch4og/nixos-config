@@ -21,6 +21,7 @@ Desktop:
 - [ ] Add Adwaita theme for GTK and QT (or any other uniform theme)
 - [ ] SDDM theme
 - [ ] Use [Stylix](https://github.com/danth/stylix) for theming?
+- [ ] Switch to hyprpanel
 - [x] Switch to hyprsplit cause it works better in my use case
 
 Proxy:

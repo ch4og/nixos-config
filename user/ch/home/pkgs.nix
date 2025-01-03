@@ -22,7 +22,7 @@
 
       # Essentials
       ripgrep
-      btop
+      (btop.override {cudaSupport = true;})
       eza
       starship
       jq
