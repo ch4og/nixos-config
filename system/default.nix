@@ -76,7 +76,7 @@
       ];
       auto-optimise-store = true;
       substituters = [
-        "https://aseipp-nix-cache.global.ssl.fastly.net" # cache v2
+        "https://nixos-cache-proxy.cofob.dev" # bypass cache.nixos.org block in Russia
         "https://ezkea.cachix.org" # aagl
         "https://hyprland.cachix.org" # hyprland
       ];
