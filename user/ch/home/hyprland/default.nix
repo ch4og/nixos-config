@@ -19,10 +19,10 @@
     ];
   in {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    package = pkgs.hyprland-git.hyprland;
     systemd.enable = true;
     systemd.variables = ["--all"];
-    plugins = [inputs.split-monitor-workspaces.packages.${pkgs.system}.default];
+    plugins = [pkgs.split-monitor-workspaces.default];
     settings = {
       monitor = [
         "${builtins.elemAt monitors 0}, 2560x1440@120, 0x0, 1.25"

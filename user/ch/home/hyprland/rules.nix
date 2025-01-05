@@ -6,7 +6,7 @@
       "fullscreen, title:(Media viewer)"
       "noanim, title:(Media viewer)"
       "noblur, class:(windowkill)"
-      "noblur, class:(TelegramDesktop)"
+      "noblur, class:(io.github.kukuruzka165.materialgram)"
       "float, title:(Picture-in-Picture)"
       "float, title:(MainPicker)"
       "pin, title:(Picture-in-Picture)"
