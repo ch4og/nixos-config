@@ -7,20 +7,14 @@
   ...
 }: let
   nextdns = builtins.extraBuiltins.readSops ./nextdns.nix.enc;
+  vless = builtins.extraBuiltins.readSops ./vless.nix.enc;
 in {
   imports = [
     ./system
     ./user/ch
     ./vm/windows-gpu
-    (import ./proxy {inherit config nextdns;})
-
-    inputs.sops-nix.nixosModules.sops
+    (import ./proxy {inherit config pkgs nextdns vless;})
   ];
-  sops = {
-    defaultSopsFile = ./secrets.yaml;
-    defaultSopsFormat = "yaml";
-    age.keyFile = "/home/ch/.config/sops/age/keys.txt";
-  };
 
   services = {
     openssh.enable = true;

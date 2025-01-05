@@ -9,3 +9,7 @@ creation_rules:
     key_groups:
       - age:
           - *main
+  - path_regex: vless.nix.enc
+    key_groups:
+      - age:
+          - *main
