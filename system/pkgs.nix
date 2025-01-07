@@ -12,6 +12,7 @@
     zip
     ffmpeg
     just
+    nh
     polkit_gnome
     sops
   ];

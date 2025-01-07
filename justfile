@@ -1,23 +1,32 @@
+set shell := ["nix-shell", "-p", "sops", "nh", "--run"]
+
 # list all available commands
 default:
 	@just --list
 
-# add files to git
-prebuild:
+# all prebuild commands
+pre:
   cp /etc/nixos/hardware-configuration.nix system/hardware-configuration.nix
-  nix shell nixpkgs#sops -c true
   sudo mkdir -p /root/.config
   sudo cp ~/.config/sops /root/.config -r
   git add .
 
-# nixos-rebuild switch
-switch: prebuild
-	sudo nixos-rebuild switch --flake .
+# rebuild and switch
+switch: pre
+  nh os switch .
 
-# nix flake update
-update:
+# update all deps
+up:
 	nix flake update
 
+# update a single dep
+upp input:
+  nix flake lock --update-input {{input}}
+
 # nixos-rebuild boot
-boot: prebuild
-	sudo nixos-rebuild boot --flake .
+boot: pre
+  nh os boot .
+
+# garbage collect
+gc:
+  nh clean all -K 3d
