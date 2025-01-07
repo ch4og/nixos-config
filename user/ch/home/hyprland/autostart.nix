@@ -1,13 +1,13 @@
 {...}: {
   wayland.windowManager.hyprland.settings.exec-once = [
-    "waybar"
-    "wl-paste --watch cliphist store"
-    "vban.sh"
+    "uwsm app -- waybar"
+    "uwsm app -- wl-paste --watch cliphist store"
+    "uwsm app -- vban.sh"
 
-    "[title;workspace 4 silent] materialgram"
-    "[workspace 2 silent] firefox"
-    "[title;workspace 6 silent] sleep 10 && vesktop --disable-gpu-compositing"
-    "[workspace 7 silent] spotify"
-    "[title;workspace 10 silent] steam -silent"
+    "[title;workspace 4 silent] uwsm app -- materialgram"
+    "[workspace 2 silent] uwsm app -- firefox"
+    "[title;workspace 6 silent] uwsm app -- vesktop --disable-gpu-compositing"
+    "[workspace 7 silent] uwsm app -- spotify"
+    "[title;workspace 10 silent] uwsm app -- steam -silent"
   ];
 }

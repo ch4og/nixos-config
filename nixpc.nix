@@ -33,12 +33,10 @@ in {
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
-      extraPackages = [pkgs.sddm-chili-theme];
-      theme = "chili";
       settings = {
         Autologin = {
-          Session = "hyprland.desktop";
           User = "ch";
+          Session = "hyprland-uwsm.desktop";
         };
       };
     };
@@ -64,7 +62,10 @@ in {
     };
     fstrim.enable = true;
   };
-
+  programs.hyprland = {
+    package = pkgs.hyprland-git.hyprland;
+    withUWSM = true;
+  };
   networking = {
     hostName = "nixpc";
     extraHosts = ''

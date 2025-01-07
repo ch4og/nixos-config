@@ -20,7 +20,7 @@
   in {
     enable = true;
     package = pkgs.hyprland-git.hyprland;
-    systemd.enable = true;
+    systemd.enable = false;
     systemd.variables = ["--all"];
     plugins = [pkgs.split-monitor-workspaces.default];
     settings = {
