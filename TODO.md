@@ -1,10 +1,18 @@
 # TODO:
 
+### General:
+
+- [ ] Make README prettier
+- [ ] Add more documentation
+- [ ] Refactor and restructure code
+
 ### System:
 
 - [ ] Setup btrfs snapshots with snapper
 - [?] Switch to [agenix](https://github.com/ryantm/agenix) for better secrets
   management (mb current sops realisation will be good enough)
+- [ ] Add system service that runs nh clean.
+- [ ] Make justfile more functional
 
 ### VMs:
 
@@ -18,16 +26,10 @@
 - [ ] SDDM theme
 - [ ] Use [Stylix](https://github.com/danth/stylix) for theming?
 - [ ] Switch to hyprpanel
-- [x] Switch to hyprsplit cause it works better in my use case
 
 ### Proxy:
 
-- [?] Find why sometimes network dies and drops packets (might be fixed by
-  switching to xray)
-- [x] Switch to xray or v2ray maybe?
-- [x] Add rules to bypass discord block
-- [x] Configure rules to proxy only blocked sites
-- [x] Create a [flake for byedpi](https://github.com/ch4og/byedpi-flake)
+- [ ] Find why sometimes network dies and drops packets
 
 ### Tools:
 
@@ -37,4 +39,3 @@
 ### Long term:
 
 - [ ] Setup Pi-hole on NixOS on RPi
-- [-] Switch all servers from Debian to NixOS (not possible for every server rn)
