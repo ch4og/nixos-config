@@ -1,15 +1,7 @@
 keys:
   - &main age1w8n7jqflvzwdgddvj0tutkeczyz40fcy0qmye8vgaagyyjzq4dhsfq0kyw
 creation_rules:
-  - path_regex: secrets.yaml
-    key_groups:
-      - age:
-          - *main
-  - path_regex: nextdns.nix.enc
-    key_groups:
-      - age:
-          - *main
-  - path_regex: vless.nix.enc
+  - path_regex: proxy/creds.nix.enc
     key_groups:
       - age:
           - *main

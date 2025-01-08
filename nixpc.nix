@@ -5,29 +5,16 @@
   lib,
   pkgs,
   ...
-}: let
-  nextdns = builtins.extraBuiltins.readSops ./nextdns.nix.enc;
-  vless = builtins.extraBuiltins.readSops ./vless.nix.enc;
-in {
+}: {
   imports = [
     ./system
     ./user/ch
     ./vm/windows-gpu
-    (import ./proxy {inherit config pkgs nextdns vless;})
+    ./proxy
   ];
 
   services = {
     openssh.enable = true;
-    resolved = {
-      enable = false;
-      extraConfig = ''
-        DNS=45.90.28.0#${nextdns}.dns.nextdns.io
-        DNS=2a07:a8c0::#${nextdns}.dns.nextdns.io
-        DNS=45.90.30.0#${nextdns}.dns.nextdns.io
-        DNS=2a07:a8c1::#${nextdns}.dns.nextdns.io
-        DNSOverTLS=yes
-      '';
-    };
     blueman.enable = true;
     xserver.videoDrivers = ["nvidia"];
     displayManager.sddm = {
@@ -77,7 +64,7 @@ in {
   fileSystems = {
     "/".options = ["compress=zstd"];
     "/home" = {
-      neededForBoot = true; # fix https://github.com/Mic92/sops-nix/issues/149
+      neededForBoot = true;
       options = ["compress=zstd"];
     };
     "/nix".options = [

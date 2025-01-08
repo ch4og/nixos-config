@@ -1,136 +1,183 @@
 {
   config,
   pkgs,
-  vless,
-  nextdns,
   ...
-}: {
-  services.xray = let
-    antizapret = pkgs.fetchurl {
-      url = "https://github.com/warexify/antizapret-xray/releases/download/202412141734/antizapret.dat";
-      sha256 = "sha256-JwLcLJGB2emov7KI7wcOa/ZCz2rAqEr7OC75rpD++Tg=";
+}: let
+  creds = builtins.extraBuiltins.readSops ./creds.nix.enc;
+in {
+  services.sing-box = let
+    rules = rec {
+      full = pkgs.fetchzip {
+        url = "https://github.com/runetfreedom/russia-v2ray-rules-dat/releases/download/202501090938/sing-box.zip";
+        hash = "sha256-+Gp+ByCgzmHnK/GXAbFeXYc4hCzu8Atbw+et1xFlkFc=";
+        stripRoot = false;
+      };
+      geoip = full + "/rule-set-geoip";
+      geosite = full + "/rule-set-geosite";
     };
-    refilter-geoip = pkgs.fetchurl {
-      url = "https://github.com/1andrevich/Re-filter-lists/releases/download/14122024/geoip.dat";
-      sha256 = "sha256-BBGRSeNESn98F4/QUY5/d3HshET8wheMoHdiu7rHZ+A=";
-    };
-    refilter-geosite = pkgs.fetchurl {
-      url = "https://github.com/1andrevich/Re-filter-lists/releases/download/14122024/geosite.dat";
-      sha256 = "sha256-tOW2DLI4Wum0qcUoFs3rnkAW8XX+sgNIxAZA+0aw3Zk=";
-    };
+    ruleSets = [
+      "geoip-ru-blocked"
+      "geoip-ru-blocked-community"
+      "geoip-re-filter"
+      "geosite-ru-blocked"
+    ];
   in {
     enable = true;
     settings = {
-      log = {
-        loglevel = "error";
-      };
+      log.level = "error";
       dns = {
         servers = [
-          "https://dns.nextdns.io/${nextdns}"
-        ];
-        tag = "dns-out";
-      };
-
-      routing = {
-        rules = [
           {
-            type = "field";
-            protocol = ["bittorrent"];
-            outboundTag = "direct";
+            tag = "nextdns-direct";
+            address = "45.90.28.29";
+            detour = "vless-out";
           }
           {
-            type = "field";
-            domain = [
-              "domain:discord.com"
-              "domain:discord.gg"
-              "domain:googlevideo"
-              "domain:youtube.com"
-              "domain:spotify.com"
-              "domain:2ip.io"
-              "domain:dis.gd"
-              "domain:gstatic.com"
-              "domain:ggpht.com"
-              "domain:ndi.tv"
-              "domain:nextdns.io"
-            ];
-            outboundTag = "vless-out";
+            tag = "nextdns";
+            address = "https://dns.nextdns.io/${creds.nextdns}";
+            address_resolver = "nextdns-direct";
+            address_strategy = "ipv4_only";
+            detour = "vless-out";
           }
           {
-            type = "field";
-            domains = [
-              "ext:../../../../../../../../../${antizapret}:ZAPRETINFO"
-            ];
-            outboundTag = "vless-out";
-          }
-          {
-            type = "field";
-            ip = [
-              "ext:../../../../../../../../../${refilter-geoip}:refilter"
-            ];
-            outboundTag = "vless-out";
-          }
-          {
-            type = "field";
-            domain = [
-              "ext:../../../../../../../../../${refilter-geosite}:refilter"
-            ];
-            outboundTag = "vless-out";
+            tag = "block";
+            address = "rcode://success";
           }
         ];
+        final = "nextdns";
+        strategy = "ipv4_only";
+        disable_cache = true;
+        disable_expire = false;
       };
-
       inbounds = [
         {
-          listen = "127.0.0.1";
-          port = 1080;
-          protocol = "socks";
-          settings = {
-            auth = "noauth";
-            udp = true;
-          };
+          type = "tun";
+          tag = "tun-in";
+          interface_name = "sing0";
+          address = ["172.19.0.1/28"];
+          mtu = 9000;
+          auto_route = true;
+          strict_route = false;
+          stack = "gvisor";
+          endpoint_independent_nat = true;
+          sniff = true;
+          sniff_override_destination = true;
         }
       ];
       outbounds = [
         {
-          protocol = "freedom";
-          domainStrategy = "UseIP";
+          type = "vless";
+          tag = "vless-out";
+          server = "${creds.server}";
+          server_port = 443;
+          uuid = "${creds.uuid}";
+          flow = "xtls-rprx-vision";
+          network = "tcp";
+          tls = {
+            enabled = true;
+            server_name = "ch4og.com";
+            utls = {
+              enabled = true;
+              fingerprint = "random";
+            };
+            reality = {
+              enabled = true;
+              public_key = "${creds.pbkey}";
+              short_id = "${creds.sid}";
+            };
+          };
+          domain_strategy = "ipv4_only";
+        }
+        {
+          type = "shadowsocks";
+          tag = "shadowsocks-out";
+          server = "${creds.server}";
+          server_port = 80;
+          method = "2022-blake3-aes-256-gcm";
+          password = "${creds.password}";
+          udp_over_tcp = false;
+        }
+        {
+          type = "dns";
+          tag = "dns-out";
+        }
+        {
+          type = "direct";
           tag = "direct";
         }
         {
-          protocol = "vless";
-          settings = {
-            vnext = [
-              {
-                port = 443;
-                address = "${vless.server}";
-                users = [
-                  {
-                    encryption = "none";
-                    flow = "xtls-rprx-vision";
-                    id = "${vless.uuid}";
-                  }
-                ];
-              }
-            ];
-          };
-          streamSettings = {
-            network = "tcp";
-            security = "reality";
-            realitySettings = {
-              serverName = "ch4og.com";
-              fingerprint = "random";
-              publicKey = "${vless.pbkey}";
-              shortId = "${vless.sid}";
-              spiderX = "/";
-            };
-          };
-          tag = "vless-out";
-        }
-        {
-          protocol = "blackhole";
+          type = "block";
           tag = "block";
         }
       ];
+      route = {
+        rule_set = let
+          paths =
+            builtins.map (
+              ruleSet:
+                if builtins.match "^geoip" ruleSet != null
+                then "${rules.geoip}/${ruleSet}.srs"
+                else if builtins.match "^geosite" ruleSet != null
+                then "${rules.geosite}/${ruleSet}.srs"
+                else null
+            )
+            ruleSets;
+
+          generateConfig = path: {
+            tag = builtins.replaceStrings ["${rules.geoip}/" "${rules.geosite}/" ".srs"] ["" "" ""] (builtins.baseNameOf path);
+            type = "local";
+            format = "binary";
+            path = path;
+          };
+        in
+          builtins.map generateConfig paths;
+        rules =
+          [
+            {
+              rule_set = "geosite-category-ads-all";
+              outbound = "block";
+            }
+            {
+              process_name = [
+                "electron"
+                ".Discord-wrapped"
+                ".DiscordCanary-wrapped"
+              ];
+              outbound = "shadowsocks-out";
+            }
+            {
+              domain_suffix = [
+                "2ip.io"
+                "myip.wtf"
+                "dis.gd"
+                "gstatic.com"
+                "ggpht.com"
+                "ndi.tv"
+              ];
+              outbound = "vless-out";
+            }
+            {
+              domain_keyword = [
+                "discord"
+                "googlevideo"
+                "youtu"
+                "spotify"
+              ];
+              outbound = "vless-out";
+            }
+            {
+              protocol = "bittorrent";
+              outbound = "direct";
+            }
+          ]
+          ++ builtins.map (ruleSet: {
+            rule_set = ruleSet;
+            outbound = "vless-out";
+          })
+          ruleSets;
+        final = "direct";
+        auto_detect_interface = true;
+      };
     };
   };
 }
