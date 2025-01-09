@@ -78,6 +78,7 @@
     gst_all_1.gst-plugins-good
     gst_all_1.gst-plugins-base
     vban.default
+    uxplay
 
     # Desktop apps
     materialgram
@@ -89,6 +90,7 @@
     tetrio-desktop
     byedpi
     prismlauncher
+    lunar-client
     parsec-bin
     file-roller
     krita
