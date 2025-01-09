@@ -10,7 +10,7 @@
     ./system
     ./user/ch
     ./vm/windows-gpu
-    ./proxy
+    ./proxy/sing-box
   ];
 
   services = {
