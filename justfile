@@ -7,8 +7,6 @@ default:
 # all prebuild commands
 pre:
   cp /etc/nixos/hardware-configuration.nix system/hardware-configuration.nix
-  sudo mkdir -p /root/.config
-  sudo cp ~/.config/sops /root/.config -r
   git add .
 
 # rebuild and switch

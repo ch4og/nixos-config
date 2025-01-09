@@ -75,20 +75,24 @@
     "/home/ch/Games".options = ["compress=zstd"];
   };
   zramSwap.enable = true;
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = [pkgs.nvidia-vaapi-driver];
-  };
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = false;
-    open = true;
-    nvidiaSettings = true;
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = [pkgs.nvidia-vaapi-driver];
+    };
+    nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      modesetting.enable = true;
+      powerManagement.enable = true;
+      powerManagement.finegrained = false;
+      open = true;
+      nvidiaSettings = true;
+    };
   };
   virtualisation = {
     podman = {

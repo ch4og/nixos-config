@@ -1,7 +1,7 @@
 keys:
   - &main age1w8n7jqflvzwdgddvj0tutkeczyz40fcy0qmye8vgaagyyjzq4dhsfq0kyw
 creation_rules:
-  - path_regex: proxy/creds.nix.enc
+  - path_regex: proxy/sing-box/creds.nix.enc
     key_groups:
       - age:
           - *main

@@ -6,3 +6,7 @@
 
 I'm not certain if it will function on any other machines at the moment, but I'm
 working to make this configuration as modular as possible.
+
+### Prerequisites
+
+Generate sops file at root's home (`/root.config/sops.yaml`)
