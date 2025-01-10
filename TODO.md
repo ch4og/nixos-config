@@ -8,6 +8,7 @@
 - [ ] Setup btrfs snapshots with snapper
 - [ ] Remove useless lines from
       [windows-gpu.xml](https://github.com/ch4og/nixos-config/blob/main/vm/windows-gpu/windows-gpu.xml)
+- [ ] Make vm send sound to linux
 - [ ] Add Adwaita theme for GTK and QT (or any other uniform theme)
 - [ ] SDDM theme
 - [ ] Use [Stylix](https://github.com/danth/stylix) for theming?

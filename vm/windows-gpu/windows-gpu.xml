@@ -34,6 +34,7 @@
     <partition>/machine</partition>
   </resource>
   <os>
+    <smbios mode='sysinfo'/>
     <type arch='x86_64' machine='pc-q35-9.1'>hvm</type>
     <loader readonly='yes' type='pflash'>/run/libvirt/nix-ovmf/OVMF_CODE.fd</loader>
     <nvram template='/run/libvirt/nix-ovmf/OVMF_VARS.fd'>/var/lib/windows-gpu/windows-gpu_VARS.fd</nvram>
@@ -41,17 +42,18 @@
   </os>
   <sysinfo type="smbios">
     <bios>
-      <entry name="vendor">American Megatrends Inc.</entry>
-      <entry name="version">F31o</entry>
-      <entry name="date">12/03/2020</entry>
+      <entry name="vendor">Dell Inc.</entry>
+      <entry name="version">1.19.0</entry>
+      <entry name="date">05/06/2024</entry>
     </bios>
     <system>
-      <entry name="manufacturer">ASRock</entry>
-      <entry name="product">B550M PG Riptide</entry>
-      <entry name="version">x.x</entry>
-      <entry name="serial">M80-F3003700605</entry>
+      <entry name="manufacturer">Dell Inc.</entry>
+      <entry name="product">0XF7N6</entry>
+      <entry name="version">A03</entry>
+      <entry name="serial">Default string</entry>
       <entry name="uuid">e882122f-d30e-4ef6-9f03-48f21c3eb31e</entry>
-      <entry name="family">X570 MB</entry>
+      <entry name="sku">Default string</entry>
+      <entry name="family">GSeries</entry>
     </system>
   </sysinfo>
   <features>
@@ -225,15 +227,17 @@
       <target type='serial' port='0'/>
       <alias name='serial0'/>
     </console>
-    <input type='tablet' bus='usb'>
-      <alias name='input0'/>
-      <address type='usb' bus='0' port='1'/>
-    </input>
-    <input type='mouse' bus='ps2'>
+    <input type='mouse' bus='virtio'>
       <alias name='input1'/>
     </input>
-    <input type='keyboard' bus='ps2'>
+    <input type='keyboard' bus='virtio'>
       <alias name='input2'/>
+    </input>
+    <input type='evdev'>
+      <source dev='/dev/input/by-id/uinput-persist-logi-mouse'/>
+    </input>
+    <input type='evdev'>
+      <source dev='/dev/input/by-id/uinput-persist-akko-keybd' grab='all' repeat='on' grabToggle='ctrl-ctrl'/>
     </input>
     <audio id='1' type='none'/>
     <hostdev mode='subsystem' type='pci' managed='yes'>
@@ -254,43 +258,11 @@
     </hostdev>
     <hostdev mode='subsystem' type='usb' managed='yes'>
       <source>
-        <vendor id='0x046d'/>
-        <product id='0x0adf'/>
-      </source>
-      <alias name='hostdev2'/>
-      <address type='usb' bus='0' port='2'/>
-    </hostdev>
-    <hostdev mode='subsystem' type='usb' managed='yes'>
-      <source>
-        <vendor id='0x046d'/>
-        <product id='0xc547'/>
-      </source>
-      <alias name='hostdev3'/>
-      <address type='usb' bus='0' port='3'/>
-    </hostdev>
-    <hostdev mode='subsystem' type='usb' managed='yes'>
-      <source>
-        <vendor id='0x25a7'/>
-        <product id='0x2420'/>
-      </source>
-      <alias name='hostdev4'/>
-      <address type='usb' bus='0' port='4'/>
-    </hostdev>
-    <hostdev mode='subsystem' type='usb' managed='yes'>
-      <source>
-        <vendor id='0x3142'/>
-        <product id='0x00a8'/>
-      </source>
-      <alias name='hostdev5'/>
-      <address type='usb' bus='0' port='5'/>
-    </hostdev>
-    <hostdev mode='subsystem' type='usb' managed='yes'>
-      <source>
         <vendor id='0x8087'/>
         <product id='0x0029'/>
       </source>
-      <alias name='hostdev6'/>
-      <address type='usb' bus='0' port='6'/>
+      <alias name='hostdev2'/>
+      <address type='usb' bus='0' port='2'/>
     </hostdev>
     <watchdog model='itco' action='reset'>
       <alias name='watchdog0'/>

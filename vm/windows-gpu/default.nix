@@ -3,6 +3,13 @@
   pkgs,
   ...
 }: {
+  services.persistent-evdev = {
+    enable = true;
+    devices = {
+      persist-akko-keybd = "usb-_Akko_2.4G_Wireless_Keyboard-event-kbd";
+      persist-logi-mouse = "usb-Logitech_USB_Receiver-event-mouse";
+    };
+  };
   systemd.services.libvirtd.path = let
     env = pkgs.buildEnv {
       name = "qemu-hook-env";
@@ -35,8 +42,8 @@ cBcBC9A5C1gCCywBCjwKPA0ADQANTElPTgANABQSX0JTVACkEgoEAAALcBcL0Dk=' | ${pkgs.coreu
   ];
   environment.etc = {
     "libvirt/virtio-win.iso".source = pkgs.virtio-win.src;
-    "libvirt/hooks/qemu".source = ./qemu;
-    "libvirt/hooks/qemu.d/windows-gpu/prepare/begin/start.sh".source = ./start.sh;
-    "libvirt/hooks/qemu.d/windows-gpu/release/end/stop.sh".source = ./stop.sh;
+    "libvirt/hooks/qemu".source = ./hooks/qemu;
+    "libvirt/hooks/qemu.d/windows-gpu/prepare/begin/start.sh".source = ./hooks/start.sh;
+    "libvirt/hooks/qemu.d/windows-gpu/release/end/stop.sh".source = ./hooks/stop.sh;
   };
 }
