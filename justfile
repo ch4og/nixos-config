@@ -10,7 +10,7 @@ pre:
   git add .
 
 # rebuild and switch
-switch: pre
+sw: pre
   nh os switch .
 
 # update all deps
@@ -19,7 +19,7 @@ up:
 
 # update a single dep
 upp input:
-  nix flake lock --update-input {{input}}
+  nix flake update {{input}}
 
 # nixos-rebuild boot
 boot: pre

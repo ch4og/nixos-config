@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   programs.bat = {
     enable = true;
-    extraPackages = with pkgs.bat-extras; [
+    # https://nixpk.gs/pr-tracker.html?pr=373146
+    extraPackages = with pkgs.master.bat-extras; [
       batgrep
       batdiff
       batman
