@@ -1,6 +1,10 @@
-{creds, ...}: [
-  (import ./vless.nix {inherit creds;})
-  (import ./shadowsocks.nix {inherit creds;})
+{
+  creds,
+  lib,
+  ...
+}: [
+  (import ./vless.nix {inherit lib creds;})
+  (import ./shadowsocks.nix {inherit lib creds;})
   {
     type = "dns";
     tag = "dns-out";

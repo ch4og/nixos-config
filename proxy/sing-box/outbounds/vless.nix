@@ -1,22 +1,26 @@
-{creds, ...}: {
+{
+  creds,
+  lib,
+  ...
+}: {
   type = "vless";
   tag = "vless-out";
-  server = "${creds.server}";
-  server_port = 443;
-  uuid = "${creds.uuid}";
+  server = "${creds.vless.server}";
+  server_port = lib.strings.toInt "${creds.vless.port}";
+  uuid = "${creds.vless.uuid}";
   flow = "xtls-rprx-vision";
   network = "tcp";
   tls = {
     enabled = true;
-    server_name = "ch4og.com";
+    server_name = "${creds.vless.domain}";
     utls = {
       enabled = true;
-      fingerprint = "random";
+      fingerprint = "chrome";
     };
     reality = {
       enabled = true;
-      public_key = "${creds.pbkey}";
-      short_id = "${creds.sid}";
+      public_key = "${creds.vless.pbkey}";
+      short_id = "${creds.vless.sid}";
     };
   };
   domain_strategy = "ipv4_only";
