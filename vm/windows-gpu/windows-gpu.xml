@@ -227,12 +227,8 @@
       <target type='serial' port='0'/>
       <alias name='serial0'/>
     </console>
-    <input type='mouse' bus='virtio'>
-      <alias name='input1'/>
-    </input>
-    <input type='keyboard' bus='virtio'>
-      <alias name='input2'/>
-    </input>
+    <input type='mouse' bus='usb'/>
+    <input type='keyboard' bus='virtio'/>
     <input type='evdev'>
       <source dev='/dev/input/by-id/uinput-persist-logi-mouse'/>
     </input>
