@@ -81,7 +81,7 @@
     uxplay
 
     # Desktop apps
-    materialgram
+    ayugram-desktop
     qbittorrent
     obsidian
     olive-editor

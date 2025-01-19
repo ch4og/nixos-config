@@ -6,7 +6,7 @@
       "fullscreen, title:(Media viewer)"
       "noanim, title:(Media viewer)"
       "noblur, class:(windowkill)"
-      "noblur, class:(io.github.kukuruzka165.materialgram)"
+      "noblur, class:(com.ayugram.desktop)"
       "float, title:(Picture-in-Picture)"
       "float, title:(MainPicker)"
       "pin, title:(Picture-in-Picture)"
