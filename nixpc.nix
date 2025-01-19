@@ -73,6 +73,11 @@
     ];
     "/var/log".options = ["compress=zstd"];
     "/home/ch/Games".options = ["compress=zstd"];
+    "/home/ch/Windows" = {
+      device = "/dev/disk/by-uuid/8A18903F18902C67";
+      fsType = "ntfs-3g";
+      options = ["rw" "uid=1000"];
+    };
   };
   zramSwap.enable = true;
   hardware = {
@@ -130,5 +135,6 @@
       "iommu=pt"
       "nvidia.NVreg_UsePageAttributeTable=1"
     ];
+    supportedFilesystems = ["ntfs"];
   };
 }
