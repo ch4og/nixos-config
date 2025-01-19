@@ -1,6 +1,6 @@
 # My NixOS config
 
-![image](https://github.com/user-attachments/assets/d6580f04-0787-4c98-af09-87baa21eac7d)
+![image](https://github.com/user-attachments/assets/b9e03ee3-e7f0-49c7-b6ce-2512064fb33f)
 
 ### Currently very WIP, but it is my daily driver on my main machine.
 

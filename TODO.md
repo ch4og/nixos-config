@@ -1,5 +1,6 @@
 # TODO:
 
+- [ ] Fix mimeapps.list to be always overwritten
 - [ ] Make README prettier
 - [ ] Add more documentation
 - [ ] Refactor and restructure code
