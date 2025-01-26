@@ -12,7 +12,6 @@
       grub = {
         device = "nodev";
         efiSupport = true;
-        useOSProber = true;
       };
       efi.canTouchEfiVariables = true;
     };
@@ -40,7 +39,6 @@
     locate = {
       enable = true;
       package = pkgs.plocate;
-      localuser = null;
     };
 
     gnome.gnome-keyring.enable = true;

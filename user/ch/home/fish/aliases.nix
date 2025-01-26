@@ -12,6 +12,7 @@
   free = "free -m";
   dust = "dust -d 1 ";
   lsd = "eza";
+  ssh = "TERM=xterm-256color /run/current-system/sw/bin/ssh";
 
   # Replacements for commands
   cat = "bat -pp";

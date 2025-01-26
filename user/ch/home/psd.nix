@@ -1,6 +1,6 @@
 {
   services.psd = {
-    enable = true;
+    enable = false;
     resyncTimer = "10m";
   };
 }

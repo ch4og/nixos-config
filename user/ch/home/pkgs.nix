@@ -18,7 +18,8 @@
     nodejs
     alejandra
     yarn
-    vscode
+    code-cursor
+    create-react-app
 
     # Essentials
     ripgrep
@@ -45,6 +46,8 @@
     alsa-utils
     yt-dlp
     exiftool
+    distrobox
+    traceroute
 
     # Fonts
     noto-fonts
@@ -60,8 +63,6 @@
     ffmpegthumbnailer
     gamemode
     gamescope
-    heroic
-    bottles
     cliphist
     hyprpicker
     swappy
@@ -99,5 +100,9 @@
     chromium
     kdenlive
     remmina
+    tor-browser
+    burpsuite
+    bottles
+    heroic
   ];
 }
