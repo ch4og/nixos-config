@@ -32,7 +32,6 @@
     };
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     betterfox-nix = {
       url = "github:HeitorAugustoLN/betterfox-nix";
