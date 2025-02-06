@@ -20,6 +20,7 @@
     yarn
     code-cursor
     create-react-app
+    sqlite
 
     # Essentials
     ripgrep
@@ -104,5 +105,6 @@
     burpsuite
     bottles
     heroic
+    fontforge-gtk
   ];
 }
