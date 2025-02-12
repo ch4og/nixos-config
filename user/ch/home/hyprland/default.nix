@@ -103,8 +103,8 @@
         sensitivity = 0;
       };
       env = [
-        "XCURSOR_SIZE,16"
-        "HYPRCURSOR_SIZE,16"
+        "XCURSOR_SIZE,24"
+        "HYPRCURSOR_SIZE,24"
         "LIBVA_DRIVER_NAME,nvidia"
         "XDG_SESSION_TYPE,wayland"
         "GBM_BACKEND,nvidia-drm"
