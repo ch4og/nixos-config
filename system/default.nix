@@ -95,12 +95,14 @@
       auto-optimise-store = true;
       substituters = [
         "https://nixos-cache-proxy.cofob.dev" # bypass cache.nixos.org block in Russia
+        "https://nix-gaming.cachix.org" # nix-gaming
         "https://ezkea.cachix.org" # aagl
         "https://hyprland.cachix.org" # hyprland
       ];
       trusted-public-keys = [
         "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" # aagl
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" # hyprland
+        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" # nix-gaming
       ];
       warn-dirty = false;
     };

@@ -46,6 +46,7 @@
       url = "github:ch4og/vban-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
   outputs = {
@@ -64,6 +65,7 @@
           spicetify-nix = inputs.spicetify-nix.legacyPackages.${prev.system};
           nixcord = inputs.nixcord.packages.${prev.system};
           vban = inputs.vban.packages.${prev.system};
+          nix-gaming = inputs.nix-gaming.packages.${prev.system};
         })
       ];
     };

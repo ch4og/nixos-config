@@ -11,7 +11,11 @@
     ./user/ch
     ./vm/windows-gpu
     ./proxy/sing-box
+    inputs.nix-gaming.nixosModules.pipewireLowLatency
+    inputs.nix-gaming.nixosModules.platformOptimizations
   ];
+
+  programs.steam.platformOptimizations.enable = true;
 
   services = {
     openssh.enable = true;
@@ -30,6 +34,9 @@
     pipewire = {
       enable = true;
       pulse.enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      lowLatency.enable = true;
     };
     usbmuxd.enable = true;
     avahi = {

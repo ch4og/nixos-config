@@ -7,8 +7,9 @@
     # Coding
     nvf.default
     python3
-    python312Packages.pygithub
-    python312Packages.opencv4
+    python313Packages.pygithub
+    python313Packages.opencv4
+    python313Packages.pipx
     rustup
     gh
     nix-prefetch
@@ -81,6 +82,8 @@
     gst_all_1.gst-plugins-base
     vban.default
     uxplay
+    ani-cli
+    ani-skip
 
     # Desktop apps
     ayugram-desktop
@@ -106,5 +109,7 @@
     bottles
     heroic
     fontforge-gtk
+    nix-gaming.osu-stable
+    nix-gaming.osu-lazer-bin
   ];
 }
