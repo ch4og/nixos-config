@@ -11,7 +11,6 @@
     protocol = "bittorrent";
     outbound = "direct";
   }
-
   {
     domain_suffix = [
       "2ip.io"
@@ -21,6 +20,8 @@
       "ggpht.com"
       "ndi.tv"
       "notion.so"
+      "animego.me"
+      "sovetromantica.com"
     ];
     outbound = "vless-out";
   }
