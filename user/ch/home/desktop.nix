@@ -1,14 +1,14 @@
 {
   xdg.desktopEntries = {
-    "discord-canary" = {
+    "discord" = {
       categories = [
         "Network"
         "InstantMessaging"
       ];
-      exec = "DiscordCanary --disable-gpu-compositing";
-      name = "Discord Canary";
+      exec = "Discord --disable-gpu-compositing";
+      name = "Discord";
       genericName = "All-in-one cross-platform voice and text chat for gamers";
-      icon = "discord-canary";
+      icon = "discord";
       type = "Application";
       mimeType = ["x-scheme-handler/discord"];
     };

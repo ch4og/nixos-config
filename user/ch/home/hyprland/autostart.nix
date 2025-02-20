@@ -6,7 +6,7 @@
 
     "[title;workspace 4 silent] uwsm app -- ayugram-desktop"
     "[workspace 2 silent] uwsm app -- firefox"
-    "[title;workspace 6 silent] uwsm app -- discordcanary --disable-gpu-compositing"
+    "[title;workspace 6 silent] uwsm app -- discord --disable-gpu-compositing"
     "[workspace 7 silent] uwsm app -- spotify"
     "[title;workspace 10 silent] uwsm app -- steam -silent"
   ];

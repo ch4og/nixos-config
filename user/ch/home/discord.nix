@@ -9,7 +9,7 @@
   programs.nixcord = {
     enable = true;
     discord = {
-      package = import ./discord-canary-krisp.nix {inherit pkgs;};
+      package = pkgs.discord-krisp;
       vencord.enable = true;
       openASAR.enable = false;
     };
