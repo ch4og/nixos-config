@@ -20,7 +20,6 @@
     alejandra
     yarn
     code-cursor
-    create-react-app
     sqlite
 
     # Essentials
