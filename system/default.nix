@@ -71,7 +71,7 @@
       XDG_BIN_HOME = "$HOME/.local/bin";
       PATH = ["${XDG_BIN_HOME}"];
       GOPATH = "${XDG_DATA_HOME}/go";
-      NIXOS_OZONE_WL = "0";
+      NIXOS_OZONE_WL = "1";
     };
   };
 
@@ -94,7 +94,6 @@
       ];
       auto-optimise-store = true;
       substituters = [
-        "https://nixos-cache-proxy.cofob.dev" # bypass cache.nixos.org block in Russia
         "https://nix-gaming.cachix.org" # nix-gaming
         "https://ezkea.cachix.org" # aagl
         "https://hyprland.cachix.org" # hyprland

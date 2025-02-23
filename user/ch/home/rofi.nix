@@ -38,10 +38,10 @@
       inherit (config.lib.formats.rasi) mkLiteral;
     in {
       "*" = {
-        font = "Montserrat 12";
-        bg0 = mkLiteral "#242424E6";
-        bg1 = mkLiteral "#7E7E7E80";
-        bg2 = mkLiteral "#0860f2E6";
+        font = "Noto Sans 12";
+        bg0 = mkLiteral "#24242499";
+        bg1 = mkLiteral "#7E7E7E60";
+        bg2 = mkLiteral "#0860f299";
 
         fg0 = mkLiteral "#DEDEDE";
         fg1 = mkLiteral "#FFFFFF";
@@ -61,7 +61,7 @@
         border-radius = 8;
       };
       inputbar = {
-        font = "Montserrat 20";
+        font = "Noto Sans 20";
         padding = mkLiteral "12px";
         spacing = mkLiteral "12px";
         children = map mkLiteral [

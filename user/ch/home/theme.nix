@@ -13,6 +13,7 @@
   gtk = {
     enable = true;
 
+    font.name = "Noto Sans";
     theme = {
       package = pkgs.layan-gtk-theme;
       name = "Layan-Dark";
@@ -20,7 +21,7 @@
 
     iconTheme = {
       package = pkgs.tela-icon-theme;
-      name = "Tela";
+      name = "Tela-dark";
     };
   };
 
