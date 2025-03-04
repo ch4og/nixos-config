@@ -101,7 +101,7 @@
     filezilla
     onlyoffice-bin
     chromium
-    kdenlive
+    kdePackages.kdenlive
     remmina
     tor-browser
     burpsuite
