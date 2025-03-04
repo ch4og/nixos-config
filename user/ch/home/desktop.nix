@@ -24,5 +24,18 @@
       name = "Vesktop";
       type = "Application";
     };
+    "com.ayugram.desktop" = {
+      categories = [
+        "Chat"
+        "Network"
+        "InstantMessaging"
+        "Qt"
+      ];
+      exec = "env QT_QPA_PLATFORM=xcb ayugram-desktop";
+      name = "AyuGram Desktop";
+      genericName = "AyuGram Desktop";
+      icon = "ayugram";
+      type = "Application";
+    };
   };
 }
