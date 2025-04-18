@@ -19,8 +19,8 @@
         "$mod, Period, exec, uwsm app -- rofi -show rofimoji"
         ", XF86Calculator, exec, uwsm app -- rofi -show calc"
         "$mod, M, exec, uwsm app -- rofi -show rofi-power-menu"
-        "$mod SHIFT ,S, exec, uwsm app -- grimblast --freeze save area - | swappy -f - && wl-paste | chibi-upload.sh"
-        ",Print, exec, uwsm app -- grimblast --freeze copy area && wl-paste | chibi-upload.sh"
+        "$mod SHIFT ,S, exec, uwsm app -- grimblast --freeze save area - | swappy -f - && wl-paste"
+        ",Print, exec, uwsm app -- grimblast --freeze copy area && wl-paste"
         "$mod, F, togglefloating"
         "$mod, BRACKETRIGHT, fullscreen"
         "$mod, SPACE, exec, uwsm app -- $menu"
@@ -40,8 +40,8 @@
           i: let
             ws = i + 1;
           in [
-            "$mod, code:1${toString i}, split-workspace, ${toString ws}"
-            "$mod SHIFT, code:1${toString i}, split-movetoworkspace, ${toString ws}"
+            "$mod, code:1${toString i}, exec, hyprsome workspace ${toString ws}"
+            "$mod SHIFT, code:1${toString i}, exec, hyprsome movefocus ${toString ws}"
           ]
         )
         5

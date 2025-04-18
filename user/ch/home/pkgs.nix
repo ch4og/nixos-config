@@ -20,6 +20,7 @@
     alejandra
     yarn
     code-cursor
+    vscode
     sqlite
 
     # Essentials
@@ -47,8 +48,9 @@
     alsa-utils
     yt-dlp
     exiftool
-    distrobox
+    distrobox_git
     traceroute
+    inetutils
 
     # Fonts
     noto-fonts
@@ -61,6 +63,7 @@
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.qtstyleplugin-kvantum
     wl-clipboard
+    ffmpeg-full
     ffmpegthumbnailer
     gamemode
     gamescope
@@ -79,12 +82,15 @@
     gst_all_1.gst-libav
     gst_all_1.gst-plugins-good
     gst_all_1.gst-plugins-base
-    vban.default
     uxplay
     ani-cli
     ani-skip
+    hyprsome
+    appimage-run
+    hyprpolkitagent
 
     # Desktop apps
+    chromium
     ayugram-desktop
     qbittorrent
     obsidian
@@ -110,5 +116,9 @@
     fontforge-gtk
     nix-gaming.osu-stable
     nix-gaming.osu-lazer-bin
+    torzu
+    zoom-us
+    upscayl
+    nekobox.nekobox
   ];
 }

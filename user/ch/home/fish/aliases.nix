@@ -4,7 +4,7 @@
   ff = "fastfetch";
   o = "xdg-open";
   reload-waybar = "pkill -SIGUSR2 waybar";
-  cybersec = "nix develop github:ch4og/nixcybersec -c fish";
+  cybersec = "nix develop github:ch4og/nixcybersec";
 
   # Flags for commands
   ip = "ip -c";

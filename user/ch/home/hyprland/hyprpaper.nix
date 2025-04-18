@@ -6,8 +6,8 @@
   services.hyprpaper = {
     enable = true;
     settings = let
-      main = "wallhaven-28rr8m.jpg";
-      secondary = "Akiizumi-Momiji-Blue-Archive-thumbnail.jpg";
+      main = "wallhaven-expj3o_upscayl_2x_digital-art-4x.png";
+      secondary = "wallhaven-xlwepv.jpg";
 
       walls = "${config.home.homeDirectory}/Pictures/walls";
     in {
@@ -18,6 +18,7 @@
         "${walls}/${secondary}"
       ];
       wallpaper = [
+        "DP-1, ${walls}/${main}"
         "HDMI-A-1, ${walls}/${main}"
         "eDP-1, ${walls}/${secondary}"
       ];

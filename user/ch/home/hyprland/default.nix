@@ -14,38 +14,42 @@
   ];
   wayland.windowManager.hyprland = let
     monitors = [
-      "HDMI-A-1"
+      "DP-1"
       "eDP-1"
+      "HDMI-A-1"
     ];
   in {
     enable = true;
-    package = pkgs.hyprland-git.hyprland;
+    package = null;
     systemd.enable = false;
-    systemd.variables = ["--all"];
-    plugins = [pkgs.split-monitor-workspaces.default];
+    #systemd.variables = ["--all"];
     settings = {
       monitor = [
-        "${builtins.elemAt monitors 0}, 2560x1440@120, 0x0, 1.25"
+        "${builtins.elemAt monitors 0}, 3840x2160@144, 0x0, 1.875"
         "${builtins.elemAt monitors 1}, 1920x1080@120, 2048x144, 1.25"
+        "${builtins.elemAt monitors 2}, 1920x1080@60, auto, 1, mirror, ${builtins.elemAt monitors 0}"
       ];
 
       workspace =
         builtins.genList (
-          i: "${toString (i + 1)},monitor:${
-            if (i < 5)
-            then (builtins.elemAt monitors 0)
-            else (builtins.elemAt monitors 1)
-          },persistent:true"
+          i: let
+            workspaceNumber = i + 1;
+            monitorIndex =
+              if workspaceNumber <= 5
+              then 0
+              else 1;
+            monitor = builtins.elemAt monitors monitorIndex;
+            mappedNumber =
+              if workspaceNumber <= 5
+              then workspaceNumber + 20
+              else workspaceNumber + 5;
+          in
+            if workspaceNumber <= 5 || workspaceNumber >= 6 # Actually this condition is always true
+            then "${toString mappedNumber},monitor:${monitor},persistent:true"
+            else "" # Skip workspaces (though the condition above makes this unreachable)
         )
-        10;
+        10; # Only need to generate 10 workspaces now (5 for each monitor)
 
-      plugin = {
-        split-monitor-workspaces = {
-          count = 5;
-          enable_notifications = 0;
-          enable_persistent_workspaces = 1;
-        };
-      };
       general = {
         gaps_in = 5;
         gaps_out = 20;
@@ -108,7 +112,7 @@
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
-        "LIBVA_DRIVER_NAME,nvidia"
+        # "LIBVA_DRIVER_NAME,nvidia"
         "XDG_SESSION_TYPE,wayland"
         "GBM_BACKEND,nvidia-drm"
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
@@ -117,6 +121,8 @@
         "QT_QPA_PLATFORMTHEME,gtk3"
         "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         "MOZ_DISABLE_RDD_SANDBOX,1"
+        "EDITOR,nvim"
+        "STEAM_FORCE_DESKTOPUI_SCALING,1.5"
       ];
       cursor = {
         no_hardware_cursors = false;

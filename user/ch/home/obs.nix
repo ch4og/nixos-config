@@ -9,8 +9,7 @@
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [
       input-overlay
-      obs-ndi
-      obs-teleport
+      #obs-ndi
       obs-multi-rtmp
       (pkgs.obs-studio-plugins.obs-pipewire-audio-capture.overrideAttrs {
         version = "c8c57b39fddf01c365f3d1234edc983ee0da1b5b";

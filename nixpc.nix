@@ -9,13 +9,9 @@
   imports = [
     ./system
     ./user/ch
-    ./vm/windows-gpu
-    ./proxy/sing-box
     inputs.nix-gaming.nixosModules.pipewireLowLatency
     inputs.nix-gaming.nixosModules.platformOptimizations
   ];
-
-  programs.steam.platformOptimizations.enable = true;
 
   services = {
     openssh.enable = true;
@@ -36,7 +32,7 @@
       pulse.enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
-      lowLatency.enable = true;
+      #lowLatency.enable = true; # causes crackling when cpu is under load
     };
     usbmuxd.enable = true;
     avahi = {
@@ -62,9 +58,6 @@
   };
   networking = {
     hostName = "nixpc";
-    extraHosts = ''
-      10.42.0.253 winpc.local
-    '';
     networkmanager.enable = true;
     firewall.enable = false;
   };
@@ -98,7 +91,7 @@
       extraPackages = [pkgs.nvidia-vaapi-driver];
     };
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
       modesetting.enable = true;
       powerManagement.enable = true;
       powerManagement.finegrained = false;
@@ -107,26 +100,9 @@
     };
   };
   virtualisation = {
-    podman = {
-      enable = true;
-      dockerCompat = false;
-      defaultNetwork.settings.dns_enabled = true;
-    };
     docker = {
       enable = true;
       autoPrune.enable = true;
-    };
-    libvirtd = {
-      enable = true;
-      onBoot = "ignore";
-      onShutdown = "shutdown";
-      qemu = {
-        ovmf = {
-          enable = true;
-          packages = with pkgs; [OVMFFull.fd];
-        };
-        runAsRoot = true;
-      };
     };
   };
   boot = {

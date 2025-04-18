@@ -1,4 +1,4 @@
-set shell := ["nix-shell", "-p", "sops", "nh", "--run"]
+set shell := ["nix-shell", "-p", "nh", "--run"]
 
 # list all available commands
 default:

@@ -11,7 +11,7 @@
   in {
     enable = true;
     theme = spicePkgs.themes.default;
-    colorScheme = "Default";
+    colorScheme = "Ocean";
     enabledExtensions = with spicePkgs.extensions; [
       adblock
       hidePodcasts

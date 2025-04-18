@@ -71,9 +71,10 @@
       XDG_BIN_HOME = "$HOME/.local/bin";
       PATH = ["${XDG_BIN_HOME}"];
       GOPATH = "${XDG_DATA_HOME}/go";
-      NIXOS_OZONE_WL = "1";
+      NIXOS_OZONE_WL = "0";
     };
   };
+  xdg.terminal-exec.enable = true;
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -86,8 +87,6 @@
   };
   nix = {
     settings = {
-      plugin-files = "${pkgs.nix-plugins}/lib/nix/plugins";
-      extra-builtins-file = "${inputs.self}/system/lib/extra-builtins.nix";
       experimental-features = [
         "nix-command"
         "flakes"
@@ -97,11 +96,13 @@
         "https://nix-gaming.cachix.org" # nix-gaming
         "https://ezkea.cachix.org" # aagl
         "https://hyprland.cachix.org" # hyprland
+        "https://cache.garnix.io" # garnix nekobox
       ];
       trusted-public-keys = [
         "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" # aagl
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" # hyprland
         "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" # nix-gaming
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=" # garnix nekobox
       ];
       warn-dirty = false;
     };
