@@ -37,16 +37,16 @@
       options = [ "subvol=log" ];
     };
 
-  fileSystems."/home/ch/Games" =
-    { device = "/dev/disk/by-uuid/f68d8a76-066d-40fb-b7d6-787e4f414ad2";
-      fsType = "btrfs";
-      options = [ "subvol=games" ];
-    };
-
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/8E4D-1353";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+  fileSystems."/home/ch/Games" =
+    { device = "/dev/disk/by-uuid/f68d8a76-066d-40fb-b7d6-787e4f414ad2";
+      fsType = "btrfs";
+      options = [ "subvol=games" ];
     };
 
   swapDevices = [ ];
@@ -58,8 +58,6 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.sing0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.virbr0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

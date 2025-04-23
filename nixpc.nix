@@ -79,7 +79,10 @@
       options = ["rw" "uid=1000"];
     };
   };
-  zramSwap.enable = true;
+  zramSwap = {
+    enable = true;
+    memoryPercent = 25;
+  };
   hardware = {
     bluetooth = {
       enable = true;
