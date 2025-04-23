@@ -6,7 +6,7 @@
   home.packages = with pkgs; [
     # Coding
     nvf.default
-    python3
+    python3Full
     python313Packages.pygithub
     python313Packages.opencv4
     python313Packages.pipx
@@ -88,6 +88,7 @@
     hyprsome
     appimage-run
     hyprpolkitagent
+    umu-launcher
 
     # Desktop apps
     chromium
@@ -113,6 +114,7 @@
     burpsuite
     bottles
     heroic
+    lutris
     fontforge-gtk
     nix-gaming.osu-stable
     nix-gaming.osu-lazer-bin
