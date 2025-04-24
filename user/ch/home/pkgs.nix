@@ -67,7 +67,8 @@
     ffmpegthumbnailer
     gamemode
     gamescope
-    cliphist
+    #cliphist
+    copyq
     hyprpicker
     swappy
     slurp

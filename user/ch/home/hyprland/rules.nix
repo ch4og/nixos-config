@@ -9,6 +9,7 @@
       "noblur, class:(com.ayugram.desktop)"
       "float, title:(Picture-in-Picture)"
       "float, title:(MainPicker)"
+      "float, class:^(com.github.hluk.copyq)"
       "pin, title:(Picture-in-Picture)"
       "workspace 11, class:^(vesktop)$"
       "workspace 11, class:^(discord)$"

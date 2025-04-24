@@ -1,7 +1,8 @@
 {...}: {
   wayland.windowManager.hyprland.settings.exec-once = [
     "uwsm app -- waybar"
-    "uwsm app -- wl-paste --watch cliphist store"
+    #"uwsm app -- wl-paste --watch cliphist store"
+    "uwsm app -- copyq"
     "systemctl --user enable --now hyprpolkitagent.service"
 
     "[title;workspace 24 silent] uwsm app -- ayugram-desktop"
