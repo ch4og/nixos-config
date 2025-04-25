@@ -93,16 +93,17 @@
       ];
       auto-optimise-store = true;
       substituters = [
+        "https://nixos-bunny-proxy.cofob.dev" # mirror of cache.nixos.org
+        "https://cache.garnix.io" # garnix
         "https://nix-gaming.cachix.org" # nix-gaming
         "https://ezkea.cachix.org" # aagl
         "https://hyprland.cachix.org" # hyprland
-        "https://cache.garnix.io" # garnix nekobox
       ];
       trusted-public-keys = [
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=" # garnix
+        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" # nix-gaming
         "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" # aagl
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" # hyprland
-        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" # nix-gaming
-        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=" # garnix nekobox
       ];
       warn-dirty = false;
     };
