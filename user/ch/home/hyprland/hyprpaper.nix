@@ -7,7 +7,7 @@
     enable = true;
     settings = let
       main = "wallhaven-expj3o_upscayl_2x_digital-art-4x.png";
-      secondary = "wallhaven-xlwepv.jpg";
+      secondary = "wallhaven-exkxw8.jpg";
 
       walls = "${config.home.homeDirectory}/Pictures/walls";
     in {

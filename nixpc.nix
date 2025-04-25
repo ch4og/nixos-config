@@ -32,7 +32,7 @@
       pulse.enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
-      #lowLatency.enable = true; # causes crackling when cpu is under load
+      lowLatency.enable = true;
     };
     usbmuxd.enable = true;
     avahi = {
