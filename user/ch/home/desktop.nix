@@ -5,7 +5,7 @@
         "Network"
         "InstantMessaging"
       ];
-      exec = "Discord --disable-gpu-compositing";
+      exec = "Discord --enable-features=WaylandLinuxDrmSyncobj";
       name = "Discord";
       genericName = "All-in-one cross-platform voice and text chat for gamers";
       icon = "discord";
@@ -18,11 +18,25 @@
         "InstantMessaging"
         "Chat"
       ];
-      exec = "vesktop %U --disable-gpu-compositing";
+      exec = "vesktop %U --enable-features=WaylandLinuxDrmSyncobj";
       genericName = "Internet Messenger";
       icon = "vesktop";
       name = "Vesktop";
       type = "Application";
+    };
+    "spotify" = {
+      categories = [
+        "Audio"
+        "Music"
+        "Player"
+        "AudioVideo"
+      ];
+      exec = "spotify %U --enable-features=WaylandLinuxDrmSyncobj";
+      name = "Spotify";
+      genericName = "Music Player";
+      icon = "spotify";
+      type = "Application";
+      mimeType = ["x-scheme-handler/spotify"];
     };
   };
 }

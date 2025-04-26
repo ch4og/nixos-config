@@ -71,7 +71,7 @@
       XDG_BIN_HOME = "$HOME/.local/bin";
       PATH = ["${XDG_BIN_HOME}"];
       GOPATH = "${XDG_DATA_HOME}/go";
-      NIXOS_OZONE_WL = "0";
+      NIXOS_OZONE_WL = "1";
     };
   };
   xdg.terminal-exec.enable = true;
