@@ -18,6 +18,7 @@
     prettierd
     nodejs
     alejandra
+    nixfmt-rfc-style
     yarn
     code-cursor
     vscode
