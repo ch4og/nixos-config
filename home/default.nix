@@ -17,10 +17,6 @@
       && file != "discord.nix"
   ) (builtins.attrNames (builtins.readDir ./.));
 in {
-  nix.package = pkgs.nix;
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
   home.username = username;
   home.homeDirectory = "/home/${username}";
   imports =
@@ -35,6 +31,8 @@ in {
       ./fish
       ./bin
       ./waybar
+
+      ../generic/nix.nix
     ];
   home.stateVersion = "24.05";
 }

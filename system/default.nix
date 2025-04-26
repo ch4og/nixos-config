@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: {
-  imports = [./hardware-configuration.nix];
+  imports = [./hardware-configuration.nix ../generic/nix.nix];
 
   boot = {
     loader = {
@@ -82,33 +82,7 @@
     useXkbConfig = true;
   };
   time.timeZone = "Europe/Moscow";
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-  nix = {
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      auto-optimise-store = true;
-      substituters = [
-        "https://nixos-bunny-proxy.cofob.dev" # mirror of cache.nixos.org
-        "https://cache.garnix.io" # garnix
-        "https://nix-gaming.cachix.org" # nix-gaming
-        "https://ezkea.cachix.org" # aagl
-        "https://hyprland.cachix.org" # hyprland
-      ];
-      trusted-public-keys = [
-        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=" # garnix
-        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" # nix-gaming
-        "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" # aagl
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" # hyprland
-      ];
-      warn-dirty = false;
-    };
-    optimise.automatic = true;
-  };
+
   security = {
     polkit.enable = true;
     pam.services.sddm.enableGnomeKeyring = true;
