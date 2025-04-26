@@ -14,6 +14,8 @@ in {
       "libvirtd"
       "docker"
       "podman"
+      "gamemode"
+      "networkmanager"
     ];
     shell = pkgs.fish;
   };
