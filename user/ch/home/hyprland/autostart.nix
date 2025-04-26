@@ -9,6 +9,7 @@
     "[workspace 22 silent] uwsm app -- firefox"
     "[title;workspace 11 silent] uwsm app -- discord --disable-gpu-compositing"
     "[workspace 12 silent] uwsm app -- spotify"
+    "[title;workspace 14 silent] uwsm app -- nekobox -tray"
     "[title;workspace 15 silent] uwsm app -- steam -silent"
   ];
 }
