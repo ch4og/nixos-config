@@ -20,7 +20,6 @@ in {
     shell = pkgs.fish;
   };
   imports = [
-    (import ./home {inherit pkgs username inputs;})
     ./programs.nix
   ];
   security.sudo.extraRules = [

@@ -22,6 +22,9 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     nekobox.url = "github:s0me1newithhand7s/nekoflake";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    freesm.url = "github:FreesmTeam/FreesmLauncher";
+    ayugram.url = "github:ndfined-crp/ayugram-desktop";
+    zen-browser.url = "github:youwen5/zen-browser-flake";
   };
 
   outputs = {
@@ -40,11 +43,15 @@
           nixcord = inputs.nixcord.packages.${prev.system};
           nix-gaming = inputs.nix-gaming.packages.${prev.system};
           nekobox = inputs.nekobox.packages.${prev.system};
+          freesm = inputs.freesm.packages.${prev.system};
+          ayugram = inputs.ayugram.packages.${prev.system};
+          zen-browser = inputs.zen-browser.packages.${prev.system};
         })
       ];
     };
+  in let
+    username = "ch";
   in {
-    devShell = inputs.cybersec.devShell;
     nixosConfigurations.nixpc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
@@ -54,6 +61,18 @@
         ./nixpc.nix
         inputs.chaotic.nixosModules.default
         inputs.home-manager.nixosModules.home-manager
+        pkgsOverlays
+      ];
+    };
+    homeConfigurations.${username} = inputs.home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      extraSpecialArgs = {
+        inherit inputs username;
+      };
+
+      modules = [
+        ./home
+        inputs.chaotic.homeManagerModules.default
         pkgsOverlays
       ];
     };

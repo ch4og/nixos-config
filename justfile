@@ -6,11 +6,13 @@ default:
 
 # all prebuild commands
 pre:
-  cp /etc/nixos/hardware-configuration.nix system/hardware-configuration.nix
   git add .
+
+sys-pre:
 
 # rebuild and switch
 sw: pre
+  cp /etc/nixos/hardware-configuration.nix system/hardware-configuration.nix
   nh os switch .
 
 # update all deps
@@ -23,8 +25,13 @@ upp input:
 
 # nixos-rebuild boot
 boot: pre
+  cp /etc/nixos/hardware-configuration.nix system/hardware-configuration.nix
   nh os boot .
 
 # garbage collect
 gc:
   nh clean all -K 3d
+
+# switch home-manager config
+hm: pre
+  nh home switch .

@@ -15,7 +15,6 @@
         "$mod, E, exec, uwsm app -- $fileManager"
         "$mod, B, exec, uwsm app -- $browser"
         "$mod SHIFT, C, exec, uwsm app -- hyprpicker | wl-copy"
-        #"$mod, V, exec, uwsm app -- cliphist-rofi-img | rofi -dmenu -display-columns 2 -show-icons | cliphist decode | wl-copy"
         "$mod, V, exec, uwsm app -- copyq show"
         "$mod, Period, exec, uwsm app -- rofi -show rofimoji"
         ", XF86Calculator, exec, uwsm app -- rofi -show calc"
