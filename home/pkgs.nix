@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # Coding
     nvf.default
@@ -23,6 +19,7 @@
     code-cursor
     vscode
     sqlite
+    deadnix
 
     # Essentials
     ripgrep

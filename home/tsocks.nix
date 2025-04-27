@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   xdg.configFile."tsocks.conf".text = ''
     local = 127.0.0.0/255.0.0.0
     local = 192.168.0.0/255.255.0.0

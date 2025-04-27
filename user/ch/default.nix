@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
-}: let
+{pkgs, ...}: let
   username = "ch";
 in {
   users.users.${username} = {

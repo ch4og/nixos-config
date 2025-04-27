@@ -1,8 +1,6 @@
 {
-  self,
   inputs,
   config,
-  lib,
   pkgs,
   ...
 }: {
@@ -61,6 +59,7 @@
     networkmanager.enable = true;
     firewall.enable = false;
   };
+  systemd.services.NetworkManager-wait-online.enable = false;
   fileSystems = {
     "/".options = ["compress=zstd"];
     "/home" = {

@@ -27,14 +27,10 @@
     zen-browser.url = "github:youwen5/zen-browser-flake";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    pkgsOverlays = {config, ...}: {
+  outputs = {nixpkgs, ...} @ inputs: let
+    pkgsOverlays = {...}: {
       nixpkgs.overlays = [
-        (final: prev: {
+        (_final: prev: {
           stable = inputs.stable.legacyPackages.${prev.system};
           master = inputs.master.legacyPackages.${prev.system};
           hyprland-git = inputs.hyprland.packages.${prev.system};
