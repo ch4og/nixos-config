@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   nix = {
-    package = pkgs.nixVersions.latest;
+    package = pkgs.lix;
     settings = {
       substituters = [
         "https://nixos-bunny-proxy.cofob.dev" # mirror of cache.nixos.org
