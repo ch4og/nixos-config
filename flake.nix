@@ -14,7 +14,7 @@
     nvf.url = "github:ch4og/nvf";
     cybersec.url = "github:ch4og/nixcybersec";
 
-    hyprland.url = "github:hyprwm/hyprland?submodules=1";
+    hyprland.url = "github:hyprwm/hyprland";
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     betterfox-nix.url = "github:HeitorAugustoLN/betterfox-nix";
