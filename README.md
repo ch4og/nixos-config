@@ -13,3 +13,5 @@ working to make this configuration as modular as possible.
 - [krypt0nn/dotfiles](https://github.com/krypt0nn/dotfiles)
 - [TheMaxMur/NixOS-Configuration](https://github.com/TheMaxMur/NixOS-Configuration)
 - [s0me1newithhand7s/reNixOS](https://github.com/s0me1newithhand7s/reNixos)
+- [romek-codes/nix-config](https://github.com/romek-codes/nix-config)
+- [Sk7Str1p3/dotFiles](https://github.com/Sk7Str1p3/dotFiles)

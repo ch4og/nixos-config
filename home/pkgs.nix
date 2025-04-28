@@ -121,5 +121,6 @@
     zoom-us
     upscayl
     nekobox.nekobox
+    gimp3
   ];
 }
