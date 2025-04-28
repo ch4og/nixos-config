@@ -1,41 +1,36 @@
-{
-  xdg.desktopEntries = {
-    "discord" = {
-      categories = [
-        "Network"
-        "InstantMessaging"
-      ];
-      exec = "Discord --enable-features=WaylandLinuxDrmSyncobj";
+{pkgs, ...}: {
+  xdg.desktopEntries = let
+    createEntry = { name, genericName, icon, exec, categories, mimeType ? [] }: {
+      name = name;
+      genericName = genericName;
+      icon = icon;
+      exec = exec;
+      type = "Application";
+      categories = categories;
+      mimeType = mimeType;
+    };
+  in {
+    "discord" = createEntry {
       name = "Discord";
       genericName = "All-in-one cross-platform voice and text chat for gamers";
       icon = "discord";
-      type = "Application";
+      exec = "${pkgs.lib.getExe pkgs.discord} %U --enable-features=WaylandLinuxDrmSyncobj";
+      categories = ["Network" "InstantMessaging"];
       mimeType = ["x-scheme-handler/discord"];
     };
-    "vesktop" = {
-      categories = [
-        "Network"
-        "InstantMessaging"
-        "Chat"
-      ];
-      exec = "vesktop %U --enable-features=WaylandLinuxDrmSyncobj";
+    "vesktop" = createEntry {
+      name = "Vesktop";
       genericName = "Internet Messenger";
       icon = "vesktop";
-      name = "Vesktop";
-      type = "Application";
+      exec = "${pkgs.lib.getExe pkgs.vesktop} %U --enable-features=WaylandLinuxDrmSyncobj";
+      categories = ["Network" "InstantMessaging" "Chat"];
     };
-    "spotify" = {
-      categories = [
-        "Audio"
-        "Music"
-        "Player"
-        "AudioVideo"
-      ];
-      exec = "spotify %U --enable-features=WaylandLinuxDrmSyncobj";
+    "spotify" = createEntry {
       name = "Spotify";
       genericName = "Music Player";
       icon = "spotify";
-      type = "Application";
+      exec = "${pkgs.lib.getExe pkgs.spotify} %U --enable-features=WaylandLinuxDrmSyncobj";
+      categories = ["Audio" "Music" "Player" "AudioVideo"];
       mimeType = ["x-scheme-handler/spotify"];
     };
   };
