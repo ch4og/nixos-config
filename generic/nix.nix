@@ -3,7 +3,7 @@
     package = pkgs.lix;
     settings = {
       substituters = [
-        "https://nixos-bunny-proxy.cofob.dev" # mirror of cache.nixos.org
+        "https://nixos-cache-proxy.cofob.dev" # mirror of cache.nixos.org
         "https://nix-community.cachix.org" # nix-community
         "https://cache.garnix.io" # garnix
         "https://nix-gaming.cachix.org" # nix-gaming
