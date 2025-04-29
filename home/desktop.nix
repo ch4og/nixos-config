@@ -1,6 +1,13 @@
 {pkgs, ...}: {
   xdg.desktopEntries = let
-    createEntry = { name, genericName, icon, exec, categories, mimeType ? [] }: {
+    createEntry = {
+      name,
+      genericName,
+      icon,
+      exec,
+      categories,
+      mimeType ? [],
+    }: {
       name = name;
       genericName = genericName;
       icon = icon;
