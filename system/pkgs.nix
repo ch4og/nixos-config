@@ -14,4 +14,5 @@ with pkgs; [
   just
   nh
   polkit_gnome
+  home-manager
 ]
