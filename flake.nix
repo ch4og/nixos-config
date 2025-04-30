@@ -27,7 +27,7 @@
   outputs = {nixpkgs, ...} @ inputs: let
     pkgsOverlays = _: {
       nixpkgs.overlays = [
-        (final: prev: {
+        (_final: prev: {
           hyprland-git = inputs.hyprland-git.packages.${prev.system}.hyprland or {};
           nix-gaming = inputs.nix-gaming.packages.${prev.system} or {};
           nekobox = inputs.nekobox.packages.${prev.system}.nekobox or {};
