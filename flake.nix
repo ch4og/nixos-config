@@ -76,6 +76,6 @@
     nixosConfigurations.nixpc = mkNixosConfiguration "x86_64-linux";
     homeConfigurations."${username}" = mkHomeConfiguration "x86_64-linux";
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
-    devShells.x86_64-linux = inputs.cybersec.devShells.x86_64-linux.default;
+    devShell.x86_64-linux = inputs.cybersec.devShells.x86_64-linux.default;
   };
 }
