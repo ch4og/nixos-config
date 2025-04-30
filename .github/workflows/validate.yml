@@ -1,0 +1,54 @@
+name: "Validate and Fix NixOS Configuration"
+
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          
+      - uses: cachix/install-nix-action@v20
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+      
+      - name: Validate flake
+        run: nix flake check
+
+      - name: Check NixOS configuration
+        run: nix build .#nixosConfigurations.nixpc.config.system.build.toplevel --dry-run
+
+      - name: Check Home Manager configuration
+        run: nix build .#homeConfigurations.ch.activationPackage --dry-run
+      
+      - name: Fix Nix formatting
+        run: nix run nixpkgs#alejandra -- --exclude ./system/hardware-configuration.nix .
+
+      - name: Fix dead code
+        run: nix run nixpkgs#deadnix -- --edit --no-lambda-pattern-names .
+
+      - name: Commit and push changes
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add .
+            git commit -m "ci: fix formatting and dead code"
+            git push
+          else
+            echo "No changes to commit"
+          fi
