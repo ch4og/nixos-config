@@ -1,4 +1,4 @@
-{...}: let
+_: let
   # Specify the current directory
   scriptDir = ./.;
 

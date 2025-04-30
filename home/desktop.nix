@@ -8,13 +8,13 @@
       categories,
       mimeType ? [],
     }: {
-      name = name;
-      genericName = genericName;
-      icon = icon;
-      exec = exec;
+      inherit name;
+      inherit genericName;
+      inherit icon;
+      inherit exec;
       type = "Application";
-      categories = categories;
-      mimeType = mimeType;
+      inherit categories;
+      inherit mimeType;
     };
   in {
     "discord" = createEntry {
