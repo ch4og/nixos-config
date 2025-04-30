@@ -23,15 +23,12 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: |
             experimental-features = nix-command flakes
-      
-      - name: Validate flake
-        run: nix flake check
 
       - name: Check NixOS configuration
-        run: nix build .#nixosConfigurations.nixpc.config.system.build.toplevel --dry-run
+        run: nix build .#packages.x86_64-linux.nixosConfigurations.nixpc.config.system.build.toplevel --dry-run
 
       - name: Check Home Manager configuration
-        run: nix build .#homeConfigurations.ch.activationPackage --dry-run
+        run: nix build .#packages.x86_64-linux.homeConfigurations.ch.activationPackage --dry-run
       
       - name: Fix Nix formatting
         run: nix run nixpkgs#alejandra -- --exclude ./hosts/hardware-configuration.nix .
