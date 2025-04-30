@@ -5,7 +5,7 @@
     tor-browser
 
     # Communication
-    ayugram.ayugram-desktop
+    ayugram-desktop
     zoom-us
 
     # File Sharing
@@ -34,14 +34,13 @@
 
     # Security
     burpsuite
-    nekobox.nekobox
+    nekobox
 
     # Gaming
     gamemode
     gamescope
     tetrio-desktop
-    byedpi
-    freesm.default
+    prismlauncher
     lunar-client
     parsec-bin
     bottles

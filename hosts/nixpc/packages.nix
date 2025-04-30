@@ -15,4 +15,7 @@ with pkgs; [
   nh
   polkit_gnome
   home-manager
+  btrfs-progs
+  snapper
+  compsize
 ]

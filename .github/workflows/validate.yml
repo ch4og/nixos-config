@@ -34,7 +34,7 @@ jobs:
         run: nix build .#homeConfigurations.ch.activationPackage --dry-run
       
       - name: Fix Nix formatting
-        run: nix run nixpkgs#alejandra -- --exclude ./system/hardware-configuration.nix .
+        run: nix run nixpkgs#alejandra -- --exclude ./hosts/hardware-configuration.nix .
 
       - name: Fix dead code
         run: nix run nixpkgs#deadnix -- --edit --no-lambda-pattern-names .

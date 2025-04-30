@@ -30,6 +30,7 @@ let
     (mkFloat "title" "Confirm to replace files")
     (mkFloat "title" "Save File")
     (mkFloat "title" "Open File")
+    (mkFloat "title" "Media viewer")
     "pin, title:(Picture-in-Picture)"
   ];
 

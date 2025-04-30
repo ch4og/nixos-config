@@ -1,13 +1,40 @@
-# My NixOS config
+# NixOS Configuration
 
-![image](https://github.com/user-attachments/assets/8eba0cba-aa6e-4f87-950f-f810c93d5dbe)
+![image](./assets/screenshot.png)
 
-### Currently very WIP, but it is my daily driver on my main machine.
+This repository contains my personal NixOS configuration with a modular structure.
 
-I'm not certain if it will function on any other machines at the moment, but I'm
-working to make this configuration as modular as possible.
+> [!WARNING]
+> While this is my daily driver on my main machine, the configuration is still WIP.
 
-#### Thanks for the inspirations:
+## Structure
+
+The configuration is organized as follows:
+
+```
+nixos-config/
+├── flake.nix                # Main flake configuration
+├── hosts/                   # Host-specific configurations
+│   └── nixpc/               # Configuration for my main PC
+├── modules/                 # Modular configuration components
+│   ├── boot/                # Boot and kernel configuration
+│   ├── hardware/            # Hardware-specific settings
+│   ├── networking/          # Network configuration with secure firewall
+│   ├── security/            # Security-related settings
+│   └── services/            # System services including gaming optimizations
+├── home/                    # Home Manager configurations
+│   ├── hyprland/            # Hyprland compositor configuration
+│   ├── waybar/              # Waybar status bar configuration
+│   ├── fish/                # Fish shell configuration
+│   ├── packages/            # User packages organized by category
+│   └── ...                  # Other home configurations
+├── generic/                 # Generic configurations
+└── user/                    # User-specific settings
+```
+
+## Acknowledgments
+
+This configuration was inspired by:
 - [Gylvaris/nix-config](https://github.com/Gylvaris/nix-config) (Never would try NixOS without him!)
 - [s0me1newithhand7s/myNixConf](https://github.com/s0me1newithhand7s/myNixConf)
 - [krypt0nn/dotfiles](https://github.com/krypt0nn/dotfiles)
@@ -15,3 +42,6 @@ working to make this configuration as modular as possible.
 - [s0me1newithhand7s/reNixOS](https://github.com/s0me1newithhand7s/reNixos)
 - [romek-codes/nix-config](https://github.com/romek-codes/nix-config)
 - [Sk7Str1p3/dotFiles](https://github.com/Sk7Str1p3/dotFiles)
+
+Big thanks to all of these amazing people!
+

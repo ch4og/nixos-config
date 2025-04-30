@@ -26,6 +26,7 @@
     # Utilities
     copyq
     networkmanager_dmenu
+    networkmanagerapplet
     appimage-run
     libimobiledevice
     umu-launcher

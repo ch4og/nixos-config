@@ -1,8 +1,9 @@
 # TODO:
 
-- [ ] Make README prettier
 - [ ] Add more documentation
-- [ ] Refactor and restructure code
-- [ ] Turn home manager to separate thing not just module (remove useless inputs
-      from flake)
-- [ ] Setup btrfs snapshots with snapper
+- [ ] Make waybar config prettier and/or switch to another bar
+- [ ] Switch to zsh
+- [ ] Reorganize home.packages
+- [ ] Use stylix
+- [ ] Switch to helix?
+- [ ] Disko?

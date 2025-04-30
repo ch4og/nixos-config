@@ -9,7 +9,7 @@
 
     # Development Environments
     vscode
-    nvf.default
+    nvf
     code-cursor
 
     # Version Control and Collaboration

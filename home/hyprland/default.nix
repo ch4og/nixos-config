@@ -22,7 +22,7 @@ _: {
       monitor = [
         "${builtins.elemAt monitors 0}, 3840x2160@144, 0x0, 1.875"
         "${builtins.elemAt monitors 1}, 1920x1080@120, 2048x144, 1.25"
-        "${builtins.elemAt monitors 2}, 3840x2160@60, auto, 1, mirror, ${builtins.elemAt monitors 0}"
+        "${builtins.elemAt monitors 2}, 1920x1080@60, auto, 1, mirror, ${builtins.elemAt monitors 0}"
       ];
 
       workspace =
@@ -114,7 +114,7 @@ _: {
         "NVD_BACKEND,direct"
         "MOZ_ENABLE_WAYLAND,1"
         "QT_QPA_PLATFORM,wayland;xcb"
-        "QT_QPA_PLATFORMTHEME,qt5ct"
+        "QT_QPA_PLATFORMTHEME,gtk3"
         "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         "MOZ_DISABLE_RDD_SANDBOX,1"
         "EDITOR,nvim"

@@ -2,8 +2,8 @@
   services.hyprpaper = {
     enable = true;
     settings = let
-      main = "wallhaven-expj3o_upscayl_2x_digital-art-4x.png";
-      secondary = "wallhaven-exkxw8.jpg";
+      main = "wallhaven-zywljw.png";
+      secondary = "wallhaven-v9ojz3.jpg";
 
       walls = "${config.home.homeDirectory}/Pictures/walls";
     in {

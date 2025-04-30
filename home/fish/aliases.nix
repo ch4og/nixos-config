@@ -20,4 +20,7 @@
   grep = "rg";
   diff = "batdiff";
   watch = "batwatch";
+  nix = "nom";
+  nix-shell = "nom-shell";
+  nix-build = "nom-build";
 }

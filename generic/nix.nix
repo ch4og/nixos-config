@@ -9,6 +9,7 @@
         "https://nix-gaming.cachix.org" # nix-gaming
         "https://ezkea.cachix.org" # aagl
         "https://hyprland.cachix.org" # hyprland
+        "https://freesmlauncher.cachix.org" # freesmlauncher
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" # cache.nixos.org
@@ -17,6 +18,7 @@
         "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" # nix-gaming
         "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" # aagl
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" # hyprland
+        "freesmlauncher.cachix.org-1:Jcp5Q9wiLL+EDv8Mh7c6L9xGk+lXr7/otpKxMOuBuDs="
       ];
       sandbox = true;
       experimental-features = [

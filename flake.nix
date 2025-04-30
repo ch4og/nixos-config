@@ -11,8 +11,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nvf.url = "github:ch4og/nvf";
     cybersec.url = "github:ch4og/nixcybersec";
+    nvf.url = "github:ch4og/nvf";
 
     hyprland-git.url = "github:hyprwm/hyprland";
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
@@ -22,24 +22,17 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     nekobox.url = "github:s0me1newithhand7s/nekoflake";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    freesm.url = "github:FreesmTeam/FreesmLauncher";
-    ayugram.url = "github:ndfined-crp/ayugram-desktop";
-    zen-browser.url = "github:youwen5/zen-browser-flake";
   };
 
   outputs = {nixpkgs, ...} @ inputs: let
     pkgsOverlays = _: {
       nixpkgs.overlays = [
         (final: prev: {
-          hyprland-git = inputs.hyprland-git.packages.${prev.system};
-          nixcord = inputs.nixcord.packages.${prev.system} or {};
+          hyprland-git = inputs.hyprland-git.packages.${prev.system}.hyprland or {};
           nix-gaming = inputs.nix-gaming.packages.${prev.system} or {};
-          nvf = inputs.nvf.packages.${prev.system} or {};
-          nekobox = inputs.nekobox.packages.${prev.system} or {};
-          freesm = inputs.freesm.packages.${prev.system} or {};
-          ayugram = inputs.ayugram.packages.${prev.system} or {};
-          zen-browser = inputs.zen-browser.packages.${prev.system} or {};
+          nekobox = inputs.nekobox.packages.${prev.system}.nekobox or {};
           spicetify-nix = inputs.spicetify-nix.legacyPackages.${prev.system} or {};
+          nvf = inputs.nvf.packages.${prev.system}.default or {};
         })
       ];
     };
@@ -53,7 +46,7 @@
           inherit inputs;
         };
         modules = [
-          ./nixpc.nix
+          ./hosts/nixpc
           inputs.chaotic.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
           pkgsOverlays
@@ -72,10 +65,27 @@
           pkgsOverlays
         ];
       };
+
+    supportedSystems = [
+      "x86_64-linux"
+      "aarch64-linux"
+    ];
+    forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
   in {
-    nixosConfigurations.nixpc = mkNixosConfiguration "x86_64-linux";
-    homeConfigurations."${username}" = mkHomeConfiguration "x86_64-linux";
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
-    devShell.x86_64-linux = inputs.cybersec.devShells.x86_64-linux.default;
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    devShell = forAllSystems (system: inputs.cybersec.devShells.${system}.default);
+    packages = forAllSystems (system: let
+      inherit system;
+      overlayModule = pkgsOverlays {};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = overlayModule.nixpkgs.overlays;
+      };
+    in {
+      nvf = pkgs.nvf;
+
+      nixosConfigurations.nixpc = mkNixosConfiguration system;
+      homeConfigurations.${username} = mkHomeConfiguration system;
+    });
   };
 }
