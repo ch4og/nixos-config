@@ -32,15 +32,14 @@
       nixpkgs.overlays = [
         (final: prev: {
           hyprland-git = inputs.hyprland-git.packages.${prev.system};
-          chaotic = inputs.chaotic.packages.${prev.system} or {};
           nixcord = inputs.nixcord.packages.${prev.system} or {};
           nix-gaming = inputs.nix-gaming.packages.${prev.system} or {};
           nvf = inputs.nvf.packages.${prev.system} or {};
-          cybersec = inputs.cybersec.packages.${prev.system} or {};
           nekobox = inputs.nekobox.packages.${prev.system} or {};
           freesm = inputs.freesm.packages.${prev.system} or {};
           ayugram = inputs.ayugram.packages.${prev.system} or {};
           zen-browser = inputs.zen-browser.packages.${prev.system} or {};
+          spicetify-nix = inputs.spicetify-nix.legacyPackages.${prev.system} or {};
         })
       ];
     };

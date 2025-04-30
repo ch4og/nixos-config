@@ -23,7 +23,7 @@ in {
     (builtins.map (file: ./${file}) nixFiles)
     ++ [
       (import ./hyprland {inherit pkgs inputs;})
-      (import ./pkgs.nix {inherit pkgs inputs;})
+      (import ./packages {inherit pkgs inputs;})
       (import ./spotify.nix {inherit pkgs inputs;})
       (import ./firefox.nix {inherit pkgs inputs;})
       (import ./discord.nix {inherit pkgs inputs;})
