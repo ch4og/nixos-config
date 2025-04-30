@@ -1,14 +1,24 @@
-{...}: {
+let
+  mkApp = cmd: "uwsm app -- ${cmd}";
+
+  mkWorkspaceApp = workspace: cmd: extraOpts: let
+    extraOptsStr =
+      if extraOpts != ""
+      then "${extraOpts};"
+      else "";
+  in "[${extraOptsStr}workspace ${toString workspace}] ${mkApp cmd}";
+in {
   wayland.windowManager.hyprland.settings.exec-once = [
-    "uwsm app -- waybar"
-    "uwsm app -- copyq"
+    (mkApp "waybar")
+    (mkApp "copyq")
+
     "systemctl --user enable --now hyprpolkitagent.service"
 
-    "[title;workspace 24 silent] uwsm app -- ayugram-desktop"
-    "[workspace 22 silent] uwsm app -- firefox"
-    "[title;workspace 11 silent] uwsm app -- discord --enable-features=WaylandLinuxDrmSyncobj"
-    "[workspace 12 silent] uwsm app -- spotify --enable-features=WaylandLinuxDrmSyncobj"
-    "[title;workspace 14 silent] uwsm app -- nekobox -tray"
-    "[title;workspace 15 silent] uwsm app -- steam -silent"
+    (mkWorkspaceApp 24 "ayugram-desktop" "title")
+    (mkWorkspaceApp 22 "firefox" "")
+    (mkWorkspaceApp 11 "discord --enable-features=WaylandLinuxDrmSyncobj" "title")
+    (mkWorkspaceApp 12 "spotify --enable-features=WaylandLinuxDrmSyncobj" "")
+    (mkWorkspaceApp 14 "nekobox -tray" "title")
+    (mkWorkspaceApp 15 "steam -silent" "title")
   ];
 }

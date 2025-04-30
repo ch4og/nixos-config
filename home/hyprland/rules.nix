@@ -1,24 +1,64 @@
-{
+let
+  mkFloat = type: title: "float, ${type}:(${title})";
+
+  mkNoblur = type: title: "noblur, ${type}:(${title})";
+
+  mkWorkspace = number: type: title: "workspace ${number}, ${type}:(${title})";
+
+  defaultRules = [
+    (mkNoblur "class" "^()$")
+    (mkNoblur "title" "^()$")
+    "suppressevent maximize, class:.*"
+  ];
+
+  xwaylandvideobridgeRules = let
+    name = "xwaylandvideobridge";
+  in [
+    "opacity 0.0 override, class:^(${name})$"
+    "noanim, class:^(${name})$"
+    "noinitialfocus, class:^(${name})$"
+    "maxsize 1 1, class:^(${name})$"
+    "noblur, class:^(${name})$"
+  ];
+
+  floatingApps = [
+    (mkFloat "class" "com.github.hluk.copyq")
+    (mkFloat "class" "nm-connection-editor")
+    (mkFloat "title" "Picture-in-Picture")
+    (mkFloat "title" "MainPicker")
+    (mkFloat "title" "File Operation Progress")
+    (mkFloat "title" "Confirm to replace files")
+    (mkFloat "title" "Save File")
+    (mkFloat "title" "Open File")
+    "pin, title:(Picture-in-Picture)"
+  ];
+
+  noBlurApps = [
+    (mkNoblur "class" "windowkill")
+    (mkNoblur "class" "com.ayugram.desktop")
+  ];
+
+  workspaceAssignments = [
+    (mkWorkspace "11" "class" "vesktop")
+    (mkWorkspace "11" "class" "discord")
+    (mkWorkspace "12" "class" "Spotify")
+  ];
+in {
   wayland.windowManager.hyprland.settings = {
-    windowrulev2 = [
-      "noblur,class:^()$,title:^()$" # Fix blur of some gtk menus
-      "suppressevent maximize, class:.*"
-      "fullscreen, title:(Media viewer)"
-      "noanim, title:(Media viewer)"
-      "noblur, class:(windowkill)"
-      "noblur, class:(com.ayugram.desktop)"
-      "float, title:(Picture-in-Picture)"
-      "float, title:(MainPicker)"
-      "float, class:^(com.github.hluk.copyq)"
-      "pin, title:(Picture-in-Picture)"
-      "workspace 11, class:^(vesktop)$"
-      "workspace 11, class:^(discord)$"
-      "workspace 12, class:^(Spotify)$"
-      "opacity 0.0 override, class:^(xwaylandvideobridge)$"
-      "noanim, class:^(xwaylandvideobridge)$"
-      "noinitialfocus, class:^(xwaylandvideobridge)$"
-      "maxsize 1 1, class:^(xwaylandvideobridge)$"
-      "noblur, class:^(xwaylandvideobridge)$"
+    windowrulev2 =
+      defaultRules
+      ++ workspaceAssignments
+      ++ xwaylandvideobridgeRules
+      ++ floatingApps
+      ++ noBlurApps;
+
+    layerrule = [
+      "blur, waybar"
+      "blur, rofi"
+      "blur, launcher"
+      "blur, notifications"
+      "ignorezero, notifications"
+      "ignorezero, waybar"
     ];
   };
 }

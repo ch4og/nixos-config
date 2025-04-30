@@ -1,4 +1,4 @@
-{...}: {
+_: {
   imports = [
     ./bind.nix
     ./rules.nix
@@ -18,12 +18,11 @@
     enable = true;
     package = null;
     systemd.enable = false;
-    #systemd.variables = ["--all"];
     settings = {
       monitor = [
         "${builtins.elemAt monitors 0}, 3840x2160@144, 0x0, 1.875"
         "${builtins.elemAt monitors 1}, 1920x1080@120, 2048x144, 1.25"
-        "${builtins.elemAt monitors 2}, 1920x1080@60, auto, 1, mirror, ${builtins.elemAt monitors 0}"
+        "${builtins.elemAt monitors 2}, 3840x2160@60, auto, 1, mirror, ${builtins.elemAt monitors 0}"
       ];
 
       workspace =
@@ -42,9 +41,9 @@
           in
             if workspaceNumber <= 5 || workspaceNumber >= 6 # Actually this condition is always true
             then "${toString mappedNumber},monitor:${monitor},persistent:true"
-            else "" # Skip workspaces (though the condition above makes this unreachable)
+            else ""
         )
-        10; # Only need to generate 10 workspaces now (5 for each monitor)
+        10;
 
       general = {
         gaps_in = 5;
@@ -68,14 +67,10 @@
         };
         blur = {
           enabled = true;
-          size = 6;
-          passes = 3;
+          size = 5;
+          passes = 2;
         };
       };
-      layerrule = [
-        "blur, waybar"
-        "blur, rofi"
-      ];
       animations = {
         enabled = true;
         bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
@@ -94,10 +89,13 @@
         preserve_split = true;
       };
       misc = {
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
         focus_on_activate = true;
         force_default_wallpaper = -1;
-        disable_hyprland_logo = false;
         middle_click_paste = false;
+        enable_swallow = true;
+        swallow_regex = "ghostty";
       };
       input = {
         kb_layout = "us,ru";
@@ -105,6 +103,7 @@
         follow_mouse = true;
         sensitivity = 0;
       };
+      gestures.workspace_swipe = true;
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
@@ -114,7 +113,8 @@
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "NVD_BACKEND,direct"
         "MOZ_ENABLE_WAYLAND,1"
-        "QT_QPA_PLATFORMTHEME,gtk3"
+        "QT_QPA_PLATFORM,wayland;xcb"
+        "QT_QPA_PLATFORMTHEME,qt5ct"
         "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         "MOZ_DISABLE_RDD_SANDBOX,1"
         "EDITOR,nvim"

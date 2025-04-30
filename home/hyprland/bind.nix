@@ -1,54 +1,103 @@
-{...}: {
-  wayland.windowManager.hyprland.settings = {
-    "$terminal" = "ghostty";
-    "$fileManager" = "thunar";
-    "$browser" = "firefox";
-    "$menu" = "rofi -show drun -show-icons";
-    "$mod" = "SUPER";
+{
+  wayland.windowManager.hyprland.settings = let
+    terminal = "ghostty";
+    fileManager = "thunar";
+    browser = "firefox";
+    menu = "rofi -show drun -show-icons";
+    mod = "SUPER";
+    modShift = "${mod} SHIFT";
+    modAlt = "${mod} ALT";
+
+    mkBind = mod: key: action: "${mod}, ${key}, ${action}";
+    mkExec = cmd: "exec, uwsm app -- ${cmd}";
+
+    mediaBinds = [
+      (mkBind "" "XF86AudioRaiseVolume" (mkExec "swayosd-client --output-volume raise"))
+      (mkBind "" "XF86AudioLowerVolume" (mkExec "swayosd-client --output-volume lower"))
+      (mkBind "" "Caps_Lock" (mkExec "swayosd-client --caps-lock"))
+      (mkBind "" "XF86Calculator" (mkExec "rofi -show calc"))
+    ];
+
+    appBinds = [
+      (mkBind mod "Return" (mkExec terminal))
+      (mkBind mod "C" "killactive")
+      (mkBind mod "E" (mkExec fileManager))
+      (mkBind mod "B" (mkExec browser))
+      (mkBind mod "SPACE" (mkExec menu))
+    ];
+
+    utilBinds = [
+      (mkBind modShift "C" (mkExec "hyprpicker | wl-copy"))
+      (mkBind mod "V" (mkExec "copyq show"))
+      (mkBind mod "Period" (mkExec "rofi -show rofimoji"))
+      (mkBind mod "M" (mkExec "rofi -show rofi-power-menu"))
+    ];
+
+    screenshotBinds = [
+      (mkBind modShift "S" (mkExec "grimblast --freeze save area - | swappy -f - && wl-paste"))
+      (mkBind "" "Print" (mkExec "grimblast --freeze copy area && wl-paste"))
+    ];
+
+    windowBinds = [
+      (mkBind mod "F" "togglefloating")
+      (mkBind mod "BRACKETRIGHT" "fullscreen")
+      (mkBind mod "J" "togglesplit")
+    ];
+
+    focusBinds = [
+      (mkBind mod "left" "movefocus, l")
+      (mkBind mod "right" "movefocus, r")
+      (mkBind mod "up" "movefocus, u")
+      (mkBind mod "down" "movefocus, d")
+    ];
+
+    moveBinds = [
+      (mkBind modAlt "left" "movewindow, l")
+      (mkBind modAlt "right" "movewindow, r")
+      (mkBind modAlt "up" "movewindow, u")
+      (mkBind modAlt "down" "movewindow, d")
+    ];
+
+    specialBinds = [
+      (mkBind "ALT" "F9" (mkExec "sudo gmode.sh"))
+    ];
+
+    mkWorkspaceBinds = let
+      workspaces =
+        builtins.genList (i: let
+          ws = i + 1;
+        in {
+          number = ws;
+          key = "code:1${toString i}";
+        })
+        5;
+    in
+      builtins.concatLists (builtins.map (ws: [
+          (mkBind mod ws.key (mkExec "hyprsome workspace ${toString ws.number}"))
+          (mkBind modShift ws.key (mkExec "hyprsome movefocus ${toString ws.number}"))
+        ])
+        workspaces);
+  in {
+    "$terminal" = terminal;
+    "$fileManager" = fileManager;
+    "$browser" = browser;
+    "$menu" = menu;
+    "$mod" = mod;
+
     bind =
-      [
-        ", XF86AudioRaiseVolume, exec, uwsm app -- swayosd-client --output-volume raise"
-        ", XF86AudioLowerVolume, exec, uwsm app -- swayosd-client --output-volume lower"
-        ", Caps_Lock, exec, uwsm app -- swayosd-client --caps-lock"
-        "$mod, Return, exec, uwsm app -- $terminal"
-        "$mod, C, killactive"
-        "$mod, E, exec, uwsm app -- $fileManager"
-        "$mod, B, exec, uwsm app -- $browser"
-        "$mod SHIFT, C, exec, uwsm app -- hyprpicker | wl-copy"
-        "$mod, V, exec, uwsm app -- copyq show"
-        "$mod, Period, exec, uwsm app -- rofi -show rofimoji"
-        ", XF86Calculator, exec, uwsm app -- rofi -show calc"
-        "$mod, M, exec, uwsm app -- rofi -show rofi-power-menu"
-        "$mod SHIFT ,S, exec, uwsm app -- grimblast --freeze save area - | swappy -f - && wl-paste"
-        ",Print, exec, uwsm app -- grimblast --freeze copy area && wl-paste"
-        "$mod, F, togglefloating"
-        "$mod, BRACKETRIGHT, fullscreen"
-        "$mod, SPACE, exec, uwsm app -- $menu"
-        "$mod, J, togglesplit"
-        "$mod, left, movefocus, l"
-        "$mod, right, movefocus, r"
-        "$mod, up, movefocus, u"
-        "$mod, down, movefocus, d"
-        "$mod ALT, left, movewindow, l"
-        "$mod ALT, right, movewindow, r"
-        "$mod ALT, up, movewindow, u"
-        "$mod ALT, down, movewindow, d"
-        "ALT, F9, exec, sudo gmode.sh"
-      ]
-      ++ (builtins.concatLists (
-        builtins.genList (
-          i: let
-            ws = i + 1;
-          in [
-            "$mod, code:1${toString i}, exec, hyprsome workspace ${toString ws}"
-            "$mod SHIFT, code:1${toString i}, exec, hyprsome movefocus ${toString ws}"
-          ]
-        )
-        5
-      ));
+      mediaBinds
+      ++ appBinds
+      ++ utilBinds
+      ++ screenshotBinds
+      ++ windowBinds
+      ++ focusBinds
+      ++ moveBinds
+      ++ specialBinds
+      ++ mkWorkspaceBinds;
+
     bindm = [
-      "$mod, mouse:272, movewindow"
-      "$mod, mouse:273, resizewindow"
+      (mkBind mod "mouse:272" "movewindow")
+      (mkBind mod "mouse:273" "resizewindow")
     ];
   };
 }
