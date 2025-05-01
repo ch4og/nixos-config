@@ -32,12 +32,15 @@ jobs:
 
       - name: Check Home Manager configuration
         run: nix build .#homeConfigurations.ch.activationPackage --dry-run
+
+      - name: Run statix fix
+        run: nix run nixpkgs#statix -- fix -i ./hosts/hardware-configuration.nix
       
+      - name: Fix dead code
+        run: nix run nixpkgs#deadnix -- --exclude ./hosts/hardware-configuration.nix --edit --no-lambda-pattern-names .
+
       - name: Fix Nix formatting
         run: nix run nixpkgs#alejandra -- --exclude ./hosts/hardware-configuration.nix .
-
-      - name: Fix dead code
-        run: nix run nixpkgs#deadnix -- --edit --no-lambda-pattern-names .
 
       - name: Commit and push changes
         if: github.ref == 'refs/heads/main'

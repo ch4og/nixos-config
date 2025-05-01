@@ -70,23 +70,42 @@
       "x86_64-linux"
       "aarch64-linux"
     ];
-    forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
+    forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems f;
 
     perSystem = system: let
       pkgs = import nixpkgs {
         inherit system;
-        overlays = (pkgsOverlays {}).nixpkgs.overlays;
+        inherit ((pkgsOverlays {}).nixpkgs) overlays;
       };
     in {
       formatter = nixpkgs.legacyPackages.${system}.alejandra;
-      devShells.default = inputs.cybersec.devShells.${system}.default;
+      devShells = {
+        cybersec = inputs.cybersec.devShells.${system}.default;
+        default = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            grim
+            git
+            nh
+            statix
+            deadnix
+          ];
+        };
+        fix = (perSystem system).devShells.default.overrideAttrs (_old: {
+          shellHook = ''
+            deadnix --exclude hosts/hardware-configuration.nix --edit .
+            statix fix -i hosts/hardware-configuration.nix
+            alejandra --exclude ./hosts/hardware-configuration.nix .
+            exit
+          '';
+        });
+      };
 
       packages =
         {
-          nvf = pkgs.nvf;
+          inherit (pkgs) nvf;
         }
         // nixpkgs.lib.optionalAttrs (system == "x86_64-linux") {
-          proton-ge = pkgs.proton-ge-bin;
+          inherit (pkgs) proton-ge-bin;
         };
     };
   in {

@@ -7,3 +7,4 @@
 - [ ] Use stylix
 - [ ] Switch to helix?
 - [ ] Disko?
+- [ ] Move CI to Nix too

@@ -17,8 +17,6 @@
       && file != "discord.nix"
   ) (builtins.attrNames (builtins.readDir ./.));
 in {
-  home.username = username;
-  home.homeDirectory = "/home/${username}";
   imports =
     (builtins.map (file: ./${file}) nixFiles)
     ++ [
@@ -34,5 +32,9 @@ in {
 
       ../generic/nix.nix
     ];
-  home.stateVersion = "24.05";
+  home = {
+    inherit username;
+    homeDirectory = "/home/${username}";
+    stateVersion = "24.05";
+  };
 }

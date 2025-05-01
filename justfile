@@ -1,4 +1,4 @@
-set shell := ["nix-shell", "-p", "nh", "--run"]
+set shell := ["nix", "develop", ".", "--command", "bash", "-c"]
 
 # list all available commands
 default:
@@ -7,8 +7,6 @@ default:
 # all prebuild commands
 pre:
   git add .
-
-sys-pre:
 
 # rebuild and switch
 sw: pre
@@ -39,5 +37,14 @@ hm: pre
 ss:
   grim -g "0,0 2048x1152" assets/screenshot.png
 
-protonver:
-  nix eval .#protonGEVersion.x86_64-linux
+statix:
+  statix check -i hosts/hardware-configuration.nix
+
+deadnix:
+  deadnix --exclude hosts/hardware-configuration.nix
+
+fmt:
+  nix fmt .
+
+fix:
+  nix develop .#fix
