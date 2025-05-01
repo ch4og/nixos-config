@@ -71,21 +71,30 @@
       "aarch64-linux"
     ];
     forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
-  in {
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-    devShell = forAllSystems (system: inputs.cybersec.devShells.${system}.default);
-    packages = forAllSystems (system: let
-      inherit system;
-      overlayModule = pkgsOverlays {};
+
+    perSystem = system: let
       pkgs = import nixpkgs {
         inherit system;
-        overlays = overlayModule.nixpkgs.overlays;
+        overlays = (pkgsOverlays {}).nixpkgs.overlays;
       };
     in {
-      nvf = pkgs.nvf;
+      formatter = nixpkgs.legacyPackages.${system}.alejandra;
+      devShells.default = inputs.cybersec.devShells.${system}.default;
 
-      nixosConfigurations.nixpc = mkNixosConfiguration system;
-      homeConfigurations.${username} = mkHomeConfiguration system;
-    });
+      packages =
+        {
+          nvf = pkgs.nvf;
+        }
+        // nixpkgs.lib.optionalAttrs (system == "x86_64-linux") {
+          proton-ge = pkgs.proton-ge-bin;
+        };
+    };
+  in {
+    formatter = forAllSystems (system: (perSystem system).formatter);
+    devShells = forAllSystems (system: (perSystem system).devShells);
+    packages = forAllSystems (system: (perSystem system).packages);
+
+    nixosConfigurations.nixpc = mkNixosConfiguration "x86_64-linux";
+    homeConfigurations.${username} = mkHomeConfiguration "x86_64-linux";
   };
 }

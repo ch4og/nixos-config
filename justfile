@@ -38,3 +38,6 @@ hm: pre
 
 ss:
   grim -g "0,0 2048x1152" assets/screenshot.png
+
+protonver:
+  nix eval .#protonGEVersion.x86_64-linux
