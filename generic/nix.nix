@@ -3,9 +3,9 @@
     package = pkgs.lix;
     settings = {
       substituters = [
-        "https://nixos-cache-proxy.cofob.dev" # mirror of cache.nixos.org
+        "https://nixos-cache-proxy.cofob.dev" # proxy to cache.nixos.org
         "https://nix-community.cachix.org" # nix-community
-        "https://cache.garnix.io" # garnix
+        "https://garnix-cache.ch4og.com" # proxy to cache.garnix.io
         "https://nix-gaming.cachix.org" # nix-gaming
         "https://ezkea.cachix.org" # aagl
         "https://hyprland.cachix.org" # hyprland
