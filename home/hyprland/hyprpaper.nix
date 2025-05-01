@@ -15,7 +15,6 @@
       ];
       wallpaper = [
         "DP-1, ${walls}/${main}"
-        "HDMI-A-1, ${walls}/${main}"
         "eDP-1, ${walls}/${secondary}"
       ];
     };
