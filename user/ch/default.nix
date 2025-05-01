@@ -19,12 +19,15 @@ in {
   security.sudo.extraRules = [
     {
       groups = ["wheel"];
-      commands = [
-        {
-          command = "/home/${username}/.local/bin/gmode.sh";
+      commands =
+        map (cmd: {
+          command = cmd;
           options = ["NOPASSWD"];
-        }
-      ];
+        }) [
+          "/home/${username}/.local/bin/gmode.sh"
+          "${pkgs.btrfs-progs}/bin/btrfs subvolume show*"
+          "${pkgs.btrfs-progs}/bin/btrfs subvolume list*"
+        ];
     }
   ];
 }

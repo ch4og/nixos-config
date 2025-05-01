@@ -1,7 +1,7 @@
 {
   wayland.windowManager.hyprland.settings = let
     terminal = "ghostty";
-    fileManager = "thunar";
+    fileManager = "yazi";
     browser = "firefox";
     menu = "rofi -show drun -show-icons";
     mod = "SUPER";

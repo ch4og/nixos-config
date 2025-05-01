@@ -1,11 +1,10 @@
-{...}: {
-  imports = [
-    ./development.nix
-    ./nix-tools.nix
-    ./python-packages.nix
-    ./system-utils.nix
-    ./fonts.nix
-    ./wm.nix
-    ./applications.nix
-  ];
+_: let
+  nixFiles = builtins.filter (
+    file:
+      builtins.match ".*\\.nix" file
+      != null
+      && file != "default.nix"
+  ) (builtins.attrNames (builtins.readDir ./.));
+in {
+  imports = builtins.map (file: ./${file}) nixFiles;
 }

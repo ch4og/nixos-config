@@ -11,7 +11,7 @@
         "text/xml" = "firefox.desktop";
         "x-scheme-handler/http" = "firefox.desktop";
         "x-scheme-handler/https" = "firefox.desktop";
-        "inode/directory" = "thunar.desktop";
+        "inode/directory" = "yazi.desktop";
         "image/jpeg" = "org.gnome.eog.desktop";
         "image/png" = "org.gnome.eog.desktop";
         "image/svg+xml" = "org.gnome.eog.desktop";

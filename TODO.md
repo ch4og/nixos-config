@@ -6,5 +6,6 @@
 - [ ] Reorganize home.packages
 - [ ] Use stylix
 - [ ] Switch to helix?
+- [ ] Switch to Zed?
 - [ ] Disko?
 - [ ] Move CI to Nix too

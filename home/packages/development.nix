@@ -21,5 +21,9 @@
 
     # Databases
     sqlite
+
+    glow
+    duckdb
+    ouch
   ];
 }

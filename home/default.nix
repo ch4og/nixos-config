@@ -3,35 +3,13 @@
   username ? "ch",
   inputs,
   ...
-}: let
-  # useGlobalPkgs = true;
-  # useUserPackages = true;
-  nixFiles = builtins.filter (
-    file:
-      builtins.match ".*\\.nix" file
-      != null
-      && file != "default.nix"
-      && file != "pkgs.nix"
-      && file != "spotify.nix"
-      && file != "firefox.nix"
-      && file != "discord.nix"
-  ) (builtins.attrNames (builtins.readDir ./.));
-in {
-  imports =
-    (builtins.map (file: ./${file}) nixFiles)
-    ++ [
-      (import ./hyprland {inherit pkgs inputs;})
-      (import ./packages {inherit pkgs inputs;})
-      (import ./spotify.nix {inherit pkgs inputs;})
-      (import ./firefox.nix {inherit pkgs inputs;})
-      (import ./discord.nix {inherit pkgs inputs;})
-      (import ./fastfetch)
-      ./fish
-      ./bin
-      ./waybar
+}: {
+  imports = [
+    (import ./modules {inherit pkgs inputs;})
+    (import ./packages {inherit pkgs inputs;})
+    ../generic/nix.nix
+  ];
 
-      ../generic/nix.nix
-    ];
   home = {
     inherit username;
     homeDirectory = "/home/${username}";
