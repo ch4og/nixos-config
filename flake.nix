@@ -22,98 +22,27 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     nekobox.url = "github:s0me1newithhand7s/nekoflake";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = {nixpkgs, ...} @ inputs: let
-    pkgsOverlays = _: {
-      nixpkgs.overlays = [
-        (_final: prev: {
-          hyprland-git = inputs.hyprland-git.packages.${prev.system}.hyprland or {};
-          nix-gaming = inputs.nix-gaming.packages.${prev.system} or {};
-          nekobox = inputs.nekobox.packages.${prev.system}.nekobox or {};
-          spicetify-nix = inputs.spicetify-nix.legacyPackages.${prev.system} or {};
-          nvf = inputs.nvf.packages.${prev.system}.default or {};
-        })
-      ];
-    };
+    lib = import ./lib {inherit nixpkgs inputs;};
 
     username = "ch";
-
-    mkNixosConfiguration = system:
-      nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-        };
-        modules = [
-          ./hosts/nixpc
-          inputs.chaotic.nixosModules.default
-          inputs.home-manager.nixosModules.home-manager
-          pkgsOverlays
-        ];
-      };
-
-    mkHomeConfiguration = system:
-      inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = {
-          inherit inputs username;
-        };
-        modules = [
-          ./home
-          inputs.chaotic.homeManagerModules.default
-          pkgsOverlays
-        ];
-      };
-
-    supportedSystems = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
-    forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems f;
-
-    perSystem = system: let
-      pkgs = import nixpkgs {
-        inherit system;
-        inherit ((pkgsOverlays {}).nixpkgs) overlays;
-      };
-    in {
-      formatter = nixpkgs.legacyPackages.${system}.alejandra;
-      devShells = {
-        cybersec = inputs.cybersec.devShells.${system}.default;
-        default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            grim
-            git
-            nh
-            statix
-            deadnix
-          ];
-        };
-        fix = (perSystem system).devShells.default.overrideAttrs (_old: {
-          shellHook = ''
-            deadnix --exclude hosts/hardware-configuration.nix --edit .
-            statix fix -i hosts/hardware-configuration.nix
-            alejandra --exclude ./hosts/hardware-configuration.nix .
-            exit
-          '';
-        });
-      };
-
-      packages =
-        {
-          inherit (pkgs) nvf;
-        }
-        // nixpkgs.lib.optionalAttrs (system == "x86_64-linux") {
-          inherit (pkgs) proton-ge-bin;
-        };
-    };
   in {
-    formatter = forAllSystems (system: (perSystem system).formatter);
-    devShells = forAllSystems (system: (perSystem system).devShells);
-    packages = forAllSystems (system: (perSystem system).packages);
+    formatter = lib.forAllSystems (system: (lib.perSystem system).formatter);
+    devShells = lib.forAllSystems (system: (lib.perSystem system).devShells);
+    packages = lib.forAllSystems (system: (lib.perSystem system).packages);
 
-    nixosConfigurations.nixpc = mkNixosConfiguration "x86_64-linux";
-    homeConfigurations.${username} = mkHomeConfiguration "x86_64-linux";
+    nixosConfigurations.nixpc = lib.mkNixosConfiguration {
+      system = "x86_64-linux";
+      hostname = "nixpc";
+    };
+
+    homeConfigurations.${username} = lib.mkHomeConfiguration {
+      system = "x86_64-linux";
+      inherit username;
+    };
   };
 }

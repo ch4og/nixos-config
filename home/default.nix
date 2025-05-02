@@ -7,7 +7,7 @@
   imports = [
     (import ./modules {inherit pkgs inputs;})
     (import ./packages {inherit pkgs inputs;})
-    ../generic/nix.nix
+    ../modules/nix
   ];
 
   home = {

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
+_: let
   dirEntries = builtins.readDir ./.;
   directories =
     builtins.filter (

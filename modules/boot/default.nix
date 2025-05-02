@@ -27,6 +27,7 @@
       "iommu=pt"
       "nvidia.NVreg_UsePageAttributeTable=1"
       "mitigations=off"
+      "acpi_osi=Linux-Dell-Video"
     ];
 
     extraModulePackages = with config.boot.kernelPackages; [

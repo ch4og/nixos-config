@@ -1,8 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ../hardware-configuration.nix
-    ../../generic/nix.nix
-
+    ../../modules/nix
     ../../modules/boot
     ../../modules/hardware
     ../../modules/networking
