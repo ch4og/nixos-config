@@ -59,6 +59,7 @@
 
           inputs.chaotic.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
+          inputs.aagl.nixosModules.default
 
           (import ../overlays {inherit inputs;})
         ]

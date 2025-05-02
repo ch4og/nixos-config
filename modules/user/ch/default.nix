@@ -13,9 +13,6 @@ in {
     ];
     shell = pkgs.fish;
   };
-  imports = [
-    ./programs.nix
-  ];
   security.sudo.extraRules = [
     {
       groups = ["wheel"];

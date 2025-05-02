@@ -8,7 +8,7 @@
     ../../modules/security
     ../../modules/services
 
-    ../../user/ch
+    ../../modules/user/ch
   ];
 
   networking.hostName = "nixpc";

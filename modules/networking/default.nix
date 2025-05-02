@@ -2,6 +2,7 @@ _: {
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
+    mihoyo-telemetry.block = true;
   };
 
   systemd.services.NetworkManager-wait-online.enable = false;

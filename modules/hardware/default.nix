@@ -31,6 +31,7 @@
       open = true;
       nvidiaSettings = true;
     };
+    opentabletdriver.enable = true;
   };
 
   fileSystems = {

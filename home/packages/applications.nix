@@ -37,6 +37,7 @@
     nekobox
 
     # Gaming
+    aagl.anime-game-launcher
     gamemode
     gamescope
     tetrio-desktop

@@ -22,6 +22,7 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     nekobox.url = "github:s0me1newithhand7s/nekoflake";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    freesmlauncher.url = "github:FreesmTeam/FreesmLauncher";
 
     stylix.url = "github:danth/stylix";
   };

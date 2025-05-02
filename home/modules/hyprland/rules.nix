@@ -9,8 +9,6 @@ let
 
   mkPin = type: title: "pin, ${type}:(${title})";
 
-  mkTile = type: title: "tile, ${type}:(${title})";
-
   defaultRules = [
     (mkNoblur "class" "^()$")
     (mkNoblur "title" "^()$")
@@ -45,14 +43,10 @@ in {
         (mkNoblur "class" "com.ayugram.desktop")
       ]
       ++ [
-        # tile
-        (mkTile "class" "spotify")
-      ]
-      ++ [
         # workspaces
         (mkWorkspace "11" "class" "vesktop")
         (mkWorkspace "11" "class" "discord")
-        (mkWorkspace "12" "class" "Spotify")
+        (mkWorkspace "12" "class" "spotify")
       ];
 
     layerrule = [
