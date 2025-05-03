@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   wayland.windowManager.hyprland.settings = let
     terminal = "ghostty";
     fileManager = "yazi";
@@ -59,7 +59,7 @@
     ];
 
     specialBinds = [
-      (mkBind "ALT" "F9" (mkExec "sudo gmode.sh"))
+      (mkBind "ALT" "F9" (mkExec (pkgs.lib.getExe (import ./hyprgmode.nix {inherit pkgs;}))))
     ];
 
     mkWorkspaceBinds = let

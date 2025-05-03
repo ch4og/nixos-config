@@ -87,20 +87,24 @@
 
     gamemode = {
       enable = true;
+      enableRenice = true;
       settings = {
         general = {
+          desiredgov = "performance";
+          desiredprof = "performance"; # for some reason this is not working
           renice = 10;
           softrealtime = "auto";
           inhibit_screensaver = 1;
         };
-        gpu = {
-          apply_gpu_optimisations = "accept-responsibility";
-          gpu_device = 0;
-          amd_performance_level = "high";
-        };
         custom = {
-          start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
-          end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+          start = ''
+            echo performance > /sys/firmware/acpi/platform_profile
+            ${pkgs.libnotify}/bin/notify-send "GameMode started"
+          '';
+          stop = ''
+            echo balanced > /sys/firmware/acpi/platform_profile
+            ${pkgs.libnotify}/bin/notify-send "GameMode stopped"
+          '';
         };
       };
     };

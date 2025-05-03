@@ -21,7 +21,6 @@ in {
           command = cmd;
           options = ["NOPASSWD"];
         }) [
-          "/home/${username}/.local/bin/gmode.sh"
           "${pkgs.btrfs-progs}/bin/btrfs subvolume show*"
           "${pkgs.btrfs-progs}/bin/btrfs subvolume list*"
         ];
