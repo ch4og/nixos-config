@@ -1,4 +1,3 @@
-_: {
 {
   lib,
   config,
@@ -6,7 +5,7 @@ _: {
 }: {
   programs.ghostty = {
     enable = true;
-    enableFishIntegration = true;
+    enableZshIntegration = true;
     settings = {
       gtk-titlebar = false;
       theme = lib.mkIf (!config.stylix.enable) "KittyDefault";

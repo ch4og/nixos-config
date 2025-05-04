@@ -40,5 +40,5 @@
   xdg.terminal-exec.enable = true;
 
   programs.zsh.enable = true;
-  programs.fish.enable = true;
+  environment.pathsToLink = ["/share/zsh"];
 }

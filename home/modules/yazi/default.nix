@@ -131,6 +131,6 @@
       dark = "tokyonight-night";
       light = "tokyonight-night";
     };
-    enableFishIntegration = true;
+    enableZshIntegration = true;
   };
 }

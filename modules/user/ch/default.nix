@@ -11,7 +11,7 @@ in {
       "gamemode"
       "networkmanager"
     ];
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
   security.sudo.extraRules = [
     {
