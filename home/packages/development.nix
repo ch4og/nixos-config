@@ -8,9 +8,7 @@
     yarn
 
     # Development Environments
-    vscode
     nvf
-    code-cursor
 
     # Version Control and Collaboration
     gh

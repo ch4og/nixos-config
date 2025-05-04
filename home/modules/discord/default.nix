@@ -10,6 +10,7 @@
     enable = true;
     discord = {
       package = pkgs.discord-krisp;
+      branch = "canary";
       vencord.enable = true;
       openASAR.enable = false;
     };

@@ -23,20 +23,24 @@
     devShells = {
       cybersec = inputs.cybersec.devShells.${system}.default;
       default = defaultShell;
-
-      fix = defaultShell.overrideAttrs {
-        shellHook = ''
-          deadnix --exclude hosts/hardware-configuration.nix --edit .
-          statix fix -i hosts/hardware-configuration.nix
-          alejandra --exclude ./hosts/hardware-configuration.nix .
-          exit
-        '';
-      };
     };
 
     packages =
       {
         inherit (pkgs) nvf;
+
+        fix-all = pkgs.writeShellScriptBin "fix-all" ''
+          echo "Running deadnix..."
+          ${pkgs.deadnix}/bin/deadnix --exclude hosts/hardware-configuration.nix --edit .
+
+          echo "Running statix fix..."
+          ${pkgs.statix}/bin/statix fix -i hosts/hardware-configuration.nix
+
+          echo "Running alejandra..."
+          ${pkgs.alejandra}/bin/alejandra --exclude ./hosts/hardware-configuration.nix .
+
+          echo "All formatting complete!"
+        '';
       }
       // nixpkgs.lib.optionalAttrs (system == "x86_64-linux") {
         inherit (pkgs) proton-ge-bin;

@@ -34,17 +34,14 @@ gc:
 hm: pre
   nh home switch .
 
+# make a screenshot
 ss:
   grim -g "0,0 2048x1152" assets/screenshot.png
 
-statix:
-  statix check -i hosts/hardware-configuration.nix
-
-deadnix:
-  deadnix --exclude hosts/hardware-configuration.nix
-
+# run alejandra
 fmt:
   nix fmt .
 
+# run formatters (deadnix, statix, alejandra)
 fix:
-  nix develop .#fix
+  nix run .#fix-all

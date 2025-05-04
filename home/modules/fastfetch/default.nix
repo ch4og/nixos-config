@@ -1,16 +1,10 @@
-{config, ...}: let
-  allFiles = builtins.attrNames (builtins.readDir ./.);
-  images = builtins.filter (name: builtins.match ".*\\.png$" name != null) allFiles;
-  mkFileAttr = name: {
-    source = "${./.}/${name}";
-  };
-in {
+{
   programs.fastfetch = {
     enable = true;
     settings = {
       logo = {
         type = "kitty";
-        source = "${config.xdg.configHome}/fastfetch/nixos_girl.png";
+        source = ../../../assets/nixos_girl.png;
         width = 20;
         height = 8;
         padding = {
@@ -57,11 +51,4 @@ in {
       ];
     };
   };
-  xdg.configFile = builtins.listToAttrs (
-    map (name: {
-      name = "fastfetch/${name}";
-      value = mkFileAttr name;
-    })
-    images
-  );
 }

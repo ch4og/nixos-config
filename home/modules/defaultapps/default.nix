@@ -1,4 +1,10 @@
 {
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    BROWSER = "firefox";
+    TERMINAL = "ghostty";
+  };
+
   xdg = {
     mimeApps = {
       enable = true;
