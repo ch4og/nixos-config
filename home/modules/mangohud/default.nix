@@ -1,4 +1,8 @@
-_: {
+{
+  lib,
+  config,
+  ...
+}: {
   programs.mangohud = {
     enable = true;
     settings = {
@@ -12,8 +16,8 @@ _: {
       fps = true;
       vulkan_driver = true;
       gamemode = true;
-      background_alpha = 0.4;
-      font_size = 24;
+      background_alpha = lib.mkForce 0.4;
+      font_size = lib.mkForce 24;
     };
   };
 }

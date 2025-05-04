@@ -1,4 +1,9 @@
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -9,7 +14,7 @@
         no_fade_in = false;
       };
 
-      background = [
+      background = pkgs.lib.mkForce [
         {
           path = "screenshot";
           blur_passes = 3;
@@ -17,7 +22,7 @@
         }
       ];
 
-      input-field = [
+      input-field = lib.mkIf (!config.stylix.enable) [
         {
           monitor = "";
           dots_center = true;

@@ -18,7 +18,6 @@
     };
     config = {
       themeLinks = [
-        "https://luckfire.github.io/amoled-cord/src/amoled-cord.css"
         "https://raw.githubusercontent.com/DiscordStyles/RadialStatus/deploy/RadialStatus.theme.css"
       ];
       plugins = {

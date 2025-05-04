@@ -1,7 +1,7 @@
 # TODO:
 
-- [ ] Make waybar config prettier and/or switch to another bar
 - [ ] Switch to zsh
+- [ ] Make waybar config prettier (including stylix) or switch to another bar
 - [ ] Reorganize home.packages
 - [ ] Use more stylix
 - [ ] Switch to Zed?

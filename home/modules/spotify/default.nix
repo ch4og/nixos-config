@@ -1,6 +1,8 @@
 {
   inputs,
   pkgs,
+  lib,
+  config,
   ...
 }: {
   imports = [
@@ -10,8 +12,8 @@
     spicePkgs = pkgs.spicetify-nix;
   in {
     enable = true;
-    theme = spicePkgs.themes.default;
-    colorScheme = "Ocean";
+    theme = lib.mkIf (!config.stylix.enable) spicePkgs.themes.default;
+    colorScheme = lib.mkIf (!config.stylix.enable) "Ocean";
     enabledExtensions = with spicePkgs.extensions; [
       adblock
       hidePodcasts

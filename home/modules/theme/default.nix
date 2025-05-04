@@ -1,40 +1,68 @@
 {pkgs, ...}: {
-  home.pointerCursor = {
-    gtk.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = 24;
+  programs.alacritty = {
+    enable = true;
+  };
+  stylix = {
+    enable = true;
+    autoEnable = true;
+    polarity = "dark";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+
+    image = (import ./wallpapers.nix {inherit pkgs;}).main;
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 24;
+    };
+    fonts = {
+      sizes = {
+        desktop = 8;
+        applications = 10;
+        terminal = 12;
+      };
+      serif = {
+        package = pkgs.noto-fonts;
+        name = "Noto Serif";
+      };
+
+      sansSerif = {
+        package = pkgs.noto-fonts;
+        name = "Noto Sans";
+      };
+
+      monospace = {
+        package = pkgs.callPackage ./coco.nix {};
+        name = let
+          a = "ic";
+          b = "";
+          c = "m";
+          d = " ";
+          e = "de";
+          f = "";
+          g = "C";
+          h = "";
+          i = "o";
+        in
+          b + g + i + c + h + a + f + g + b + i + e + d + h + "Nerd Font";
+      };
+
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+        name = "Noto Color Emoji";
+      };
+    };
+    targets = {
+      firefox.profileNames = ["9rhmal6a.default"];
+      mangohud.enable = false;
+      yazi.enable = false;
+    };
   };
 
   gtk = {
     enable = true;
-
-    font.name = "Noto Sans";
-    theme = {
-      package = pkgs.layan-gtk-theme;
-      name = "Layan-Dark";
-    };
-
     iconTheme = {
       package = pkgs.tela-icon-theme;
       name = "Tela-dark";
     };
   };
-
-  xdg.configFile = {
-    "Kvantum/Layan/Layan.kvconfig".source = "${pkgs.layan-kde}/share/Kvantum/Layan/Layan.kvconfig";
-    "Kvantum/Layan/Layan.svg".source = "${pkgs.layan-kde}/share/Kvantum/Layan/Layan.svg";
-    "Kvantum/Layan/LayanDark.kvconfig".source = "${pkgs.layan-kde}/share/Kvantum/Layan/LayanDark.kvconfig";
-    "Kvantum/Layan/LayanDark.svg".source = "${pkgs.layan-kde}/share/Kvantum/Layan/LayanDark.svg";
-    "Kvantum/LayanSolid/LayanSolid.kvconfig".source = "${pkgs.layan-kde}/share/Kvantum/LayanSolid/LayanSolid.kvconfig";
-    "Kvantum/LayanSolid/LayanSolid.svg".source = "${pkgs.layan-kde}/share/Kvantum/LayanSolid/LayanSolid.svg";
-    "Kvantum/LayanSolid/LayanSolidDark.kvconfig".source = "${pkgs.layan-kde}/share/Kvantum/LayanSolid/LayanSolidDark.kvconfig";
-    "Kvantum/LayanSolid/LayanSolidDark.svg".source = "${pkgs.layan-kde}/share/Kvantum/LayanSolid/LayanSolidDark.svg";
-  };
-
-  xdg.configFile."Kvantum/kvantum.kvconfig".source =
-    (pkgs.formats.ini {}).generate "kvantum.kvconfig"
-    {
-      General.theme = "LayanSolidDark";
-    };
 }

@@ -1,4 +1,8 @@
-_: {
+{
+  lib,
+  config,
+  ...
+}: {
   imports = [
     ./bind.nix
     ./rules.nix
@@ -49,8 +53,8 @@ _: {
         gaps_in = 5;
         gaps_out = 20;
         border_size = 2;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        "col.active_border" = lib.mkIf (!config.stylix.enable) "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        "col.inactive_border" = lib.mkIf (!config.stylix.enable) "rgba(595959aa)";
         resize_on_border = true;
         allow_tearing = false;
         layout = "dwindle";
@@ -61,7 +65,7 @@ _: {
         inactive_opacity = 1.0;
         shadow = {
           enabled = true;
-          color = "rgba(1a1a1aee)";
+          color = lib.mkIf (!config.stylix.enable) "rgba(1a1a1aee)";
           render_power = 3;
           range = 4;
         };

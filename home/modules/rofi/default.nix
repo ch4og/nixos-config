@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   programs.rofi = {
@@ -47,7 +48,7 @@
         fg1 = mkLiteral "#FFFFFF";
         fg2 = mkLiteral "#DEDEDE80";
 
-        background-color = mkLiteral "transparent";
+        background-color = lib.mkForce (mkLiteral "transparent");
         text-color = mkLiteral "@fg0";
 
         margin = 0;
@@ -55,7 +56,7 @@
         spacing = 0;
       };
       window = {
-        background-color = mkLiteral "@bg0";
+        background-color = lib.mkIf (!config.stylix.enable) (mkLiteral "@bg0");
         location = mkLiteral "center";
         width = 800;
         border-radius = 8;
@@ -84,7 +85,7 @@
       };
       message = {
         border = mkLiteral "2px 0 0";
-        border-color = mkLiteral "@bg1";
+        border-color = lib.mkIf (!config.stylix.enable) (mkLiteral "@bg1");
         background-color = mkLiteral "@bg1";
       };
       textbox = {
@@ -95,7 +96,7 @@
         columns = 1;
         fixed-height = false;
         border = mkLiteral "1px 0 0";
-        border-color = mkLiteral "@bg1";
+        border-color = lib.mkIf (!config.stylix.enable) (mkLiteral "@bg1");
       };
       element = {
         padding = mkLiteral "8px 16px";
@@ -124,5 +125,10 @@
   xdg.configFile."rofimoji.rc".text = ''
       action = copy
     max-recent = 0
+  '';
+
+  xdg.configFile."networkmanager-dmenu/config.ini".text = ''
+    [dmenu]
+    dmenu_command = rofi
   '';
 }

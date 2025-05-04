@@ -81,6 +81,7 @@
           ../home
 
           inputs.chaotic.homeManagerModules.default
+          inputs.stylix.homeManagerModules.stylix
 
           (import ../overlays {inherit inputs;})
         ]
