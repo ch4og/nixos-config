@@ -8,6 +8,7 @@
     (import ./modules {inherit pkgs inputs;})
     (import ./packages {inherit pkgs inputs;})
     ../modules/nix
+    ../modules/sops
   ];
 
   home = {

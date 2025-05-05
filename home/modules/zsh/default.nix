@@ -17,7 +17,7 @@
       initContent =
         (builtins.readFile ./init.zsh)
         + ''
-          ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
+          any-nix-shell zsh --info-right | source /dev/stdin
         '';
       shellAliases = import ./aliases.nix;
     };

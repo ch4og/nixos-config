@@ -22,5 +22,6 @@ This configuration was inspired by:
 - [romek-codes/nix-config](https://github.com/romek-codes/nix-config)
 - [Sk7Str1p3/dotFiles](https://github.com/Sk7Str1p3/dotFiles)
 - [Frost-Phoenix/nixos-config](https://github.com/Frost-Phoenix/nixos-config)
+- [TheMaxMur/NixOS-Configuration](https://github.com/TheMaxMur/NixOS-Configuration)
 
 Big thanks to all of these amazing people!

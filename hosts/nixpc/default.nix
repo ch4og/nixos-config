@@ -9,6 +9,7 @@
     ../../modules/services
 
     ../../modules/user/ch
+    ../../modules/sops
   ];
 
   networking.hostName = "nixpc";

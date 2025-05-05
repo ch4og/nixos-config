@@ -18,4 +18,5 @@ with pkgs; [
   btrfs-progs
   snapper
   compsize
+  sops
 ]

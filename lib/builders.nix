@@ -3,6 +3,13 @@
   inputs,
   ...
 }: {
+      forAllSystems = let
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+    in
+      f: nixpkgs.lib.genAttrs supportedSystems f;
   perSystem = system: let
     pkgs = import nixpkgs {
       inherit system;
@@ -64,6 +71,7 @@
           inputs.chaotic.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
           inputs.aagl.nixosModules.default
+          inputs.sops-nix.nixosModules.sops
 
           (import ../overlays {inherit inputs;})
         ]
@@ -86,6 +94,7 @@
 
           inputs.chaotic.homeManagerModules.default
           inputs.stylix.homeManagerModules.stylix
+          inputs.sops-nix.homeManagerModules.sops
 
           (import ../overlays {inherit inputs;})
         ]

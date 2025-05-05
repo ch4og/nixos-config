@@ -13,7 +13,6 @@
 
     cybersec.url = "github:ch4og/nixcybersec";
     nvf.url = "github:ch4og/nvf";
-
     hyprland-git.url = "github:hyprwm/hyprland";
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -23,25 +22,25 @@
     nekobox.url = "github:s0me1newithhand7s/nekoflake";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     freesmlauncher.url = "github:FreesmTeam/FreesmLauncher";
-
     stylix.url = "github:danth/stylix";
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs = {nixpkgs, ...} @ inputs: let
-    lib = import ./lib {inherit nixpkgs inputs;};
+    builders = import ./lib/builders.nix {inherit nixpkgs inputs;};
 
     username = "ch";
   in {
-    formatter = lib.forAllSystems (system: (lib.perSystem system).formatter);
-    devShells = lib.forAllSystems (system: (lib.perSystem system).devShells);
-    packages = lib.forAllSystems (system: (lib.perSystem system).packages);
+    formatter = builders.forAllSystems (system: (builders.perSystem system).formatter);
+    devShells = builders.forAllSystems (system: (builders.perSystem system).devShells);
+    packages = builders.forAllSystems (system: (builders.perSystem system).packages);
 
-    nixosConfigurations.nixpc = lib.mkNixosConfiguration {
+    nixosConfigurations.nixpc = builders.mkNixosConfiguration {
       system = "x86_64-linux";
       hostname = "nixpc";
     };
 
-    homeConfigurations.${username} = lib.mkHomeConfiguration {
+    homeConfigurations.${username} = builders.mkHomeConfiguration {
       system = "x86_64-linux";
       inherit username;
     };

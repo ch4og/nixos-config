@@ -1,8 +1,13 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  config,
+  ...
+}: let
   username = "ch";
 in {
   users.users.${username} = {
     isNormalUser = true;
+    hashedPasswordFile = config.sops.secrets.password.path;
     extraGroups = [
       "wheel"
       "libvirtd"

@@ -1,0 +1,8 @@
+keys:
+  - &ch4og age1z7fzh03mfyx427am6jule7m2d807uujksa5am4g6yqmtdn9qfu0qnlmfuu
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *ch4og
