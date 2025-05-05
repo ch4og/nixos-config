@@ -3,13 +3,13 @@
   inputs,
   ...
 }: {
-      forAllSystems = let
-      supportedSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-    in
-      f: nixpkgs.lib.genAttrs supportedSystems f;
+  forAllSystems = let
+    supportedSystems = [
+      "x86_64-linux"
+      "aarch64-linux"
+    ];
+  in
+    f: nixpkgs.lib.genAttrs supportedSystems f;
   perSystem = system: let
     pkgs = import nixpkgs {
       inherit system;
