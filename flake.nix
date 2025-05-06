@@ -11,8 +11,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    cybersec.url = "github:ch4og/nixcybersec";
-    nvf.url = "github:ch4og/nvf";
+    cybersec.url = "gitlab:ch4og/nixcybersec";
+    nvf.url = "gitlab:ch4og/nvf";
     hyprland-git.url = "github:hyprwm/hyprland";
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";

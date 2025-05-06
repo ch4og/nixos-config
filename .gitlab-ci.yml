@@ -1,0 +1,68 @@
+stages:
+  - ci
+
+validate:
+  stage: ci
+  image: nixos/nix:latest
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" || $CI_PIPELINE_SOURCE == "merge_request_event"
+  script:
+    - nix --extra-experimental-features "nix-command flakes" flake check --all-systems
+
+format:
+  stage: ci
+  image: nixos/nix:latest
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" || $CI_PIPELINE_SOURCE == "merge_request_event"
+  script:
+    - nix --extra-experimental-features "nix-command flakes" run nixpkgs#statix -- fix -i ./hosts/hardware-configuration.nix
+    - nix --extra-experimental-features "nix-command flakes" run nixpkgs#deadnix -- --exclude ./hosts/hardware-configuration.nix --edit --no-lambda-pattern-names .
+    - nix --extra-experimental-features "nix-command flakes" run nixpkgs#alejandra -- --exclude ./hosts/hardware-configuration.nix .
+    - |
+      if [ -n "$(git status --porcelain)" ]; then
+        git config --global user.name "GitLab CI/CD"
+        git config --global user.email "gitlab-ci@example.com"
+        git add .
+        git commit -m "ci: fix formatting and dead code [skip ci]"
+        git push https://ci:${CI_JOB_PERSONAL_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git HEAD:${CI_COMMIT_BRANCH}
+      else
+        echo "No changes to commit"
+      fi
+
+update-flake-lock:
+  stage: ci
+  image: nixos/nix:latest
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "web"
+  script:
+    - echo "Updating flake.lock..."
+    - nix --extra-experimental-features "nix-command flakes" flake update
+    - cat update_log.txt
+    - git config --global user.name "GitLab CI/CD"
+    - git config --global user.email "gitlab-ci@example.com"
+    - git add flake.lock
+    - |
+      if git diff --staged --quiet; then
+        echo "No changes to commit"
+      else
+        NEW_B_NAME="update-flake-lock-$(date +%Y%m%d)"
+        git checkout -b ${NEW_B_NAME}
+        git commit -m "ci: update flake.lock [skip ci]"
+        git push --force --set-upstream https://ci:${CI_JOB_PERSONAL_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git HEAD
+        
+        HOST_URL="https://gitlab.com/api/v4/projects/"
+        TARGET_BRANCH=main
+
+        MR_BODY="{
+          \"id\": ${CI_PROJECT_ID},
+          \"source_branch\": \"${NEW_B_NAME}\",
+          \"target_branch\": \"${TARGET_BRANCH}\",
+          \"remove_source_branch\": true,
+          \"title\": \"ci: update flake.lock\"
+        }"
+          curl -X POST "${HOST_URL}${CI_PROJECT_ID}/merge_requests" \
+            --header "PRIVATE-TOKEN:${CI_JOB_PERSONAL_TOKEN}" \
+            --header "Content-Type: application/json" \
+            --data "${MR_BODY}"
+      fi

@@ -12,6 +12,7 @@
 
     # Version Control and Collaboration
     gh
+    glab
     lazygit
 
     # Code Formatting and Linting
