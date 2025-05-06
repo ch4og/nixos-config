@@ -9,6 +9,7 @@
   programs.nixcord = {
     enable = true;
     discord = {
+      enable = false; # FUCK YOU Roskomnadzor
       package = pkgs.discord-krisp;
       branch = "canary";
       vencord.enable = true;
