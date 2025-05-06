@@ -5,6 +5,10 @@
 This repository contains my personal NixOS configuration with a modular
 structure.
 
+<a href="https://gitlab.com/ch4og/nixos-config"> <img src="https://www.svgrepo.com/show/448226/gitlab.svg" width="16"/> GitLab repo </a>
+
+<a href="https://github.com/ch4og/nixos-config"> <img src="https://www.svgrepo.com/show/512317/github-142.svg" width="16"/> GitHub mirror </a>
+
 > [!WARNING]
 > While this is my daily driver on my main machine, the configuration is still
 > WIP.
