@@ -46,7 +46,8 @@ update-flake-lock:
       if git diff --staged --quiet; then
         echo "No changes to commit"
       else
-        git checkout -b update-flake-lock-$(date +%Y%m%d)
+        NEW_B_NAME="update-flake-lock-$(date +%Y%m%d)"
+        git checkout -b ${NEW_B_NAME}
         git commit -m "ci: update flake.lock"
         git push --force --set-upstream https://ci:${CI_JOB_PERSONAL_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git HEAD
         
@@ -55,7 +56,7 @@ update-flake-lock:
 
         MR_BODY="{
           \"id\": ${CI_PROJECT_ID},
-          \"source_branch\": \"${CI_COMMIT_REF_NAME}\",
+          \"source_branch\": \"${NEW_B_NAME}\",
           \"target_branch\": \"${TARGET_BRANCH}\",
           \"remove_source_branch\": true,
           \"title\": \"ci: update flake.lock\"
@@ -64,5 +65,4 @@ update-flake-lock:
             --header "PRIVATE-TOKEN:${CI_JOB_PERSONAL_TOKEN}" \
             --header "Content-Type: application/json" \
             --data "${MR_BODY}"
-          echo "Created new merge request for flake updates from branch ${CURRENT_BRANCH}"
       fi
