@@ -7,7 +7,7 @@
     package = pkgs.lix;
     settings = let
       getConfig = attr: inputs: builtins.concatMap (input: input.nixConfig.${attr} or []) inputs;
-      inputsList = [inputs.aagl inputs.nix-gaming inputs.freesmlauncher];
+      inputsList = [inputs.aagl inputs.nix-gaming];
     in {
       substituters =
         [
