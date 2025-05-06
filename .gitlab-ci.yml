@@ -48,7 +48,7 @@ update-flake-lock:
       else
         git checkout -b update-flake-lock-$(date +%Y%m%d)
         git commit -m "ci: update flake.lock"
-        git push --set-upstream https://ci:${CI_JOB_PERSONAL_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git HEAD
+        git push --force --set-upstream https://ci:${CI_JOB_PERSONAL_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git HEAD
         
         HOST_URL="https://gitlab.com/api/v4/projects/"
         TARGET_BRANCH=main
@@ -60,7 +60,7 @@ update-flake-lock:
           \"remove_source_branch\": true,
           \"title\": \"ci: update flake.lock\"
         }"
-          curl -X POST "${CI_PROJECT_URL}${CI_PROJECT_ID}/merge_requests" \
+          curl -X POST "${HOST_URL}${CI_PROJECT_ID}/merge_requests" \
             --header "PRIVATE-TOKEN:${CI_JOB_PERSONAL_TOKEN}" \
             --header "Content-Type: application/json" \
             --data "${MR_BODY}"
