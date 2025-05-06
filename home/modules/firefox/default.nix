@@ -19,6 +19,7 @@
         "media.ffmpeg.vaapi.enabled" = true;
         "widget.dmabuf.force-enabled" = true;
         "privacy.webrtc.legacyGlobalIndicator" = false;
+        "media.hardware-video-decoding.force-enabled" = true;
       };
       userChrome = ''
         @-moz-document url-prefix("chrome:") {
