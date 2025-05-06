@@ -39,13 +39,11 @@ in {
       ]
       ++ [
         # no blur
-        (mkNoblur "class" "windowkill")
         (mkNoblur "class" "com.ayugram.desktop")
       ]
       ++ [
         # workspaces
         (mkWorkspace "11" "class" "vesktop")
-        (mkWorkspace "11" "class" "discord")
         (mkWorkspace "12" "class" "spotify")
       ];
 

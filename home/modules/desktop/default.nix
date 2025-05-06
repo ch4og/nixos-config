@@ -17,14 +17,6 @@
       inherit mimeType;
     };
   in {
-    "discord" = createEntry {
-      name = "Discord";
-      genericName = "All-in-one cross-platform voice and text chat for gamers";
-      icon = "discord";
-      exec = "${pkgs.lib.getExe pkgs.discord} %U --enable-features=WaylandLinuxDrmSyncobj";
-      categories = ["Network" "InstantMessaging"];
-      mimeType = ["x-scheme-handler/discord"];
-    };
     "vesktop" = createEntry {
       name = "Vesktop";
       genericName = "Internet Messenger";
