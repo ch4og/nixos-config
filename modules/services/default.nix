@@ -81,7 +81,7 @@
 
     hyprland = {
       enable = true;
-      package = pkgs.hyprland-git;
+      package = pkgs.hyprland;
       withUWSM = true;
     };
 

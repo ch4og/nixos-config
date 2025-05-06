@@ -34,7 +34,7 @@
 
     packages =
       {
-        inherit (pkgs) nvf;
+        inherit (pkgs) neovim;
 
         fix-all = pkgs.writeShellScriptBin "fix-all" ''
           echo "Running deadnix..."

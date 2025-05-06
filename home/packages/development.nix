@@ -8,7 +8,7 @@
     yarn
 
     # Development Environments
-    nvf
+    neovim
 
     # Version Control and Collaboration
     gh
