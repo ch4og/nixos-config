@@ -1,28 +1,30 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    # Programming Languages
-    python3Full
-    rustup
-    go
-    nodejs
-    yarn
+  home.packages =
+    (with pkgs; [
+      # Programming Languages
+      python3Full
+      rustup
+      go
+      nodejs
+      yarn
 
-    # Development Environments
-    neovim
+      # Development Environments
+      neovim
 
-    # Version Control and Collaboration
-    gh
-    glab
-    lazygit
+      # Version Control and Collaboration
+      gh
+      glab
+      lazygit
 
-    # Code Formatting and Linting
-    prettierd
+      # Code Formatting and Linting
+      prettierd
 
-    # Databases
-    sqlite
-
-    glow
-    duckdb
-    ouch
-  ];
+      # Databases
+      sqlite
+    ])
+    ++ (with pkgs.python313Packages; [
+      pygithub
+      opencv4
+      pipx
+    ]);
 }

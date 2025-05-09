@@ -15,6 +15,9 @@
     dust
     fastfetch
     inetutils
+    glow
+    duckdb
+    ouch
 
     # File Management
     unrar
