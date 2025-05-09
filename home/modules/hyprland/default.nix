@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   imports = [
@@ -20,34 +21,25 @@
     ];
   in {
     enable = true;
-    package = null;
+    package = pkgs.hyprland;
     systemd.enable = false;
+    plugins = [
+      pkgs.split-monitor-workspaces
+    ];
     settings = {
+      plugin = {
+        split-monitor-workspaces = {
+          count = 5;
+          keep_focused = 1;
+          enable_notifications = 0;
+          enable_persistent_workspaces = 1;
+        };
+      };
       monitor = [
         "${builtins.elemAt monitors 0}, 3840x2160@144, 0x0, 1.875"
         "${builtins.elemAt monitors 1}, 1920x1080@120, 2048x144, 1.25"
         "${builtins.elemAt monitors 2}, 1920x1080@60, auto, 1, mirror, ${builtins.elemAt monitors 0}"
       ];
-
-      workspace =
-        builtins.genList (
-          i: let
-            workspaceNumber = i + 1;
-            monitorIndex =
-              if workspaceNumber <= 5
-              then 0
-              else 1;
-            monitor = builtins.elemAt monitors monitorIndex;
-            mappedNumber =
-              if workspaceNumber <= 5
-              then workspaceNumber + 20
-              else workspaceNumber + 5;
-          in
-            if workspaceNumber <= 5 || workspaceNumber >= 6 # Actually this condition is always true
-            then "${toString mappedNumber},monitor:${monitor},persistent:true"
-            else ""
-        )
-        10;
 
       general = {
         gaps_in = 5;
@@ -111,7 +103,7 @@
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
-        # "LIBVA_DRIVER_NAME,nvidia"
+        "LIBVA_DRIVER_NAME,nvidia"
         "XDG_SESSION_TYPE,wayland"
         "GBM_BACKEND,nvidia-drm"
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"

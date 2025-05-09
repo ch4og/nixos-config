@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   wayland.windowManager.hyprland.settings = let
     terminal = "ghostty";
-    fileManager = "yazi";
+    fileManager = "ghostty -e yazi";
     browser = "firefox";
     menu = "rofi -show drun -show-icons";
     mod = "SUPER";
@@ -20,6 +20,7 @@
 
     appBinds = [
       (mkBind mod "Return" (mkExec terminal))
+      (mkBind mod "KP_Enter" (mkExec terminal))
       (mkBind mod "C" "killactive")
       (mkBind mod "E" (mkExec fileManager))
       (mkBind mod "B" (mkExec browser))
@@ -71,12 +72,25 @@
           key = "code:1${toString i}";
         })
         5;
+      workspaces2 =
+        builtins.genList (i: let
+          ws = i + 6;
+        in {
+          number = ws;
+          key = "code:1${toString (i + 5)}";
+        })
+        5;
     in
       builtins.concatLists (builtins.map (ws: [
-          (mkBind mod ws.key (mkExec "hyprsome workspace ${toString ws.number}"))
-          (mkBind modShift ws.key (mkExec "hyprsome movefocus ${toString ws.number}"))
+          (mkBind mod ws.key "exec, hyprctl dispatch split-workspace ${toString ws.number}")
+          (mkBind modShift ws.key "exec, hyprctl dispatch split-movetoworkspace ${toString ws.number}")
         ])
-        workspaces);
+        workspaces)
+      ++ builtins.concatLists (builtins.map (ws: [
+          (mkBind mod ws.key "exec, if [ $(hyprctl monitors -j | jq 'length') -eq 1 ]; then hyprctl dispatch split-workspace ${toString ws.number};fi")
+          (mkBind modShift ws.key "exec, if [ $(hyprctl monitors -j | jq 'length') -eq 1 ]; then hyprctl dispatch split-movetoworkspace ${toString ws.number};fi")
+        ])
+        workspaces2);
   in {
     "$terminal" = terminal;
     "$fileManager" = fileManager;

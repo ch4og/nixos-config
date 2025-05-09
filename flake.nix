@@ -11,9 +11,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland.url = "github:hyprwm/hyprland";
+    split-monitor-workspaces = {
+      url = "github:Duckonaut/split-monitor-workspaces";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     cybersec.url = "gitlab:ch4og/nixcybersec";
     nvf.url = "gitlab:ch4og/nvf";
-    hyprland-git.url = "github:hyprwm/hyprland";
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     betterfox-nix.url = "github:HeitorAugustoLN/betterfox-nix";

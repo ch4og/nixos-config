@@ -21,15 +21,11 @@
           all-outputs = false;
           format = "{icon}";
           format-icons = {
-            "21" = " ";
-            "22" = " ";
-            "24" = " ";
-            "11" = " ";
-            "12" = " ";
-            "15" = " ";
             "urgent" = " ";
-            "focused" = " ";
-            "default" = " ";
+            "active" = " ";
+            "visible" = " ";
+            "default" = " ";
+            "empty" = " ";
           };
         };
         "hyprland/language" = {

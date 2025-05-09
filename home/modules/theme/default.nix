@@ -54,7 +54,7 @@
     targets = {
       firefox.profileNames = ["9rhmal6a.default"];
       mangohud.enable = false;
-      yazi.enable = false;
+      waybar.enable = false;
     };
   };
 

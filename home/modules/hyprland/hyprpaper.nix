@@ -9,10 +9,12 @@
       preload = [
         "${walls.main}"
         "${walls.secondary}"
+        "${walls.third}"
       ];
       wallpaper = [
         "DP-1, ${walls.main}"
         "eDP-1, ${walls.secondary}"
+        "HDMI-A-1, ${walls.third}"
       ];
     };
   };
