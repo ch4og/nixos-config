@@ -4,7 +4,6 @@
   ff = "fastfetch";
   o = "xdg-open";
   lg = "lazygit";
-  e = "emacs";
   reload-waybar = "pkill -SIGUSR2 waybar";
   cybersec = "nix develop github:ch4og/nixcybersec";
 
