@@ -42,6 +42,6 @@
     # Virtualization and Compatibility
     wine-staging
     wine64Packages.staging
-    distrobox_git
+    distrobox
   ];
 }

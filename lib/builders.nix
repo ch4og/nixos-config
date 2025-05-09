@@ -68,7 +68,6 @@
         [
           ../hosts/${hostname}
 
-          inputs.chaotic.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
           inputs.aagl.nixosModules.default
           inputs.sops-nix.nixosModules.sops
