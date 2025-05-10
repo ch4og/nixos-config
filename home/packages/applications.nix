@@ -31,6 +31,7 @@
     # System Tools
     file-roller
     remmina
+    virt-manager
 
     # Security
     burpsuite
