@@ -38,7 +38,6 @@ update-flake-lock:
   script:
     - echo "Updating flake.lock..."
     - nix --extra-experimental-features "nix-command flakes" flake update
-    - cat update_log.txt
     - git config --global user.name "GitLab CI/CD"
     - git config --global user.email "gitlab-ci@example.com"
     - git add flake.lock
