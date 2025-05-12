@@ -43,8 +43,8 @@ in {
       ]
       ++ [
         # workspaces
-        (mkWorkspace "1" "class" "vesktop")
-        (mkWorkspace "2" "class" "spotify")
+        (mkWorkspace "6" "class" "vesktop")
+        (mkWorkspace "7" "class" "spotify")
       ];
 
     layerrule = [

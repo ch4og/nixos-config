@@ -16,9 +16,9 @@ in {
 
     (mkWorkspaceApp 12 "firefox" "")
     (mkWorkspaceApp 14 "ayugram-desktop" "title")
-    (mkWorkspaceApp 1 "vesktop --enable-features=WaylandLinuxDrmSyncobj" "title")
-    (mkWorkspaceApp 2 "spotify --enable-features=WaylandLinuxDrmSyncobj" "")
-    (mkWorkspaceApp 4 "nekobox -tray" "title")
-    (mkWorkspaceApp 5 "steam -silent" "title")
+    (mkWorkspaceApp 6 "vesktop --enable-features=WaylandLinuxDrmSyncobj" "title")
+    (mkWorkspaceApp 7 "spotify --enable-features=WaylandLinuxDrmSyncobj" "")
+    (mkWorkspaceApp 9 "nekobox -tray" "title")
+    (mkWorkspaceApp 10 "steam -silent" "title")
   ];
 }
