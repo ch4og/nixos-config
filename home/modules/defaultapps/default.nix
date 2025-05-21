@@ -18,6 +18,7 @@
         "x-scheme-handler/http" = "firefox.desktop";
         "x-scheme-handler/https" = "firefox.desktop";
         "inode/directory" = "yazi.desktop";
+        "x-scheme-handler/terminal" = "com.mitchellh.ghostty.desktop";
         "image/jpeg" = "org.gnome.eog.desktop";
         "image/png" = "org.gnome.eog.desktop";
         "image/svg+xml" = "org.gnome.eog.desktop";

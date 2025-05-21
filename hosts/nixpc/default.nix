@@ -30,6 +30,7 @@
       };
     in
       setEnvVars;
+    enableAllTerminfo = true;
   };
 
   time.timeZone = "Europe/Moscow";
