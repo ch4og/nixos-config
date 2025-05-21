@@ -43,6 +43,7 @@
     gamescope
     tetrio-desktop
     prismlauncher
+    temurin-jre-bin-23
     lunar-client
     parsec-bin
     bottles
