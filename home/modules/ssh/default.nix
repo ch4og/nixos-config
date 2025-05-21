@@ -12,6 +12,11 @@ _: {
         identityFile = "~/.ssh/id_ed25519_vpn";
         port = 2222;
       };
+      "cheese.ch4og.com" = {
+        hostname = "cheese.ch4og.com";
+        identityFile = "~/.ssh/id_ed25519_cheese";
+        port = 2222;
+      };
       "gitlab.com" = {
         hostname = "gitlab.com";
         identityFile = "~/.ssh/id_ed25519_ch4og";

@@ -23,8 +23,9 @@
     ];
 
     kernelParams = [
-      "amd_iommu=on"
-      "iommu=pt"
+      "no_ibs"
+      "amd_iommu=off"
+      "nmi_watchdog=0"
       "nvidia.NVreg_UsePageAttributeTable=1"
       "mitigations=off"
       "acpi_osi=Linux-Dell-Video"

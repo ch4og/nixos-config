@@ -32,5 +32,13 @@
       categories = ["Audio" "Music" "Player" "AudioVideo"];
       mimeType = ["x-scheme-handler/spotify"];
     };
+    "yazi" = createEntry {
+      name = "Yazi";
+      genericName = "Yazi";
+      icon = "yazi";
+      exec = "${pkgs.lib.getExe pkgs.ghostty} -e ${pkgs.lib.getExe pkgs.yazi}";
+      categories = ["Utility" "Core" "System" "FileTools" "FileManager"];
+      mimeType = ["inode/directory"];
+    };
   };
 }

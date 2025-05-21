@@ -61,7 +61,7 @@
   services.btrfs.autoScrub = {
     enable = true;
     interval = "weekly";
-    fileSystems = ["/"];
+    fileSystems = ["/" "/home" "/nix" "/var/log" "/home/ch/Games"];
   };
 
   services.fstrim.enable = true;

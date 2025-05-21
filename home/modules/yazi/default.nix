@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  home.packages = with pkgs; [
+    dragon-drop
+  ];
   programs.yazi = {
     enable = true;
     flavors = {
@@ -23,45 +26,53 @@
       }
     '';
 
-    keymap = {
-      manager.prepend_keymap = [
-        {
-          on = "C";
-          run = "plugin ouch";
-          desc = "Compress with ouch";
-        }
-        {
-          on = "H";
-          run = "plugin duckdb -1";
-          desc = "Scroll one column to the left";
-        }
-        {
-          on = "L";
-          run = "plugin duckdb +1";
-          desc = "Scroll one column to the right";
-        }
-        {
-          on = ["g" "i"];
-          run = "plugin lazygit";
-          desc = "Run lazygit";
-        }
-        {
-          on = ["z" "h"];
-          run = "plugin time-travel --args=prev";
-          desc = "Go to previous snapshot";
-        }
-        {
-          on = ["z" "l"];
-          run = "plugin time-travel --args=next";
-          desc = "Go to next snapshot";
-        }
-        {
-          on = ["z" "e"];
-          run = "plugin time-travel --args=exit";
-          desc = "Exit browsing snapshots";
-        }
-      ];
-    };
+    keymap.manager.prepend_keymap = [
+      {
+        on = "C";
+        run = "plugin ouch";
+        desc = "Compress with ouch";
+      }
+      {
+        on = "H";
+        run = "plugin duckdb -1";
+        desc = "Scroll one column to the left";
+      }
+      {
+        on = "L";
+        run = "plugin duckdb +1";
+        desc = "Scroll one column to the right";
+      }
+      {
+        on = ["g" "i"];
+        run = "plugin lazygit";
+        desc = "Run lazygit";
+      }
+      {
+        on = ["z" "h"];
+        run = "plugin time-travel --args=prev";
+        desc = "Go to previous snapshot";
+      }
+      {
+        on = ["z" "l"];
+        run = "plugin time-travel --args=next";
+        desc = "Go to next snapshot";
+      }
+      {
+        on = ["z" "e"];
+        run = "plugin time-travel --args=exit";
+        desc = "Exit browsing snapshots";
+      }
+      {
+        on = ["<C-n>"];
+        run = "shell 'dragon-drop -x -i -T \"$1\"'";
+        desc = "Drag and drop files";
+      }
+      {
+        on = ["<C-t>"];
+        run = "shell --confirm 'dragon-drop -t -k --print-path | grep -v \"^$\" | xargs -I{} sh -c \"cp -v \\\"{}\\\" . && notify-send \\\"Copied: {} → $(pwd)/\\\"\"'";
+        desc = "Drop and copy file into current directory with notification";
+      }
+    ];
     settings = {
       manager = {
         show_hidden = true;

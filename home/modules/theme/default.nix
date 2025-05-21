@@ -31,19 +31,7 @@
       };
 
       monospace = {
-        package = pkgs.callPackage ./coco.nix {};
-        name = let
-          a = "ic";
-          b = "";
-          c = "m";
-          d = " ";
-          e = "de";
-          f = "";
-          g = "C";
-          h = "";
-          i = "o";
-        in
-          b + g + i + c + h + a + f + g + b + i + e + d + h + "Nerd Font";
+        name = "ComicCode Nerd Font";
       };
 
       emoji = {

@@ -92,7 +92,7 @@
           ../home
 
           inputs.chaotic.homeManagerModules.default
-          inputs.stylix.homeManagerModules.stylix
+          inputs.stylix.homeModules.stylix
           inputs.sops-nix.homeManagerModules.sops
 
           (import ../overlays {inherit inputs;})

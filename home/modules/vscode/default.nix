@@ -10,24 +10,23 @@
       enableExtensionUpdateCheck = false;
       enableUpdateCheck = false;
 
-      extensions = with pkgs.vscode-extensions;
-        [
-          github.vscode-github-actions
-          github.copilot
-          github.copilot-chat
-          github.vscode-pull-request-github
-          eamodio.gitlens
-          bbenoist.nix
-          ms-python.python
-          ms-vscode-remote.remote-ssh
-          ms-vscode-remote.remote-ssh-edit
-          supermaven.supermaven
-          bradlc.vscode-tailwindcss
-          enkia.tokyo-night
-          vscodevim.vim
-          wakatime.vscode-wakatime
-        ]
-        ++ [pkgs.master.vscode-extensions.yy0931.vscode-sqlite3-editor];
+      extensions = with pkgs.vscode-extensions; [
+        bbenoist.nix
+        bradlc.vscode-tailwindcss
+        eamodio.gitlens
+        enkia.tokyo-night
+        github.copilot
+        github.copilot-chat
+        github.vscode-github-actions
+        github.vscode-pull-request-github
+        ms-python.python
+        ms-vscode-remote.remote-ssh
+        ms-vscode-remote.remote-ssh-edit
+        supermaven.supermaven
+        vscodevim.vim
+        wakatime.vscode-wakatime
+        yy0931.vscode-sqlite3-editor
+      ];
       userSettings = {
         "editor.fontFamily" = lib.mkIf (!config.stylix.enable) "ComicCode Nerd Font";
         "workbench.colorTheme" = lib.mkForce "Tokyo Night";

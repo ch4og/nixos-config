@@ -8,6 +8,9 @@
   ];
 
   services = {
+    guix = {
+      enable = true;
+    };
     blueman.enable = true;
 
     xserver.videoDrivers = ["nvidia"];

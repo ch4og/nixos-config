@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     # Browsers
     chromium
@@ -38,11 +42,15 @@
     nekobox
 
     # Gaming
-    aagl.anime-game-launcher
     gamemode
     gamescope
     tetrio-desktop
-    prismlauncher
+    (
+      prismlauncher.overrideAttrs
+      (old: {
+        jdks = [config.programs.java.package];
+      })
+    )
     temurin-jre-bin-23
     lunar-client
     parsec-bin
@@ -51,6 +59,5 @@
     lutris
     nix-gaming.osu-stable
     nix-gaming.osu-lazer-bin
-    torzu
   ];
 }
