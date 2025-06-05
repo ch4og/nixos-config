@@ -47,7 +47,7 @@
     tetrio-desktop
     (
       prismlauncher.overrideAttrs
-      (old: {
+      (_old: {
         jdks = [config.programs.java.package];
       })
     )
