@@ -1,5 +1,22 @@
 # NixOS Configuration
 
+### I'm slowly migrating to GNU Guix from NixOS, so this repository won't update too often.
+
+<br>
+<h4>My GNU Guix configuration:</h4>
+
+<a href="https://gitlab.com/ch4og/guix-config">
+<img src="https://www.svgrepo.com/show/448226/gitlab.svg" width="16"/> GitLab
+repo </a><br>
+
+<a href="https://github.com/ch4og/guix-config">
+<img src="https://www.svgrepo.com/show/512317/github-142.svg" width="16"/>
+GitHub mirror </a><br>
+
+<a href="https://codeberg.org/ch4og/guix-config">
+<img src="https://www.svgrepo.com/show/349319/codeberg.svg" width="16"/>
+Codeberg mirror </a><br>
+
 ![image](./assets/screenshot.png)
 
 This repository contains my personal NixOS configuration with a modular
