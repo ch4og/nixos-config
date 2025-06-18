@@ -19,8 +19,15 @@ _: {
       };
       "noko.local" = {
         hostname = "noko.local";
+        identityFile = "~/.ssh/id_ed25519_ch4og";
         port = 2222;
       };
+      "192.168.1.70" = {
+        hostname = "192.168.1.70";
+        identityFile = "~/.ssh/id_ed25519_ch4og";
+        port = 2222;
+      };
+
       "gitlab.com" = {
         hostname = "gitlab.com";
         identityFile = "~/.ssh/id_ed25519_ch4og";
