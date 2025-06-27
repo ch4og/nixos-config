@@ -13,6 +13,11 @@
 
     split-monitor-workspaces = {
       url = "github:Duckonaut/split-monitor-workspaces";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
     };
 
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
