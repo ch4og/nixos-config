@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "usbhid" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -37,16 +37,22 @@
       options = [ "subvol=log" ];
     };
 
+  fileSystems."/home/ch/Games" =
+    { device = "/dev/disk/by-uuid/f68d8a76-066d-40fb-b7d6-787e4f414ad2";
+      fsType = "btrfs";
+      options = [ "subvol=games" ];
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/8E4D-1353";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/home/ch/Games" =
-    { device = "/dev/disk/by-uuid/f68d8a76-066d-40fb-b7d6-787e4f414ad2";
+  fileSystems."/swap" =
+    { device = "/dev/disk/by-uuid/a064c179-2689-4464-a344-bf2e29aaeb18";
       fsType = "btrfs";
-      options = [ "subvol=games" ];
+      options = [ "subvol=swap" ];
     };
 
   swapDevices = [ ];
@@ -58,6 +64,7 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.virbr0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

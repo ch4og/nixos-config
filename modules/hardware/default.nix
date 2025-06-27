@@ -22,7 +22,7 @@
     };
 
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
       modesetting.enable = true;
       powerManagement = {
         enable = true;
@@ -33,6 +33,13 @@
     };
     opentabletdriver.enable = true;
   };
+
+  swapDevices = [
+    {
+      device = "/swap/swapfile";
+      size = 16 * 1024;
+    }
+  ];
 
   fileSystems = {
     "/".options = ["compress=zstd"];
