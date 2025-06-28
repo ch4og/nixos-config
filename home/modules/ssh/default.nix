@@ -31,10 +31,17 @@ _: {
       "gitlab.com" = {
         hostname = "gitlab.com";
         identityFile = "~/.ssh/id_ed25519_ch4og";
+        user = "git";
+      };
+      "codeberg.org" = {
+        hostname = "codeberg.org";
+        identityFile = "~/.ssh/id_ed25519_ch4og";
+        user = "git";
       };
       "github.com" = {
         hostname = "github.com";
         identityFile = "~/.ssh/id_ed25519_ch4og";
+        user = "git";
       };
     };
   };
