@@ -95,7 +95,8 @@
       };
       input = {
         kb_layout = "us,ru";
-        kb_options = "grp:alt_shift_toggle";
+        kb_variant = "colemak,";
+        kb_options = "grp:alt_shift_toggle,lv3:none";
         follow_mouse = true;
         sensitivity = 0;
       };
