@@ -62,6 +62,7 @@
     specialBinds = [
       (mkBind "ALT" "F9" (mkExec (pkgs.lib.getExe (import ./hyprgmode.nix {inherit pkgs;}))))
       (mkBind mod "P" (mkExec (pkgs.lib.getExe (import ./mirrorsel.nix {inherit pkgs;}))))
+      (mkBind mod "t" "tagwindow, transparent")
     ];
 
     mkWorkspaceBinds = let

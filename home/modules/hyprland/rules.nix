@@ -45,6 +45,10 @@ in {
         # workspaces
         (mkWorkspace "6" "class" "vesktop")
         (mkWorkspace "7" "class" "spotify")
+      ]
+      ++ [
+        "opacity 0.7 override,tag:transparent"
+        "noblur, tag:transparent"
       ];
 
     layerrule = [
