@@ -1,7 +1,7 @@
 {pkgs, ...}:
 pkgs.writeShellApplication {
   name = "mirrorsel";
-  runtimeInputs = [pkgs.hyprland pkgs.jq pkgs.rofi-wayland];
+  runtimeInputs = [pkgs.hyprland-git pkgs.jq pkgs.rofi-wayland];
   text = ''
     monitors_json=$(hyprctl monitors -j)
     selection=$(echo "$monitors_json" | jq -r '.[] | "\(.make) \(.model) [\(.name)]"' | rofi -dmenu -p "Select monitor to mirror")

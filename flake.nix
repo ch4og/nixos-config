@@ -16,10 +16,7 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-    };
-
+    hyprland.url = "github:hyprwm/Hyprland";
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     betterfox-nix.url = "github:HeitorAugustoLN/betterfox-nix";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";

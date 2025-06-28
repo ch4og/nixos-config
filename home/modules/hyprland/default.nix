@@ -21,7 +21,7 @@
     ];
   in {
     enable = true;
-    package = pkgs.hyprland;
+    package = pkgs.hyprland-git;
     systemd.enable = false;
     plugins = [
       pkgs.split-monitor-workspaces
