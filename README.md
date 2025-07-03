@@ -2,6 +2,8 @@
 
 ### I'm slowly migrating to GNU Guix from NixOS, so this repository won't update too often.
 
+[My GNU Guix configuration](https://git.ch4og.com/ch4og/guix-config).
+
 <br>
 
 ![image](./assets/screenshot.png)
