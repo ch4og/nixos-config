@@ -19,4 +19,5 @@ with pkgs; [
   snapper
   compsize
   sops
+  nftables
 ]
