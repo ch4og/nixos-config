@@ -19,7 +19,7 @@
         ];
         "hyprland/workspaces" = {
           all-outputs = false;
-          format = "{icon}";
+          format = "{name}";
           format-icons = {
             "urgent" = " ";
             "active" = " ";
