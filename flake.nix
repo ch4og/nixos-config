@@ -25,12 +25,12 @@
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     betterfox-nix.url = "github:HeitorAugustoLN/betterfox-nix";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    cybersec.url = "gitlab:ch4og/nixcybersec";
+    cybersec.url = "github:ch4og/nixcybersec";
     nekobox.url = "github:s0me1newithhand7s/nekoflake";
     niri.url = "github:sodiboo/niri-flake";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nixcord.url = "github:KaylorBen/nixcord";
-    nvf.url = "gitlab:ch4og/nvf";
+    nvf.url = "github:ch4og/nvf";
     sops-nix.url = "github:Mic92/sops-nix";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     stylix.url = "github:danth/stylix";
