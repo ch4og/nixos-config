@@ -10,6 +10,7 @@
     waybar
     hyprsome
     hyprpolkitagent
+    quickshell
 
     # Audio and Video
     pavucontrol

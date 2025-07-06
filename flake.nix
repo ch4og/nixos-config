@@ -16,6 +16,11 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland.url = "github:hyprwm/Hyprland";
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     betterfox-nix.url = "github:HeitorAugustoLN/betterfox-nix";
