@@ -35,5 +35,6 @@
     ani-cli
     ani-skip
     uxplay
+    swayimg
   ];
 }
