@@ -8,6 +8,7 @@
   ];
 
   services = {
+    seatd.enable = true;
     guix = {
       enable = true;
     };

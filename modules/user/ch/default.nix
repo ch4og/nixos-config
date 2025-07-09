@@ -20,7 +20,7 @@ in {
   };
   security.sudo.extraRules = [
     {
-      groups = ["wheel" "guixbuild"];
+      groups = ["wheel" "guixbuild" "seat"];
       commands =
         map (cmd: {
           command = cmd;
