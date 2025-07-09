@@ -7,8 +7,6 @@ let
 
   mkFullscreen = type: title: "fullscreen, ${type}:(${title})";
 
-  mkPin = type: title: "pin, ${type}:(${title})";
-
   defaultRules = [
     (mkNoblur "class" "^()$")
     (mkNoblur "title" "^()$")
@@ -28,10 +26,6 @@ in {
         (mkFloat "title" "Confirm to replace files")
         (mkFloat "title" "Save File")
         (mkFloat "title" "Open File")
-      ]
-      ++ [
-        # pin
-        (mkPin "title" "Picture-in-Picture")
       ]
       ++ [
         # fullscreen
