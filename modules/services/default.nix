@@ -48,8 +48,11 @@
     };
 
     xserver = {
-      xkb.layout = "us,ru";
-      xkb.options = "grp:alt_shift_toggle";
+      xkb = {
+        layout = "us,ru";
+        options = "grp:alt_shift_toggle";
+        variant = "colemak,";
+      };
     };
 
     samba = {
