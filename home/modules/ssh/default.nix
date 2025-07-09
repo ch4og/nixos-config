@@ -1,6 +1,7 @@
 _: {
   programs.ssh = {
     enable = true;
+    serverAliveInterval = 30;
     matchBlocks = {
       "csmpro.ru" = {
         port = 2222;
