@@ -11,6 +11,9 @@
     hyprsome
     hyprpolkitagent
     quickshell
+    libsForQt5.qt5.qtgraphicaleffects
+    qt6.qt5compat
+    qt5.qtgraphicaleffects
 
     # Audio and Video
     pavucontrol
@@ -37,5 +40,10 @@
     ani-skip
     uxplay
     swayimg
+    swaybg
+    swayfx
+    swaysome
+    autotiling
+    kitty
   ];
 }
