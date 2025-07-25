@@ -8,6 +8,7 @@
   ];
 
   services = {
+    pcscd.enable = true;
     seatd.enable = true;
     guix = {
       enable = true;
@@ -19,10 +20,10 @@
       enable = true;
       wayland.enable = true;
       settings = {
-        Autologin = {
-          User = "ch";
-          Session = "hyprland-uwsm.desktop";
-        };
+        # Autologin = {
+        #   User = "ch";
+        #   Session = "hyprland-uwsm.desktop";
+        # };
       };
     };
 
