@@ -4,6 +4,7 @@
     plugins = with pkgs.obs-studio-plugins; [
       input-overlay
       obs-multi-rtmp
+      wlrobs
       (pkgs.obs-studio-plugins.obs-pipewire-audio-capture.overrideAttrs {
         version = "c8c57b39fddf01c365f3d1234edc983ee0da1b5b";
         src = pkgs.fetchFromGitHub {
