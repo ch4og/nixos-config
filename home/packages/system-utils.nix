@@ -4,6 +4,7 @@
     (btop.override {cudaSupport = true;})
     lsof
     usbutils
+    yubikey-manager
 
     # Shell and Terminal
     starship
@@ -28,6 +29,7 @@
     nmap
     openvpn
     traceroute
+    usb-modeswitch
 
     # Media Processing
     ffmpeg-full

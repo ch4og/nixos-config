@@ -30,3 +30,7 @@ if [[ "$0" = "/run/current-system/sw/bin/zsh" ]]; then
     fastfetch
 fi
 
+if [ "$TERM" = "xterm-kitty" ]; then
+  [ -f "$HOME/.cache/hellwal/variables.sh" ] && source "$HOME/.cache/hellwal/variables.sh"
+  [ -f "$HOME/.cache/hellwal/terminal.sh" ] && sh "$HOME/.cache/hellwal/terminal.sh"
+fi

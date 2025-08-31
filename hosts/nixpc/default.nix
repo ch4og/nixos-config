@@ -27,6 +27,7 @@
         PATH = ["${setEnvVars.XDG_BIN_HOME}"];
         GOPATH = "${setEnvVars.XDG_DATA_HOME}/go";
         NIXOS_OZONE_WL = "1";
+        WLR_BACKENDS = "libinput,drm";
       };
     in
       setEnvVars;

@@ -15,6 +15,8 @@
     qt6.qt5compat
     qt5.qtgraphicaleffects
 
+    mwc_git
+
     # Audio and Video
     pavucontrol
     playerctl
@@ -41,6 +43,8 @@
     uxplay
     swayimg
     swaybg
+    swww
+    hellwal
     swayfx
     swaysome
     autotiling

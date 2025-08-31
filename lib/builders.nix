@@ -71,6 +71,7 @@
           inputs.home-manager.nixosModules.home-manager
           inputs.aagl.nixosModules.default
           inputs.sops-nix.nixosModules.sops
+          inputs.mango.nixosModules.mango
 
           (import ../overlays {inherit inputs;})
         ]

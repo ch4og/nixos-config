@@ -8,6 +8,10 @@
   ];
 
   services = {
+    ollama = {
+      enable = true;
+      acceleration = "cuda";
+    };
     pcscd.enable = true;
     seatd.enable = true;
     guix = {
@@ -81,6 +85,7 @@
   };
 
   programs = {
+    amnezia-vpn.enable = true;
     dconf.enable = true;
     steam = {
       enable = true;
@@ -92,6 +97,7 @@
       package = pkgs.hyprland-git;
       withUWSM = true;
     };
+    mango.enable = true;
 
     gamemode = {
       enable = true;
