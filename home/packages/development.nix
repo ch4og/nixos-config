@@ -2,14 +2,18 @@
   home.packages =
     (with pkgs; [
       # Programming Languages
-      python3Full
+      python3
       rustup
       go
       nodejs
       yarn
+      bun
 
       # Development Environments
       neovim
+      helix
+      zellij
+      tmux
 
       # Version Control and Collaboration
       gh
@@ -23,6 +27,7 @@
       sqlite
     ])
     ++ (with pkgs.python313Packages; [
+      tkinter
       pygithub
       opencv4
       pipx

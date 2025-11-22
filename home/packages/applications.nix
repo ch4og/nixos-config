@@ -59,5 +59,6 @@
     lutris
     nix-gaming.osu-stable
     nix-gaming.osu-lazer-bin
+    aagl.honkers-railway-launcher
   ];
 }

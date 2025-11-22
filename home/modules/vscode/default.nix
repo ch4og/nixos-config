@@ -29,7 +29,8 @@
       ];
       userSettings = {
         "editor.fontFamily" = lib.mkIf (!config.stylix.enable) "ComicCode Nerd Font";
-        "workbench.colorTheme" = lib.mkForce "Tokyo Night";
+         "editor.overtypeCursorStyle" = "line"; 
+        "workbench.colorTheme" = lib.mkForce "Tokyo Night Dark";
         "git.enableSmartCommit" = true;
         "git.autofetch" = true;
         "git.confirmSync" = false;
@@ -38,6 +39,7 @@
         "supermaven.enable" = {
           "*" = true;
         };
+        "helixKeymap.toggleRelativeLineNumbers" = true;
 
         "window.customMenuBarAltFocus" = false;
         "vim.useSystemClipboard" = true;
@@ -55,7 +57,6 @@
           "*.sdb" = "\${capture}.\${extname}-*";
           "*.s3db" = "\${capture}.\${extname}-*";
         };
-        "http.proxy" = "http://127.0.0.1:2080";
       };
     };
   };

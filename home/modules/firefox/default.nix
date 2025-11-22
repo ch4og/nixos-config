@@ -4,12 +4,19 @@
   ...
 }: {
   imports = [
-    inputs.betterfox-nix.homeManagerModules.betterfox
+    inputs.betterfox-nix.homeModules.betterfox
   ];
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
-    betterfox.enable = true;
+    betterfox = {
+      enable = true;
+      profiles."9rhmal6a.default" = {
+        settings = {
+          fastfox.enable = true;
+        };
+      };
+    };
     profiles."9rhmal6a.default" = {
       isDefault = true;
       path = "9rhmal6a.default";
@@ -28,14 +35,6 @@
           }
         }
       '';
-      betterfox = {
-        enable = true;
-        fastfox.enable = true;
-        smoothfox = {
-          enable = true;
-          smooth-scrolling.enable = true;
-        };
-      };
     };
   };
 }

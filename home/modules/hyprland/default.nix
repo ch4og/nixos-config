@@ -100,7 +100,7 @@
         follow_mouse = true;
         sensitivity = 0;
       };
-      gestures.workspace_swipe = true;
+      # gestures.workspace_swipe = true;
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"

@@ -34,3 +34,5 @@ if [ "$TERM" = "xterm-kitty" ]; then
   [ -f "$HOME/.cache/hellwal/variables.sh" ] && source "$HOME/.cache/hellwal/variables.sh"
   [ -f "$HOME/.cache/hellwal/terminal.sh" ] && sh "$HOME/.cache/hellwal/terminal.sh"
 fi
+
+source "$HOME/.helix-gpt"
