@@ -18,7 +18,7 @@
 
     # Productivity
     obsidian
-    onlyoffice-bin
+    onlyoffice-desktopeditors
 
     # Media
     mpv
@@ -51,7 +51,6 @@
         jdks = [config.programs.java.package];
       })
     )
-    temurin-jre-bin-23
     lunar-client
     parsec-bin
     bottles

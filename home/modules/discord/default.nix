@@ -25,7 +25,7 @@
       plugins = {
         alwaysTrust.enable = true;
         callTimer.enable = false;
-        clearURLs.enable = true;
+        clearUrLs.enable = true;
         copyEmojiMarkdown.enable = true;
         disableCallIdle.enable = true;
         dontRoundMyTimestamps.enable = true;
@@ -57,9 +57,8 @@
         whoReacted.enable = true;
         spotifyControls = {
           enable = true;
-          hoverControls = true;
         };
-        USRBG = {
+        usrbg = {
           enable = true;
           voiceBackground = false;
         };
